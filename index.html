@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankalp 2025 - KHIT</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+       background: url('pink.jpg') no-repeat center center fixed;
+       background-size: cover;
+       overflow: hidden;
+       color: white;
+        }
+
+    .petal {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #7369ff, #ff6a00);
+      border-radius: 50% 50% 50% 50%;
+      box-shadow: 0 0 15px rgba(105, 153, 255, 0.6);
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      color: #00bbff;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ffb6c1;
+      margin-top: 10px;
+    }
+
+    .register-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background: linear-gradient(to right, #7669ff, #00aeff);
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 10px #f0ff69;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating petals -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.top = `${Math.random() * 100}vh`;
+      petal.style.animationDuration = `${5 + Math.random() * 5}s`;
+      document.body.appendChild(petal);
+    }
+  </script>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>SANKALP 2025</h1>
+    <p>The Annual Techno Fest of KHIT</p>
+    <button class="register-btn">Register Now</button>
+  </div>
+</body>
+</html>
