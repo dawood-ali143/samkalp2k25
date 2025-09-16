@@ -60,7 +60,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 80px;
   }
 
   /* Grey-Silver Gradient Text */
@@ -124,6 +124,39 @@
   .register-btn:hover::before {
     left: 130%;
   }
+
+  /* Floating Futuristic UI */
+  .screen-ui {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    animation: fadeIn 3s ease forwards;
+  }
+
+  .ui-button {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    border-radius: 15%;
+    background: rgba(0, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    color: cyan;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(4px);
+  }
+
+  .ui-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+    background: rgba(0, 255, 255, 0.15);
+  }
 </style>
 </head>
 <body>
@@ -154,6 +187,14 @@
     <h1>SANKALP 2025</h1>
     <p>The Annual Techno Fest of KHIT</p>
     <button class="register-btn">✨ Register Now ✨</button>
+
+    <!-- Futuristic Floating UI -->
+    <div class="screen-ui">
+      <div class="ui-button">💻</div>
+      <div class="ui-button">📱</div>
+      <div class="ui-button">⚙️</div>
+      <div class="ui-button">📷</div>
+    </div>
   </div>
 </body>
 </html>
