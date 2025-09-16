@@ -7,153 +7,155 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
-  body {
+  /* Reset and base */
+  body, html {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: 'Orbitron', sans-serif;
     background: url('img0.jpg') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden;
     color: white;
-    position: relative;
   }
 
-  /* Star styling */
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: twinkle 2s infinite ease-in-out alternate;
-    box-shadow: 0 0 6px white;
+  /* Overlay for slight darkening */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 40, 0.6); /* subtle techy dark overlay */
+    z-index: 0;
+  }
+
+  /* Container */
+  .container {
+    position: relative;
     z-index: 1;
-  }
-
-  @keyframes twinkle {
-    0% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.5); }
-    100% { opacity: 0.3; transform: scale(1); }
-  }
-
-  .hero {
-    position: relative;
-    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
     text-align: center;
-    padding-top: 80px;
   }
 
-  /* About Us Section */
-  .about {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    background: linear-gradient(90deg, #007bff, #3399ff); /* Technology blue gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease forwards;
-  }
-
-  /* Stylish Blue Heading */
+  /* Hero Title */
   .hero h1 {
     font-size: 4rem;
     background: linear-gradient(to right, #007bff, #3399ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 25px rgba(0, 123, 255, 0.7);
-    letter-spacing: 4px;
-    animation: fadeIn 1.5s ease forwards;
+    text-shadow: 0 0 25px rgba(0, 123, 255, 0.8);
+    letter-spacing: 6px;
+    margin-bottom: 20px;
   }
 
-  /* Paragraph with soft blue glow */
-  .hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 10px auto;
-    color: #d0e8ff;
-    text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
-    animation: fadeIn 2s ease forwards;
-    line-height: 1.6;
+  /* Fest type options container */
+  .fest-types {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 40px 0 60px;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Glowing Blue Button */
-  .register-btn {
-    margin-top: 30px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background: linear-gradient(45deg, #007bff, #3399ff);
-    border: none;
-    border-radius: 40px;
-    color: white;
+  /* Each fest type card */
+  .fest-type {
+    background: rgba(0, 123, 255, 0.2);
+    border: 2px solid #3399ff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    min-width: 180px;
     cursor: pointer;
-    box-shadow: 0 0 20px #007bff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    animation: fadeIn 2.5s ease forwards;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    color: #cce5ff;
+    font-weight: 700;
+    font-size: 1.3rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    box-shadow: 0 0 10px #007bff;
   }
 
-  .register-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 30px #3399ff, 0 0 50px #007bff;
+  .fest-type:hover {
+    background: #007bff;
+    box-shadow: 0 0 20px #3399ff;
+    transform: scale(1.1);
+    color: white;
   }
 
-  .register-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
-    transform: skewX(-25deg);
-    transition: left 0.5s;
+  /* Events section */
+  .events {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: left;
   }
 
-  .register-btn:hover::before {
-    left: 130%;
+  .events h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #007bff, #3399ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .event-list li {
+    background: rgba(0, 123, 255, 0.15);
+    margin-bottom: 15px;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #3399ff40;
+    font-size: 1.2rem;
+    color: #d0e8ff;
+    transition: background 0.3s ease;
+  }
+
+  .event-list li:hover {
+    background: #007bff;
+    color: white;
+    box-shadow: 0 0 20px #3399ff;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #99bbffaa;
   }
 </style>
 </head>
 <body>
-<script>
-  // Generate shining stars
-  const starCount = 70;
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.top = `${Math.random() * 100}vh`;
-    star.style.left = `${Math.random() * 100}vw`;
-    star.style.animationDelay = `${Math.random() * 3}s`;
-    document.body.appendChild(star);
-  }
+  <div class="container">
+    <div class="hero">
+      <h1>SANKALP 2025</h1>
+      <div class="fest-types">
+        <div class="fest-type" onclick="alert('Hackathon selected!')">Hackathon</div>
+        <div class="fest-type" onclick="alert('Coding Challenge selected!')">Coding Challenge</div>
+        <div class="fest-type" onclick="alert('Robotics Competition selected!')">Robotics Competition</div>
+        <div class="fest-type" onclick="alert('Project Expo selected!')">Project Expo</div>
+        <div class="fest-type" onclick="alert('Cultural Events selected!')">Cultural Events</div>
+      </div>
+    </div>
 
-  // Removed sprinkles as requested
-</script>
-
-  <div class="hero">
-    <div class="about">About Us – KHIT</div>
-    <h1>SANKALP 2025</h1>
-    <p>The Annual Techno Fest of KHIT, where <strong>innovation meets creativity</strong>! 
-       This fest is designed to ignite minds, showcase talent, and bring together 
-       students from across the country to collaborate, compete, and celebrate technology.</p>
-    <button class="register-btn">✨ Register Now ✨</button>
-    <p style="margin-top:20px;">
-      Join us for <strong>hackathons</strong>, <strong>coding challenges</strong>, 
-      <strong>robotics competitions</strong>, project expos, and cultural events 
-      that inspire the next generation of innovators. 🚀
-    </p>
+    <section class="events">
+      <h2>Upcoming Events</h2>
+      <ul class="event-list">
+        <li><strong>Hackathon:</strong> 48-hour nonstop coding marathon with real-world challenges.</li>
+        <li><strong>Coding Challenge:</strong> Timed algorithm and problem-solving contests.</li>
+        <li><strong>Robotics Competition:</strong> Design and build robots to complete assigned tasks.</li>
+        <li><strong>Project Expo:</strong> Showcase innovative tech projects and prototypes.</li>
+        <li><strong>Cultural Events:</strong> Tech-themed cultural performances and fun activities.</li>
+      </ul>
+    </section>
   </div>
+
+  <footer>
+    &copy; 2025 KHIT Sankalp Tech Fest | All rights reserved
+  </footer>
 </body>
 </html>
