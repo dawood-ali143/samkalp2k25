@@ -34,26 +34,22 @@
     100% { opacity: 0.3; transform: scale(1); }
   }
 
-  /* Sprinkles (shooting stars) */
+  /* Green glowing sprinkles */
   .sprinkle {
     position: absolute;
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, white, transparent);
-    opacity: 0.8;
-    animation: fall 3s linear infinite;
+    width: 5px;
+    height: 5px;
+    background: #00ff99;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
+    animation: float 4s infinite ease-in-out alternate;
     z-index: 1;
   }
 
-  @keyframes fall {
-    0% {
-      transform: translateY(-50px) translateX(0) rotate(45deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) translateX(50vw) rotate(45deg);
-      opacity: 0;
-    }
+  @keyframes float {
+    0% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+    50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(0) scale(0.8); opacity: 0.8; }
   }
 
   .hero {
@@ -61,6 +57,18 @@
     z-index: 2;
     text-align: center;
     padding-top: 80px;
+  }
+
+  /* About Us Section */
+  .about {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00ffcc;
+    text-shadow: 0 0 12px rgba(0, 255, 204, 0.7);
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease forwards;
   }
 
   /* Grey-Silver Gradient Text */
@@ -75,11 +83,13 @@
   }
 
   .hero p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 10px auto;
     color: #dcdcdc;
     text-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
-    margin-top: 10px;
     animation: fadeIn 2s ease forwards;
+    line-height: 1.5;
   }
 
   @keyframes fadeIn {
@@ -124,39 +134,6 @@
   .register-btn:hover::before {
     left: 130%;
   }
-
-  /* Floating Futuristic UI */
-  .screen-ui {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-    animation: fadeIn 3s ease forwards;
-  }
-
-  .ui-button {
-    width: 90px;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(0, 255, 255, 0.6);
-    border-radius: 15%;
-    background: rgba(0, 255, 255, 0.05);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-    color: cyan;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(4px);
-  }
-
-  .ui-button:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
-    background: rgba(0, 255, 255, 0.15);
-  }
 </style>
 </head>
 <body>
@@ -172,29 +149,29 @@
     document.body.appendChild(star);
   }
 
-  // Generate falling sprinkles
-  const sprinkleCount = 10;
+  // Generate green glowing sprinkles
+  const sprinkleCount = 25;
   for (let i = 0; i < sprinkleCount; i++) {
     const sprinkle = document.createElement('div');
     sprinkle.className = 'sprinkle';
+    sprinkle.style.top = `${Math.random() * 100}vh`;
     sprinkle.style.left = `${Math.random() * 100}vw`;
-    sprinkle.style.animationDelay = `${Math.random() * 5}s`;
+    sprinkle.style.animationDelay = `${Math.random() * 4}s`;
     document.body.appendChild(sprinkle);
   }
 </script>
 
   <div class="hero">
+    <div class="about">About Us – KHIT</div>
     <h1>SANKALP 2025</h1>
-    <p>The Annual Techno Fest of KHIT</p>
+    <p>The Annual Techno Fest of KHIT, where innovation meets creativity! 
+       This fest is designed to ignite minds, showcase talent, and bring together 
+       students from across the country to collaborate, compete, and celebrate technology.</p>
     <button class="register-btn">✨ Register Now ✨</button>
-
-    <!-- Futuristic Floating UI -->
-    <div class="screen-ui">
-      <div class="ui-button">💻</div>
-      <div class="ui-button">📱</div>
-      <div class="ui-button">⚙️</div>
-      <div class="ui-button">📷</div>
-    </div>
+    <p style="margin-top:20px;">
+      Explore hackathons, coding challenges, robotics competitions, project expos, and cultural events 
+      that inspire the next generation of innovators. 🚀
+    </p>
   </div>
 </body>
 </html>
