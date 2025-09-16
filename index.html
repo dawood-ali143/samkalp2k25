@@ -25,12 +25,35 @@
     opacity: 0.8;
     animation: twinkle 2s infinite ease-in-out alternate;
     box-shadow: 0 0 6px white;
+    z-index: 1;
   }
 
   @keyframes twinkle {
     0% { opacity: 0.3; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.5); }
     100% { opacity: 0.3; transform: scale(1); }
+  }
+
+  /* Sprinkles (shooting stars) */
+  .sprinkle {
+    position: absolute;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, white, transparent);
+    opacity: 0.8;
+    animation: fall 3s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px) translateX(0) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) translateX(50vw) rotate(45deg);
+      opacity: 0;
+    }
   }
 
   .hero {
@@ -106,7 +129,7 @@
 <body>
 <script>
   // Generate shining stars
-  const starCount = 50;
+  const starCount = 70;
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement('div');
     star.className = 'star';
@@ -114,6 +137,16 @@
     star.style.left = `${Math.random() * 100}vw`;
     star.style.animationDelay = `${Math.random() * 3}s`;
     document.body.appendChild(star);
+  }
+
+  // Generate falling sprinkles
+  const sprinkleCount = 10;
+  for (let i = 0; i < sprinkleCount; i++) {
+    const sprinkle = document.createElement('div');
+    sprinkle.className = 'sprinkle';
+    sprinkle.style.left = `${Math.random() * 100}vw`;
+    sprinkle.style.animationDelay = `${Math.random() * 5}s`;
+    document.body.appendChild(sprinkle);
   }
 </script>
 
