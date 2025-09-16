@@ -8,30 +8,57 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-       background: url('golden.png') no-repeat center center fixed;
-       background-size: cover;
-       overflow: hidden;
-       color: white;
-        }
-
-    .petal {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background: radial-gradient(circle, #dcff69, #d9ff00);
-      border-radius: 50% 50% 50% 50%;
-      box-shadow: 0 0 15px rgba(245, 255, 105, 0.959);
-      animation: float 10s linear infinite;
+      background: url('golden.png') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      color: white;
+      perspective: 800px; /* for 3D effect */
     }
 
-    @keyframes float {
+    .sprinkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle at center, #fff9c4, #fbc02d);
+      border-radius: 50%;
+      box-shadow:
+        0 0 8px 2px #fff9c4,
+        0 0 20px 5px #fbc02d;
+      filter: drop-shadow(0 0 4px #fbc02d);
+      animation: floatUp linear infinite, shimmer 2s ease-in-out infinite;
+      opacity: 0.8;
+      transform-style: preserve-3d;
+    }
+
+    /* Upward floating with some horizontal sway */
+    @keyframes floatUp {
       0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translate3d(0, 100vh, 0) rotateY(0deg);
         opacity: 1;
       }
+      50% {
+        transform: translate3d(10px, 50vh, 10px) rotateY(180deg);
+        opacity: 0.6;
+      }
       100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translate3d(-10px, -10vh, 0) rotateY(360deg);
         opacity: 0;
+      }
+    }
+
+    /* Shimmering pulse */
+    @keyframes shimmer {
+      0%, 100% {
+        box-shadow:
+          0 0 8px 2px #fff9c4,
+          0 0 20px 5px #fbc02d;
+        opacity: 0.8;
+      }
+      50% {
+        box-shadow:
+          0 0 12px 4px #fffde7,
+          0 0 28px 8px #fff59d;
+        opacity: 1;
       }
     }
 
@@ -68,15 +95,29 @@
   </style>
 </head>
 <body>
-  <!-- Floating petals -->
+  <!-- Floating sprinkles -->
   <script>
-    for (let i = 0; i < 30; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'petal';
-      petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.top = `${Math.random() * 100}vh`;
-      petal.style.animationDuration = `${5 + Math.random() * 5}s`;
-      document.body.appendChild(petal);
+    const numSprinkles = 40;
+    for (let i = 0; i < numSprinkles; i++) {
+      const sprinkle = document.createElement('div');
+      sprinkle.className = 'sprinkle';
+
+      // random horizontal position
+      sprinkle.style.left = `${Math.random() * 100}vw`;
+
+      // start position randomly from below viewport
+      sprinkle.style.top = `${100 + Math.random() * 20}vh`;
+
+      // random animation duration 8-15 seconds
+      sprinkle.style.animationDuration = `${8 + Math.random() * 7}s`;
+
+      // random animation delay so they don't move in sync
+      sprinkle.style.animationDelay = `${Math.random() * 15}s`;
+
+      // random initial 3D rotation for variance
+      sprinkle.style.transform = `rotateY(${Math.random() * 360}deg)`;
+
+      document.body.appendChild(sprinkle);
     }
   </script>
 
