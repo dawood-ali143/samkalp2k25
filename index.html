@@ -1,131 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sankalp 2025 - KHIT</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('golden.png') no-repeat center center fixed;
-      background-size: cover;
-      overflow: hidden;
-      color: white;
-      perspective: 800px;
-      position: relative;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sankalp 2025 - KHIT</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('golden.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    color: white;
+    position: relative;
+  }
 
-    .sprinkle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle at center, #fff9c4, #fbc02d);
-      border-radius: 50%;
-      box-shadow:
-        0 0 8px 2px #fff9c4,
-        0 0 20px 5px #fbc02d;
-      filter: drop-shadow(0 0 4px #fbc02d);
-      animation: floatUp linear infinite, shimmer 2s ease-in-out infinite;
+  /* Sprinkles styling */
+  .sprinkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle at center, #fff9c4 0%, #fbc02d 80%);
+    border-radius: 50%;
+    box-shadow:
+      0 0 6px 2px #fff9c4,
+      0 0 15px 5px #fbc02d;
+    filter: drop-shadow(0 0 3px #fbc02d);
+    opacity: 0.9;
+    animation-name: floatUp, sparkle;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes sparkle {
+    0%, 100% {
       opacity: 0.8;
-      transform-style: preserve-3d;
-      will-change: transform, opacity;
-      pointer-events: none;
-      /* Use CSS variable for initial rotation */
-      --init-rotate-y: 0deg;
-      transform: rotateY(var(--init-rotate-y));
+      box-shadow:
+        0 0 6px 2px #fff9c4,
+        0 0 15px 5px #fbc02d;
     }
+    50% {
+      opacity: 1;
+      box-shadow:
+        0 0 10px 4px #fffde7,
+        0 0 25px 8px #fff59d;
+    }
+  }
 
-    @keyframes floatUp {
-      0% {
-        transform: translate3d(0, 100vh, 0) rotateY(0deg);
-        opacity: 1;
-      }
-      50% {
-        transform: translate3d(10px, 50vh, 10px) rotateY(180deg);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translate3d(-10px, -10vh, 0) rotateY(360deg);
-        opacity: 0;
-      }
-    }
+  .hero {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 100px;
+  }
 
-    @keyframes shimmer {
-      0%, 100% {
-        box-shadow:
-          0 0 8px 2px #fff9c4,
-          0 0 20px 5px #fbc02d;
-        opacity: 0.8;
-      }
-      50% {
-        box-shadow:
-          0 0 12px 4px #fffde7,
-          0 0 28px 8px #fff59d;
-        opacity: 1;
-      }
-    }
+  .hero h1 {
+    font-size: 4rem;
+    color: #00bbff;
+    text-shadow: 0 0 10px #ff69b4;
+  }
 
-    .hero {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding-top: 100px;
-    }
+  .hero p {
+    font-size: 27px;
+    color: hsl(333, 82%, 46%);
+    margin-top: 10px;
+  }
 
-    .hero h1 {
-      font-size: 4rem;
-      color: #00bbff;
-      text-shadow: 0 0 10px #ff69b4;
-    }
-
-    .hero p {
-      font-size: 27px;
-      color: hsl(333, 82%, 46%);
-      margin-top: 10px;
-    }
-
-    .register-btn {
-      margin-top: 30px;
-      padding: 12px 24px;
-      font-size: 1rem;
-      background: linear-gradient(to right, #fb674d, #ff6a00);
-      border: none;
-      border-radius: 30px;
-      color: #000;
-      cursor: pointer;
-      box-shadow: 0 0 10px #f0ff69;
-    }
-  </style>
+  .register-btn {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #fb674d, #ff6a00);
+    border: none;
+    border-radius: 30px;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 0 10px #f0ff69;
+  }
+</style>
 </head>
 <body>
-  <!-- Floating sprinkles -->
   <script>
-    const numSprinkles = 40;
-    for (let i = 0; i < numSprinkles; i++) {
-      const sprinkle = document.createElement('div');
-      sprinkle.className = 'sprinkle';
+    const numberOfSprinkles = 50;
 
-      // random horizontal position
+    for (let i = 0; i < numberOfSprinkles; i++) {
+      const sprinkle = document.createElement('div');
+      sprinkle.classList.add('sprinkle');
+
+      // Random horizontal start position
       sprinkle.style.left = `${Math.random() * 100}vw`;
 
-      // start position randomly within viewport vertically (20vh to 100vh)
-      sprinkle.style.top = `${20 + Math.random() * 80}vh`;
+      // Start slightly below viewport
+      sprinkle.style.top = `${100 + Math.random() * 20}vh`;
 
-      // random animation duration 8-15 seconds
-      sprinkle.style.animationDuration = `${8 + Math.random() * 7}s`;
+      // Random animation durations between 6 and 12 seconds
+      sprinkle.style.animationDuration = `${6 + Math.random() * 6}s, ${1 + Math.random() * 2}s`;
 
-      // random animation delay so they don't move in sync
-      sprinkle.style.animationDelay = `${Math.random() * 15}s`;
-
-      // set CSS variable for initial rotation
-      sprinkle.style.setProperty('--init-rotate-y', `${Math.random() * 360}deg`);
+      // Random animation delay so they float independently
+      sprinkle.style.animationDelay = `${Math.random() * 12}s, ${Math.random() * 2}s`;
 
       document.body.appendChild(sprinkle);
     }
   </script>
 
-  <!-- Hero Section -->
   <div class="hero">
     <h1>SANKALP 2025</h1>
     <p>The Annual Techno Fest of KHIT</p>
@@ -133,3 +121,5 @@
   </div>
 </body>
 </html>
+
+  
