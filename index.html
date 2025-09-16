@@ -15,17 +15,22 @@
     position: relative;
   }
 
-  /* Semi-transparent blur overlay */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* soft dark overlay */
-    backdrop-filter: blur(4px); /* subtle blur */
-    z-index: 1;
+  /* Star styling */
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 2s infinite ease-in-out alternate;
+    box-shadow: 0 0 6px white;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+    100% { opacity: 0.3; transform: scale(1); }
   }
 
   .hero {
@@ -43,6 +48,7 @@
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(192, 192, 192, 0.6);
     letter-spacing: 2px;
+    animation: fadeIn 1.5s ease forwards;
   }
 
   .hero p {
@@ -50,6 +56,12 @@
     color: #dcdcdc;
     text-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
     margin-top: 10px;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .register-btn {
@@ -66,6 +78,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeIn 2.5s ease forwards;
   }
 
   .register-btn:hover {
@@ -91,6 +104,19 @@
 </style>
 </head>
 <body>
+<script>
+  // Generate shining stars
+  const starCount = 50;
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = `${Math.random() * 100}vh`;
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.animationDelay = `${Math.random() * 3}s`;
+    document.body.appendChild(star);
+  }
+</script>
+
   <div class="hero">
     <h1>SANKALP 2025</h1>
     <p>The Annual Techno Fest of KHIT</p>
