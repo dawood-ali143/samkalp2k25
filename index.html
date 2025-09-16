@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sankalp 2025 - KHIT</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
   body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     background: url('img1.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
@@ -64,32 +66,35 @@
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #00ffcc;
-    text-shadow: 0 0 12px rgba(0, 255, 204, 0.7);
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #00ff99, #ccff33);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(0, 255, 153, 0.8);
     margin-bottom: 20px;
     animation: fadeIn 1s ease forwards;
   }
 
-  /* Grey-Silver Gradient Text */
+  /* Stylish Green Heading */
   .hero h1 {
     font-size: 4rem;
-    background: linear-gradient(to right, #c0c0c0, #e0e0e0);
+    background: linear-gradient(to right, #00ff99, #dfff00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(192, 192, 192, 0.6);
-    letter-spacing: 2px;
+    text-shadow: 0 0 25px rgba(0, 255, 153, 0.7);
+    letter-spacing: 4px;
     animation: fadeIn 1.5s ease forwards;
   }
 
+  /* Paragraph with soft greenish glow */
   .hero p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 10px auto;
-    color: #dcdcdc;
-    text-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
+    color: #e0ffe0;
+    text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
     animation: fadeIn 2s ease forwards;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   @keyframes fadeIn {
@@ -97,26 +102,29 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* Glowing Green-Gold Button */
   .register-btn {
     margin-top: 30px;
     padding: 12px 30px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    background: linear-gradient(45deg, #ffcc33, #ffd700);
+    background: linear-gradient(45deg, #00ff99, #dfff00);
     border: none;
     border-radius: 40px;
-    color: #000;
+    color: black;
     cursor: pointer;
-    box-shadow: 0 0 15px #ffcc33;
+    box-shadow: 0 0 20px #00ff99;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
     animation: fadeIn 2.5s ease forwards;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
   .register-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #ffd700, 0 0 40px #ffcc33;
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #dfff00, 0 0 50px #00ff99;
   }
 
   .register-btn::before {
@@ -164,12 +172,13 @@
   <div class="hero">
     <div class="about">About Us – KHIT</div>
     <h1>SANKALP 2025</h1>
-    <p>The Annual Techno Fest of KHIT, where innovation meets creativity! 
+    <p>The Annual Techno Fest of KHIT, where <strong>innovation meets creativity</strong>! 
        This fest is designed to ignite minds, showcase talent, and bring together 
        students from across the country to collaborate, compete, and celebrate technology.</p>
     <button class="register-btn">✨ Register Now ✨</button>
     <p style="margin-top:20px;">
-      Explore hackathons, coding challenges, robotics competitions, project expos, and cultural events 
+      Join us for <strong>hackathons</strong>, <strong>coding challenges</strong>, 
+      <strong>robotics competitions</strong>, project expos, and cultural events 
       that inspire the next generation of innovators. 🚀
     </p>
   </div>
