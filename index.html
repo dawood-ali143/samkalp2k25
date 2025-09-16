@@ -36,24 +36,6 @@
     100% { opacity: 0.3; transform: scale(1); }
   }
 
-  /* Green glowing sprinkles */
-  .sprinkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #00ff99;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
-    animation: float 4s infinite ease-in-out alternate;
-    z-index: 1;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0) scale(0.8); opacity: 0.8; }
-    50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-    100% { transform: translateY(0) scale(0.8); opacity: 0.8; }
-  }
-
   .hero {
     position: relative;
     z-index: 2;
@@ -67,32 +49,32 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 3px;
-    background: linear-gradient(90deg, #00ff99, #ccff33);
+    background: linear-gradient(90deg, #007bff, #3399ff); /* Technology blue gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(0, 255, 153, 0.8);
+    text-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
     margin-bottom: 20px;
     animation: fadeIn 1s ease forwards;
   }
 
-  /* Stylish Green Heading */
+  /* Stylish Blue Heading */
   .hero h1 {
     font-size: 4rem;
-    background: linear-gradient(to right, #00ff99, #dfff00);
+    background: linear-gradient(to right, #007bff, #3399ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 25px rgba(0, 255, 153, 0.7);
+    text-shadow: 0 0 25px rgba(0, 123, 255, 0.7);
     letter-spacing: 4px;
     animation: fadeIn 1.5s ease forwards;
   }
 
-  /* Paragraph with soft greenish glow */
+  /* Paragraph with soft blue glow */
   .hero p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 10px auto;
-    color: #e0ffe0;
-    text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+    color: #d0e8ff;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
     animation: fadeIn 2s ease forwards;
     line-height: 1.6;
   }
@@ -102,18 +84,18 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Glowing Green-Gold Button */
+  /* Glowing Blue Button */
   .register-btn {
     margin-top: 30px;
     padding: 12px 30px;
     font-size: 1.2rem;
     font-weight: bold;
-    background: linear-gradient(45deg, #00ff99, #dfff00);
+    background: linear-gradient(45deg, #007bff, #3399ff);
     border: none;
     border-radius: 40px;
-    color: black;
+    color: white;
     cursor: pointer;
-    box-shadow: 0 0 20px #00ff99;
+    box-shadow: 0 0 20px #007bff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -124,7 +106,7 @@
 
   .register-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 30px #dfff00, 0 0 50px #00ff99;
+    box-shadow: 0 0 30px #3399ff, 0 0 50px #007bff;
   }
 
   .register-btn::before {
@@ -157,16 +139,7 @@
     document.body.appendChild(star);
   }
 
-  // Generate green glowing sprinkles
-  const sprinkleCount = 25;
-  for (let i = 0; i < sprinkleCount; i++) {
-    const sprinkle = document.createElement('div');
-    sprinkle.className = 'sprinkle';
-    sprinkle.style.top = `${Math.random() * 100}vh`;
-    sprinkle.style.left = `${Math.random() * 100}vw`;
-    sprinkle.style.animationDelay = `${Math.random() * 4}s`;
-    document.body.appendChild(sprinkle);
-  }
+  // Removed sprinkles as requested
 </script>
 
   <div class="hero">
