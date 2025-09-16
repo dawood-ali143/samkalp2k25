@@ -12,13 +12,14 @@
       background-size: cover;
       overflow: hidden;
       color: white;
-      perspective: 800px; /* for 3D effect */
+      perspective: 800px;
+      position: relative;
     }
 
     .sprinkle {
       position: absolute;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background: radial-gradient(circle at center, #fff9c4, #fbc02d);
       border-radius: 50%;
       box-shadow:
@@ -28,9 +29,13 @@
       animation: floatUp linear infinite, shimmer 2s ease-in-out infinite;
       opacity: 0.8;
       transform-style: preserve-3d;
+      will-change: transform, opacity;
+      pointer-events: none;
+      /* Use CSS variable for initial rotation */
+      --init-rotate-y: 0deg;
+      transform: rotateY(var(--init-rotate-y));
     }
 
-    /* Upward floating with some horizontal sway */
     @keyframes floatUp {
       0% {
         transform: translate3d(0, 100vh, 0) rotateY(0deg);
@@ -46,7 +51,6 @@
       }
     }
 
-    /* Shimmering pulse */
     @keyframes shimmer {
       0%, 100% {
         box-shadow:
@@ -105,8 +109,8 @@
       // random horizontal position
       sprinkle.style.left = `${Math.random() * 100}vw`;
 
-      // start position randomly from below viewport
-      sprinkle.style.top = `${100 + Math.random() * 20}vh`;
+      // start position randomly within viewport vertically (20vh to 100vh)
+      sprinkle.style.top = `${20 + Math.random() * 80}vh`;
 
       // random animation duration 8-15 seconds
       sprinkle.style.animationDuration = `${8 + Math.random() * 7}s`;
@@ -114,8 +118,8 @@
       // random animation delay so they don't move in sync
       sprinkle.style.animationDelay = `${Math.random() * 15}s`;
 
-      // random initial 3D rotation for variance
-      sprinkle.style.transform = `rotateY(${Math.random() * 360}deg)`;
+      // set CSS variable for initial rotation
+      sprinkle.style.setProperty('--init-rotate-y', `${Math.random() * 360}deg`);
 
       document.body.appendChild(sprinkle);
     }
