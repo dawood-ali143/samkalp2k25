@@ -8,9 +8,10 @@
     body {
       margin: 0;
       overflow-x: hidden;
-      background: radial-gradient(ellipse at center, #050510 0%, #000 100%);
       font-family: Arial, sans-serif;
       color: white;
+      background: url('img.png') no-repeat center center fixed;
+      background-size: cover;
     }
 
     canvas {
@@ -22,7 +23,7 @@
       z-index: -1;
     }
 
-    /* HEADER FIX */
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
@@ -33,7 +34,7 @@
       padding: 12px 25px;
       background: rgba(0,0,0,0.6);
       z-index: 10;
-      flex-wrap: wrap; /* ✅ allow wrapping on small screens */
+      flex-wrap: wrap;
     }
     header img {
       height: 45px;
@@ -49,7 +50,7 @@
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px; /* ✅ reduced spacing */
+      gap: 10px;
       margin-top: 8px;
     }
     nav a {
@@ -70,7 +71,7 @@
     /* HERO SECTION */
     .overlay {
       position: relative;
-      height: 100vh; /* ✅ fills screen */
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -108,7 +109,7 @@
       transform: scale(1.1);
     }
 
-    /* About Section FIXED GAP */
+    /* ABOUT SECTION */
     .about-section {
       position: relative;
       z-index: 2;
@@ -188,7 +189,7 @@
       color: #ccc;
     }
 
-    /* KHIT Info Section */
+    /* INFO SECTION */
     .info-section {
       position: relative;
       z-index: 2;
@@ -221,18 +222,18 @@
       margin: 8px 0;
       text-shadow: 0 0 8px #ff00ff;
     }
-    .quick-info ul {
-      list-style: none;
-      padding: 0;
+
+    /* ICONS */
+    .social-icons svg {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      filter: drop-shadow(0 0 6px #00eaff) drop-shadow(0 0 12px #ff00ff);
+      transition: transform 0.3s;
     }
-    .quick-info li {
-      margin: 10px 0;
-      font-size: 16px;
-    }
-    .quick-info li::before {
-      content: "• ";
-      color: cyan;
-      font-weight: bold;
+    .social-icons svg:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 12px #00ffe5) drop-shadow(0 0 20px #ff00ff);
     }
   </style>
 </head>
@@ -305,15 +306,35 @@
     <div class="info-container">
       <div class="info-box">
         <h3>Follow Us</h3>
-        <a href="#">📷 Instagram</a>
-        <a href="#">🔗 LinkedIn</a>
+        <div class="social-icons">
+          <!-- Instagram -->
+          <a href="#">
+            <svg viewBox="0 0 448 512" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66ZM448,80v352a48,48,0,0,1-48,48H48A48,48,0,0,1,0,432V80A48,48,0,0,1,48,32H400A48,48,0,0,1,448,80ZM224,338a82,82,0,1,1,82-82A82.09,82.09,0,0,1,224,338Zm146-186a19.5,19.5,0,1,1,19.5-19.5A19.5,19.5,0,0,1,370,152Z"/>
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#">
+            <svg viewBox="0 0 448 512" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8S24.09-.5 53.79-.5 107.6 24.1 107.6 53.8c0 29.7-24.1 54.3-53.81 54.3zM447.9 448h-92.4V306.4c0-33.7-.7-77.1-47-77.1-47 0-54.2 36.7-54.2 74.7V448h-92.4V148.9h88.7v40.8h1.3c12.4-23.4 42.7-48 87.9-48 94 0 111.4 61.9 111.4 142.3V448z"/>
+            </svg>
+          </a>
+          <!-- Twitter -->
+          <a href="#">
+            <svg viewBox="0 0 512 512" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M459.4 151.7c.3 4.1.3 8.3.3 12.4 0 126.5-96.2 272.2-272.2 272.2-54.1 0-104.5-15.8-146.8-42.9 7.6.9 15.2 1.2 23.1 1.2 44.9 0 86.3-15.2 119.2-41.1-42.3-.9-77.9-28.6-90.2-66.8 5.9.9 11.8 1.5 18 1.5 8.6 0 17.1-1.2 25-3.3-43.8-8.9-76.8-47.5-76.8-94.2v-1.2c12.7 7 27.4 11.2 43 11.5-25.6-17.1-42.3-46.2-42.3-79.3 0-17.4 4.7-33.6 13.3-47.5 47.5 58.6 118.6 97.1 199.2 101.2-1.5-7-2.4-14.4-2.4-21.8 0-52.3 42.3-94.9 94.9-94.9 27.4 0 52.3 11.5 69.7 30.2 21.8-4.1 42.6-12.4 61.3-23.7-7.3 22.5-22.5 41.5-42.6 53.5 19.5-2.1 38.4-7.3 55.8-14.7-12.9 19.2-29.1 36-47.8 49.6z"/>
+            </svg>
+          </a>
+        </div>
       </div>
+
       <div class="info-box">
         <h3>Find Us</h3>
         <p>KHIT College, Guntur, Andhra Pradesh</p>
         <iframe src="https://maps.google.com/maps?q=KHIT%20Guntur&t=&z=13&ie=UTF8&iwloc=&output=embed" 
           width="100%" height="200" style="border-radius:8px; border:0;"></iframe>
       </div>
+
       <div class="info-box quick-info">
         <h3>Quick Info</h3>
         <ul>
@@ -326,82 +347,45 @@
     </div>
   </section>
 
-  <!-- THREE.JS BACKGROUND -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <!-- SIMPLE PARTICLES -->
   <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    camera.position.z = 6;
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.getElementById("bg") });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    const geometry = new THREE.IcosahedronGeometry(1.5, 2);
-    const material = new THREE.MeshStandardMaterial({
-      metalness: 0.8,
-      roughness: 0.2,
-      emissive: 0x111111,
-      flatShading: true
-    });
-    const sphere = new THREE.Mesh(geometry, material);
-    scene.add(sphere);
-
-    const colors = [0xff0000, 0xff7f00, 0xffff00, 0x00ff00, 0x0000ff, 0x8b00ff];
-    const lights = [];
-    colors.forEach((c, i) => {
-      const light = new THREE.PointLight(c, 1.5, 20);
-      light.position.set(Math.sin(i) * 5, Math.cos(i) * 5, 3);
-      scene.add(light);
-      lights.push(light);
-    });
-
-    const particlesCount = 800;
-    const particlesGeometry = new THREE.BufferGeometry();
-    const positions = [];
-    const colorsArr = [];
-    for (let i = 0; i < particlesCount; i++) {
-      positions.push((Math.random() - 0.5) * 80);
-      positions.push((Math.random() - 0.5) * 60);
-      positions.push((Math.random() - 0.5) * 80);
-
-      const color = new THREE.Color(`hsl(${Math.random() * 360}, 100%, 60%)`);
-      colorsArr.push(color.r, color.g, color.b);
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-    particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    particlesGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colorsArr, 3));
+    window.addEventListener('resize', resize);
+    resize();
 
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.2,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.9,
-      blending: THREE.AdditiveBlending
-    });
-    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particles);
-
-    const ambient = new THREE.AmbientLight(0xffffff, 0.2);
-    scene.add(ambient);
+    const particles = [];
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        color: `hsl(${Math.random() * 360},100%,70%)`,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3
+      });
+    }
 
     function animate() {
-      requestAnimationFrame(animate);
-      sphere.rotation.y += 0.005;
-      sphere.rotation.x += 0.003;
-      particles.rotation.y += 0.0008;
-      particles.rotation.x += 0.0005;
-      lights.forEach((light, i) => {
-        light.position.x = Math.sin(Date.now() * 0.001 + i) * 5;
-        light.position.y = Math.cos(Date.now() * 0.001 + i) * 5;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
       });
-      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
     }
     animate();
-
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
   </script>
 </body>
 </html>
