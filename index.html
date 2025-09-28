@@ -11,21 +11,23 @@
       padding: 0;
       box-sizing: border-box;
     }
-     .search-and-dropdown {
-                display: flex;
-                align-items: center;
-                 gap: 18px; /* adjust spacing as needed */
-       padding: 12px 22px;
-          border: none;
-         border-radius: 25px 25px 25px 25px;
-         background: linear-gradient(90deg, #00ffe5, #ff00ff);
-            color: white;
-           cursor: pointer;
-           font-weight: bold;
-          white-space: nowrap;
-         transition: all 0.3s ease;
-          box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
-          }
+    
+    .search-and-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px 25px 25px 25px;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+    }
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
@@ -53,44 +55,51 @@
       background: rgba(0, 0, 0, 0.85);
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     }
-     /* SEARCH BAR STYLES */
-.search-bar {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 350px;
-  border-radius:2px;
-}
+    
+    /* SEARCH BAR STYLES */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 2px;
+    }
 
-.search-bar input {
-  padding: 12px 18px;
-  border: none;
-  border-radius: 25px 0 0 25px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  outline: none;
-  width: 100%;
-  font-size: 16px;
-  box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
-}
+    .search-bar input {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 25px 0 0 25px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      outline: none;
+      width: 100%;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
+    }
 
-/*.search-bar button {
-  padding: 12px 22px;
-  border: none;
-  border-radius: 0 25px 25px 0;
-  background: linear-gradient(90deg, #00ffe5, #ff00ff);
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
-}*/
+    .search-bar button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 0 25px 25px 0;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+    }
 
-/*.search-bar button:hover {
-  background: linear-gradient(90deg, #ff00ff, #00ffe5);
-  transform: scale(1.05);
-}*/
+    .search-bar button:hover {
+      background: linear-gradient(90deg, #ff00ff, #00ffe5);
+      transform: scale(1.05);
+    }
+
+    /* Make search icon bigger */
+    .search-bar button i {
+      font-size: 20px;
+    }
+
     .header-banner {
       width: 100%;
       height: 180px;
@@ -229,9 +238,14 @@
       padding-left: 25px;
     }
 
-    .dropdown:hover .dropdown-content {
+    .dropdown.active .dropdown-content {
       display: block;
-      animation: fadeIn 2.0s ease;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .dropdown.active .dropbtn::after {
+      content: "✕";
+      font-size: 14px;
     }
 
     @keyframes fadeIn {
@@ -259,19 +273,18 @@
       padding: 0 20px;
     }
 
+    /* Change to glowing golden color */
     .overlay h1 {
       font-size: 72px;
       margin: 10px 0;
-      text-shadow: 0 0 20px cyan, 0 0 40px magenta;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange;
       animation: glow 2s infinite alternate;
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 20px cyan, 0 0 40px magenta; }
-      to { text-shadow: 0 0 30px cyan, 0 0 60px magenta; }
+      from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
+      to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
     }
 
     .overlay p {
@@ -715,34 +728,32 @@
   <header>
     <div class="header-banner">
       <img src="/khitbanner.webp" alt="KHIT Sankalp 2025 Banner" class="banner-image">
-      
     </div>
     <div class="header-content">
       <div class="logo-title">
         <img src="khitlogo.jpg" alt="KHIT Logo">
         <span class="gold-title">KHIT SAMKALP 2025</span>
       </div>
-     <!-- Centered Navigation Area -->
-<div class="nav-center">
-       <div class="nav-center">
-  <!-- Flex container for search bar and dropdown -->
-  <div class="search-and-dropdown">
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search events...">
-      <button id="searchBtn"><i class="fas fa-search"></i></button>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">CSE Events</button>
-      <div class="dropdown-content">
-        <a href="#">Technical Quiz</a>
-        <a href="#">Paper Presentation</a>
-        <a href="#">Poster Presentation</a>
-        <a href="#">Project Expo</a>
+      
+      <!-- Centered Navigation Area -->
+      <div class="nav-center">
+        <div class="search-and-dropdown">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search events...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">CSE Events</button>
+            <div class="dropdown-content">
+              <a href="technicalquiz.html">Technical Quiz</a>
+              <a href="paperpresentation.html">Paper Presentation</a>
+              <a href="posterpresentation.html">Poster Presentation</a>
+              <a href="projectexpo.html">Project Expo</a>
+            </div>
+          </div>
+        </div>
+        <div class="header-spacer"></div>
       </div>
-    </div>
-  </div>
-  <div class="header-spacer"></div>
-</div>
       
       <!-- Empty div for spacing -->
       <div class="header-spacer"></div>
@@ -751,9 +762,9 @@
 
   <!-- HERO -->
   <div class="overlay">
-    <h1>SANKALP 2025</h1>
+    <h1>SAMKALP 2025</h1>
     <p>KHIT</p>
-    <p>FEB 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
+    <p>Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
     <div class="buttons">
       <button id="exploreBtn">EXPLORE EVENTS</button>
       <button id="registerBtn">REGISTER NOW</button>
@@ -961,63 +972,69 @@
       alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
     });
 
-    // Make dropdown work on click for mobile
+    // Dropdown toggle functionality
     document.addEventListener('DOMContentLoaded', function() {
       const dropdown = document.querySelector('.dropdown');
       const dropbtn = document.querySelector('.dropbtn');
       
+      // Toggle dropdown on button click
       dropbtn.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          const content = this.nextElementSibling;
-          content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
       });
       
       // Close dropdown when clicking outside
       document.addEventListener('click', function(e) {
         if (!dropdown.contains(e.target)) {
-          document.querySelector('.dropdown-content').style.display = 'none';
+          dropdown.classList.remove('active');
         }
       });
+      
+      // Close dropdown when clicking on a link
+      document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', function() {
+          dropdown.classList.remove('active');
+        });
+      });
     });
-    // Search Functionality
-document.getElementById('searchBtn').addEventListener('click', function() {
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-  
-  // Define search mappings
-  const searchMappings = {
-    'technical quiz': 'events/technicalquiz.html',
-    'paper presentation': 'events/paperpresentation.html', 
-    'poster presentation': 'events/posterpresentation.html',
-    'project expo': 'events/projectexpo.html',
-    'quiz': 'events/technicalquiz.html',
-    'paper': 'events/paperpresentation.html',
-    'poster': 'events/posterpresentation.html',
-    'project': 'events/projectexpo.html',
-    'expo': 'events/projectexpo.html'
-  };
-  
-  // Check if search term matches any event
-  const matchingKey = Object.keys(searchMappings).find(key => 
-    searchTerm.includes(key)
-  );
-  
-  if (matchingKey) {
-    alert(`Redirecting to ${matchingKey} page`);
-    // Uncomment the line below when you have actual event pages
-    // window.location.href = searchMappings[matchingKey];
-  } else if (searchTerm) {
-    alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
-  }
-});
 
-// Allow pressing Enter to search
-document.getElementById('searchInput').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') {
-    document.getElementById('searchBtn').click();
-  }
-});
+    // Search Functionality
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      
+      // Define search mappings
+      const searchMappings = {
+        'technical quiz': 'technicalquiz.html',
+        'paper presentation': 'paperpresentation.html', 
+        'poster presentation': 'posterpresentation.html',
+        'project expo': 'projectexpo.html',
+        'quiz': 'technicalquiz.html',
+        'paper': 'paperpresentation.html',
+        'poster': 'posterpresentation.html',
+        'project': 'projectexpo.html',
+        'expo': 'projectexpo.html'
+      };
+      
+      // Check if search term matches any event
+      const matchingKey = Object.keys(searchMappings).find(key => 
+        searchTerm.includes(key)
+      );
+      
+      if (matchingKey) {
+        alert(`Redirecting to ${matchingKey} page`);
+        // Uncomment the line below when you have actual event pages
+        // window.location.href = searchMappings[matchingKey];
+      } else if (searchTerm) {
+        alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
+      }
+    });
+
+    // Allow pressing Enter to search
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('searchBtn').click();
+      }
+    });
   </script>
 </body>
 </html>
