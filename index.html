@@ -39,7 +39,43 @@
       background: rgba(0, 0, 0, 0.85);
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     }
+     /* SEARCH BAR STYLES */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+}
 
+.search-bar input {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
+}
+
+.search-bar button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  background: linear-gradient(90deg, #00ffe5, #ff00ff);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+}
+
+.search-bar button:hover {
+  background: linear-gradient(90deg, #ff00ff, #00ffe5);
+  transform: scale(1.05);
+}
     .header-banner {
       width: 100%;
       height: 180px;
@@ -671,10 +707,35 @@
         <img src="khitlogo.jpg" alt="KHIT Logo">
         <span class="gold-title">KHIT SANKALP 2025</span>
       </div>
+     <!-- Centered Navigation Area -->
+<div class="nav-center">
+  <!-- ADD SEARCH BAR HERE -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search events...">
+    <button id="searchBtn"><i class="fas fa-search"></i></button>
+  </div>
+  
+  <nav>
+    <div class="dropdown">
+      <button class="dropbtn">CSE Events</button>
+      <div class="dropdown-content">
+        <a href="#">Technical Quiz</a>
+        <a href="#">Paper Presentation</a>
+        <a href="#">Poster Presentation</a>
+        <a href="#">Project Expo</a>
+      </div>
+    </div>
+  </nav>
+</div>
       
       <!-- Centered Navigation Area -->
       <div class="nav-center">
         <nav>
+          <!-- In the .nav-center div, add this search bar -->
+         <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search events...">
+             <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
           <div class="dropdown">
             <button class="dropbtn">CSE Events</button>
             <div class="dropdown-content">
@@ -924,6 +985,43 @@
         }
       });
     });
+    // Search Functionality
+document.getElementById('searchBtn').addEventListener('click', function() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  
+  // Define search mappings
+  const searchMappings = {
+    'technical quiz': 'events/technicalquiz.html',
+    'paper presentation': 'events/paperpresentation.html', 
+    'poster presentation': 'events/posterpresentation.html',
+    'project expo': 'events/projectexpo.html',
+    'quiz': 'events/technicalquiz.html',
+    'paper': 'events/paperpresentation.html',
+    'poster': 'events/posterpresentation.html',
+    'project': 'events/projectexpo.html',
+    'expo': 'events/projectexpo.html'
+  };
+  
+  // Check if search term matches any event
+  const matchingKey = Object.keys(searchMappings).find(key => 
+    searchTerm.includes(key)
+  );
+  
+  if (matchingKey) {
+    alert(`Redirecting to ${matchingKey} page`);
+    // Uncomment the line below when you have actual event pages
+    // window.location.href = searchMappings[matchingKey];
+  } else if (searchTerm) {
+    alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
+  }
+});
+
+// Allow pressing Enter to search
+document.getElementById('searchInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    document.getElementById('searchBtn').click();
+  }
+});
   </script>
 </body>
 </html>
