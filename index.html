@@ -3,707 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sankalp 2025</title>
+  <title>Sankalp 2025 - KHIT</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      background: linear-gradient(135deg, #0c0c2e, #1a1a4a);
-      overflow-x: hidden;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    /* HEADER STYLES */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(0, 0, 0, 0.85);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .header-banner {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-      background: linear-gradient(90deg, #1a1a4a, #2d2d6e, #1a1a4a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .header-banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><path fill="rgba(255,215,0,0.1)" d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,200 L0,200 Z"></path></svg>');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .header-banner h1 {
-      font-size: 42px;
-      font-weight: bold;
-      color: gold;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-      margin: 0;
-      z-index: 1;
-    }
-
-    .header-content {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background: rgba(0, 0, 0, 0.9);
-    }
-
-    .logo-title {
-      display: flex;
-      align-items: center;
-      width: 250px;
-    }
-
-    .logo-title img {
-      height: 50px;
-      margin-right: 15px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-
-    .gold-title {
-      font-size: 22px;
-      font-weight: bold;
-      color: gold;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-      margin: 0;
-    }
-
-    /* NAVIGATION STYLES */
-    .nav-center {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      flex: 1;
-      justify-content: center;
-      margin: 0 40px;
-    }
-
-    .search-bar {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      max-width: 350px;
-    }
-
-    .search-bar input {
-      padding: 12px 18px;
-      border: none;
-      border-radius: 25px 0 0 25px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #333;
-      outline: none;
-      width: 100%;
-      font-size: 16px;
-      box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
-    }
-
-    .search-bar button {
-      padding: 12px 22px;
-      border: none;
-      border-radius: 0 25px 25px 0;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
-    }
-
-    .search-bar button:hover {
-      background: linear-gradient(90deg, #ff00ff, #00ffe5);
-      transform: scale(1.05);
-    }
-
-    /* DROPDOWN STYLES */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropbtn {
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      color: white;
-      padding: 12px 30px 12px 20px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .dropbtn::after {
-      content: "▼";
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 12px;
-    }
-
-    .dropbtn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: rgba(0, 0, 0, 0.95);
-      min-width: 220px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-      z-index: 1;
-      border-radius: 10px;
-      overflow: hidden;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-top: 10px;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-    }
-
-    .dropdown-content a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      display: block;
-      transition: 0.3s;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .dropdown-content a:last-child {
-      border-bottom: none;
-    }
-
-    .dropdown-content a:hover {
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      color: black;
-      padding-left: 25px;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-
-    /* HEADER SPACER */
-    .header-spacer {
-      width: 250px;
-    }
-
-    /* HERO SECTION */
-    .overlay {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      z-index: 5;
-      margin-top: 230px;
-      padding: 0 20px;
-    }
-
-    .overlay h1 {
-      font-size: 72px;
-      margin: 10px 0;
-      text-shadow: 0 0 20px cyan, 0 0 40px magenta;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 20px cyan, 0 0 40px magenta; }
-      to { text-shadow: 0 0 30px cyan, 0 0 60px magenta; }
-    }
-
-    .overlay p {
-      font-size: 22px;
-      margin: 15px 0;
-      text-shadow: 0 0 10px magenta;
-    }
-
-    .buttons {
-      margin-top: 30px;
-    }
-
-    .buttons button {
-      margin: 15px;
-      padding: 18px 40px;
-      border: none;
-      border-radius: 30px;
-      font-size: 18px;
-      cursor: pointer;
-      color: white;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      box-shadow: 0 0 25px rgba(0, 255, 229, 0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
-      font-weight: bold;
-    }
-
-    .buttons button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 35px rgba(0, 255, 229, 1);
-    }
-
-    /* ABOUT SECTION */
-    .about-section {
-      position: relative;
-      z-index: 2;
-      padding: 100px 40px;
-      background: rgba(10, 10, 20, 0.85);
-      margin-top: 40px;
-    }
-
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      align-items: flex-start;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 300px;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-      border: 1px solid rgba(0, 255, 255, 0.2);
-    }
-
-    .about-text h2 {
-      color: #fff;
-      text-shadow: 0 0 12px #00eaff, 0 0 25px #ff00ff;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .about-text h3 {
-      color: #00ffe5;
-      margin-bottom: 15px;
-      font-size: 24px;
-    }
-
-    .about-text p {
-      color: #ddd;
-      text-shadow: 0 0 8px #ff00ff;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .about-text button {
-      margin-top: 15px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #ff0066, #ffcc00);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ff3399, 0 0 25px #ffcc00;
-      transition: transform 0.3s;
-    }
-
-    .about-text button:hover {
-      transform: scale(1.05);
-    }
-
-    .about-images {
-      flex: 1;
-      min-width: 300px;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .about-images img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-      transition: transform 0.3s;
-    }
-
-    .about-images img:hover {
-      transform: scale(1.03);
-    }
-
-    .stats {
-      margin-top: 60px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .stat-box {
-      flex: 1;
-      min-width: 200px;
-      padding: 30px 20px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-      border: 1px solid rgba(255, 0, 255, 0.2);
-      transition: transform 0.3s;
-    }
-
-    .stat-box:hover {
-      transform: translateY(-10px);
-    }
-
-    .stat-box h3 {
-      font-size: 42px;
-      text-shadow: 0 0 15px #00ffe5, 0 0 25px #ff00ff;
-      margin-bottom: 10px;
-    }
-
-    .stat-box p {
-      font-size: 18px;
-      color: #ccc;
-    }
-
-    /* INFO SECTION */
-    .info-section {
-      position: relative;
-      z-index: 2;
-      padding: 80px 40px;
-      background: rgba(5, 5, 15, 0.9);
-      margin-top: 40px;
-    }
-
-    .info-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .info-box {
-      flex: 1;
-      min-width: 280px;
-      padding: 30px;
-      border-radius: 15px;
-      background: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-      border: 1px solid rgba(0, 255, 255, 0.2);
-    }
-
-    .info-box h3 {
-      color: #fff;
-      text-shadow: 0 0 10px cyan, 0 0 20px magenta;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .info-box p, .info-box a {
-      color: #ddd;
-      text-decoration: none;
-      display: block;
-      margin: 12px 0;
-      text-shadow: 0 0 8px #ff00ff;
-    }
-
-    .info-box ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .info-box li {
-      margin: 15px 0;
-      color: #ddd;
-      text-shadow: 0 0 8px #ff00ff;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .info-box li::before {
-      content: "•";
-      color: #00ffe5;
-      position: absolute;
-      left: 0;
-      font-size: 20px;
-    }
-
-    /* ICONS */
-    .social-icons {
-      display: flex;
-      gap: 15px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #00ffe5, #ff00ff);
-      color: white;
-      font-size: 24px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 255, 229, 0.5);
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.2) rotate(10deg);
-      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
-    }
-
-    /* MAP */
-    iframe {
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-    }
-
-    /* EVENTS SECTION */
-    .events-section {
-      position: relative;
-      z-index: 2;
-      padding: 80px 40px;
-      background: rgba(15, 15, 30, 0.85);
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 50px;
-      text-shadow: 0 0 15px cyan, 0 0 30px magenta;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .event-card {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .event-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-    }
-
-    .event-icon {
-      font-size: 40px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #00ffe5, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .event-card h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: #00ffe5;
-    }
-
-    .event-card p {
-      color: #ddd;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .event-card button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(90deg, #ff0066, #ffcc00);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .event-card button:hover {
-      transform: scale(1.05);
-    }
-
-    /* FOOTER */
-    footer {
-      background: rgba(0, 0, 0, 0.9);
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid rgba(0, 255, 255, 0.3);
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .footer-section {
-      flex: 1;
-      min-width: 250px;
-      text-align: left;
-    }
-
-    .footer-section h3 {
-      color: #00ffe5;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-
-    .footer-section p, .footer-section a {
-      color: #ddd;
-      margin-bottom: 10px;
-      display: block;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-section a:hover {
-      color: #ff00ff;
-    }
-
-    .copyright {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #aaa;
-    }
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 1024px) {
-      .header-content {
-        padding: 15px 20px;
-      }
-      
-      .nav-center {
-        margin: 0 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .nav-center {
-        order: 3;
-        width: 100%;
-        margin: 10px 0;
-      }
-      
-      .logo-title {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .header-spacer {
-        display: none;
-      }
-      
-      .overlay {
-        margin-top: 300px;
-      }
-      
-      .overlay h1 {
-        font-size: 48px;
-      }
-      
-      .header-banner h1 {
-        font-size: 32px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .search-bar {
-        flex-direction: column;
-        gap: 10px;
-        max-width: 100%;
-      }
-      
-      .search-bar input,
-      .search-bar button {
-        border-radius: 25px;
-        width: 100%;
-      }
-      
-      .nav-center {
-        gap: 15px;
-      }
-      
-      .overlay h1 {
-        font-size: 36px;
-      }
-      
-      .buttons button {
-        padding: 15px 25px;
-        font-size: 16px;
-      }
-    }
-  </style>
 </head>
 <body>
   <canvas id="bg"></canvas>
@@ -711,11 +13,12 @@
   <!-- HEADER -->
   <header>
     <div class="header-banner">
+      <img src="images/khitbanner.png" alt="KHIT Sankalp 2025 Banner" class="banner-image">
       <h1>KHIT SANKALP 2025</h1>
     </div>
     <div class="header-content">
       <div class="logo-title">
-        <img src="khitbanner.webp" alt="KHIT Logo">
+        <img src="images/khitlogo.jpg" alt="KHIT Logo">
         <span class="gold-title">KHIT SANKALP 2025</span>
       </div>
       
@@ -728,12 +31,12 @@
         
         <nav>
           <div class="dropdown">
-            <button class="dropbtn">CSE</button>
+            <button class="dropbtn">CSE Events</button>
             <div class="dropdown-content">
-              <a href="technicalquiz.html">Technical Quiz</a>
-              <a href="paperpresentation.html">Paper Presentation</a>
-              <a href="posterpresentation.html">Poster Presentation</a>
-              <a href="projectexpo.html">Project Expo</a>
+              <a href="events/technicalquiz.html">Technical Quiz</a>
+              <a href="events/paperpresentation.html">Paper Presentation</a>
+              <a href="events/posterpresentation.html">Poster Presentation</a>
+              <a href="events/projectexpo.html">Project Expo</a>
             </div>
           </div>
         </nav>
@@ -750,8 +53,8 @@
     <p>KHIT</p>
     <p>FEB 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
     <div class="buttons">
-      <button>EXPLORE EVENTS</button>
-      <button>REGISTER NOW</button>
+      <button onclick="scrollToEvents()">EXPLORE EVENTS</button>
+      <button onclick="showRegistration()">REGISTER NOW</button>
     </div>
   </div>
 
@@ -767,11 +70,11 @@
           Located in the heart of a bustling academic hub, our institution is dedicated to nurturing  
           the next generation of engineering leaders and problem solvers.
         </p>
-        <button>READ MORE</button>
+        <button onclick="showMoreAbout()">READ MORE</button>
       </div>
       <div class="about-images">
-        <img src="img1.webp" alt="KHIT Image 1">
-        <img src="img2.webp" alt="KHIT Image 2">
+        <img src="images/img1.webp" alt="KHIT Campus" onerror="this.src='images/placeholder.jpg'">
+        <img src="images/img2.webp" alt="College Event" onerror="this.src='images/placeholder.jpg'">
       </div>
     </div>
     <div class="stats">
@@ -791,7 +94,7 @@
   </section>
 
   <!-- EVENTS SECTION -->
-  <section class="events-section">
+  <section class="events-section" id="events">
     <h2 class="section-title">MAJOR EVENTS</h2>
     <div class="events-grid">
       <div class="event-card">
@@ -800,7 +103,7 @@
         </div>
         <h3>Technical Quiz</h3>
         <p>Test your technical knowledge in this exciting quiz competition with amazing prizes for winners.</p>
-        <button>Learn More</button>
+        <button onclick="location.href='events/technicalquiz.html'">Learn More</button>
       </div>
       <div class="event-card">
         <div class="event-icon">
@@ -808,7 +111,7 @@
         </div>
         <h3>Paper Presentation</h3>
         <p>Showcase your research and innovative ideas in front of esteemed judges and audience.</p>
-        <button>Learn More</button>
+        <button onclick="location.href='events/paperpresentation.html'">Learn More</button>
       </div>
       <div class="event-card">
         <div class="event-icon">
@@ -816,7 +119,7 @@
         </div>
         <h3>Poster Presentation</h3>
         <p>Display your creative and technical skills through visually appealing poster designs.</p>
-        <button>Learn More</button>
+        <button onclick="location.href='events/posterpresentation.html'">Learn More</button>
       </div>
       <div class="event-card">
         <div class="event-icon">
@@ -824,7 +127,7 @@
         </div>
         <h3>Project Expo</h3>
         <p>Exhibit your innovative projects and prototypes to industry experts and fellow students.</p>
-        <button>Learn More</button>
+        <button onclick="location.href='events/projectexpo.html'">Learn More</button>
       </div>
     </div>
   </section>
@@ -869,9 +172,9 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <a href="#">Home</a>
-        <a href="#">Events</a>
+        <a href="#events">Events</a>
         <a href="#">Schedule</a>
-        <a href="#">Registration</a>
+        <a href="#" onclick="showRegistration()">Registration</a>
         <a href="#">Contact</a>
       </div>
       <div class="footer-section">
@@ -891,84 +194,6 @@
     </div>
   </footer>
 
-  <script>
-    // Particle Animation
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d');
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    const particles = [];
-    for (let i = 0; i < 120; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
-        color: `hsl(${Math.random() * 360},100%,70%)`,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // Search Functionality
-    document.getElementById('searchBtn').addEventListener('click', function() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      
-      // Define search mappings
-      const searchMappings = {
-        'technical quiz': 'technicalquiz.html',
-        'paper presentation': 'paperpresentation.html',
-        'poster presentation': 'posterpresentation.html',
-        'project expo': 'projectexpo.html'
-      };
-      
-      // Check if search term matches any event
-      if (searchTerm in searchMappings) {
-        alert(`Redirecting to ${searchTerm} page`);
-        // In a real implementation, you would use:
-        // window.location.href = searchMappings[searchTerm];
-      } else {
-        alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
-      }
-    });
-
-    // Allow pressing Enter to search
-    document.getElementById('searchInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        document.getElementById('searchBtn').click();
-      }
-    });
-
-    // Button hover effects
-    document.querySelectorAll('button').forEach(button => {
-      button.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.05)';
-      });
-      button.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
