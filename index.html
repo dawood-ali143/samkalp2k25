@@ -11,7 +11,21 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+     .search-and-dropdown {
+                display: flex;
+                align-items: center;
+                 gap: 18px; /* adjust spacing as needed */
+       padding: 12px 22px;
+          border: none;
+         border-radius: 0 25px 25px 0;
+         background: linear-gradient(90deg, #00ffe5, #ff00ff);
+            color: white;
+           cursor: pointer;
+           font-weight: bold;
+          white-space: nowrap;
+         transition: all 0.3s ease;
+          box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+          }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
@@ -59,7 +73,7 @@
   box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
 }
 
-.search-bar button {
+/*.search-bar button {
   padding: 12px 22px;
   border: none;
   border-radius: 0 25px 25px 0;
@@ -70,12 +84,12 @@
   white-space: nowrap;
   transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
-}
+}*/
 
-.search-bar button:hover {
+/*.search-bar button:hover {
   background: linear-gradient(90deg, #ff00ff, #00ffe5);
   transform: scale(1.05);
-}
+}*/
     .header-banner {
       width: 100%;
       height: 180px;
@@ -709,24 +723,25 @@
       </div>
      <!-- Centered Navigation Area -->
 <div class="nav-center">
-        <div class="nav-center">
-        <nav>
-          <!-- In the .nav-center div, add this search bar -->
-         <div class="search-bar">
-          <input type="text" id="searchInput" placeholder="Search events...">
-             <button id="searchBtn"><i class="fas fa-search"></i></button>
-            </div>
-          <div class="dropdown">
-            <button class="dropbtn">CSE Events</button>
-            <div class="dropdown-content">
-              <a href="#">Technical Quiz</a>
-              <a href="#">Paper Presentation</a>
-              <a href="#">Poster Presentation</a>
-              <a href="#">Project Expo</a>
-            </div>
-          </div>
-        </nav>
+       <div class="nav-center">
+  <!-- Flex container for search bar and dropdown -->
+  <div class="search-and-dropdown">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search events...">
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">CSE Events</button>
+      <div class="dropdown-content">
+        <a href="#">Technical Quiz</a>
+        <a href="#">Paper Presentation</a>
+        <a href="#">Poster Presentation</a>
+        <a href="#">Project Expo</a>
       </div>
+    </div>
+  </div>
+  <div class="header-spacer"></div>
+</div>
       
       <!-- Empty div for spacing -->
       <div class="header-spacer"></div>
