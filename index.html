@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samkalp 2025 - KHIT</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,6 +13,44 @@
       box-sizing: border-box;
     }
     
+    /* GOLDEN THREADS STYLES */
+    .golden-threads-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .golden-thread {
+      position: absolute;
+      background: linear-gradient(transparent, #d4af37, transparent);
+      width: 2px;
+      height: 100px;
+      animation: floatThread 15s infinite linear;
+      opacity: 0.6;
+    }
+
+    @keyframes floatThread {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
     .search-and-dropdown {
       display: flex;
       align-items: center;
@@ -258,7 +297,7 @@
       width: 250px;
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION - UPDATED WITH GOLDEN THREADS STYLE */
     .overlay {
       position: relative;
       height: 100vh;
@@ -273,18 +312,69 @@
       padding: 0 20px;
     }
 
-    /* Change to glowing golden color */
-    .overlay h1 {
-      font-size: 72px;
+    /* GOLDEN THREADS TITLE STYLES */
+    .golden-title {
+      font-family: 'Cinzel', 'Playfair Display', serif;
+      font-size: 82px;
+      font-weight: 700;
       margin: 10px 0;
-      color: gold;
-      text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange;
-      animation: glow 2s infinite alternate;
+      color: #d4af37;
+      text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.8),
+        0 0 20px rgba(212, 175, 55, 0.6),
+        0 0 30px rgba(212, 175, 55, 0.4),
+        0 0 40px rgba(212, 175, 55, 0.2);
+      position: relative;
+      letter-spacing: 3px;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
-      to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
+    .golden-title::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    .golden-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      animation: shimmer 3s infinite 1.5s;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .golden-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      font-style: italic;
+      margin: 20px 0;
+      color: #f8e5a0;
+      text-shadow: 0 0 15px rgba(248, 229, 160, 0.7);
+      letter-spacing: 2px;
+    }
+
+    .golden-date {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      margin: 15px 0;
+      color: #d4af37;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+      letter-spacing: 1px;
     }
 
     .overlay p {
@@ -305,15 +395,18 @@
       font-size: 18px;
       cursor: pointer;
       color: white;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      box-shadow: 0 0 25px rgba(0, 255, 229, 0.8);
+      background: linear-gradient(90deg, #d4af37, #f8e5a0);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
       transition: transform 0.3s, box-shadow 0.3s;
       font-weight: bold;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
     }
 
     .buttons button:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 35px rgba(0, 255, 229, 1);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 1);
+      background: linear-gradient(90deg, #f8e5a0, #d4af37);
     }
 
     /* ABOUT SECTION */
@@ -341,26 +434,28 @@
       padding: 30px;
       background: rgba(0, 0, 0, 0.5);
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .about-text h2 {
-      color: #fff;
-      text-shadow: 0 0 12px #00eaff, 0 0 25px #ff00ff;
+      color: #d4af37;
+      text-shadow: 0 0 12px #d4af37;
       font-size: 32px;
       margin-bottom: 20px;
+      font-family: 'Cinzel', serif;
     }
 
     .about-text h3 {
-      color: #00ffe5;
+      color: #f8e5a0;
       margin-bottom: 15px;
       font-size: 24px;
+      font-family: 'Playfair Display', serif;
     }
 
     .about-text p {
       color: #ddd;
-      text-shadow: 0 0 8px #ff00ff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -370,12 +465,13 @@
       padding: 12px 25px;
       border: none;
       border-radius: 8px;
-      background: linear-gradient(90deg, #ff0066, #ffcc00);
-      color: white;
+      background: linear-gradient(90deg, #d4af37, #f8e5a0);
+      color: #333;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 15px #ff3399, 0 0 25px #ffcc00;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
       transition: transform 0.3s;
+      font-family: 'Cinzel', serif;
     }
 
     .about-text button:hover {
@@ -395,7 +491,7 @@
       width: 100%;
       max-width: 320px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
       transition: transform 0.3s;
       height: 200px;
       object-fit: cover;
@@ -420,8 +516,8 @@
       text-align: center;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-      border: 1px solid rgba(255, 0, 255, 0.2);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.2);
       transition: transform 0.3s;
     }
 
@@ -431,13 +527,14 @@
 
     .stat-box h3 {
       font-size: 42px;
-      text-shadow: 0 0 15px #00ffe5, 0 0 25px #ff00ff;
+      text-shadow: 0 0 15px #d4af37;
       margin-bottom: 10px;
+      color: #f8e5a0;
     }
 
     .stat-box p {
       font-size: 18px;
-      color: #ccc;
+      color: #ddd;
     }
 
     /* INFO SECTION */
@@ -464,15 +561,16 @@
       padding: 30px;
       border-radius: 15px;
       background: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .info-box h3 {
-      color: #fff;
-      text-shadow: 0 0 10px cyan, 0 0 20px magenta;
+      color: #d4af37;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
       font-size: 24px;
       margin-bottom: 20px;
+      font-family: 'Cinzel', serif;
     }
 
     .info-box p, .info-box a {
@@ -480,7 +578,7 @@
       text-decoration: none;
       display: block;
       margin: 12px 0;
-      text-shadow: 0 0 8px #ff00ff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
     }
 
     .info-box ul {
@@ -491,14 +589,14 @@
     .info-box li {
       margin: 15px 0;
       color: #ddd;
-      text-shadow: 0 0 8px #ff00ff;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
       padding-left: 20px;
       position: relative;
     }
 
     .info-box li::before {
       content: "•";
-      color: #00ffe5;
+      color: #d4af37;
       position: absolute;
       left: 0;
       font-size: 20px;
@@ -517,23 +615,23 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00ffe5, #ff00ff);
-      color: white;
+      background: linear-gradient(135deg, #d4af37, #f8e5a0);
+      color: #333;
       font-size: 24px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 255, 229, 0.5);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
     }
 
     .social-icons a:hover {
       transform: scale(1.2) rotate(10deg);
-      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
     }
 
     /* MAP */
     iframe {
       border-radius: 10px;
       margin-top: 15px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     }
 
     /* EVENTS SECTION */
@@ -548,10 +646,9 @@
       text-align: center;
       font-size: 36px;
       margin-bottom: 50px;
-      text-shadow: 0 0 15px cyan, 0 0 30px magenta;
-      background: linear-gradient(90deg, #00ffe5, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px #d4af37;
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
     }
 
     .events-grid {
@@ -567,20 +664,20 @@
       border-radius: 15px;
       padding: 25px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .event-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
     }
 
     .event-icon {
       font-size: 40px;
       margin-bottom: 20px;
-      background: linear-gradient(135deg, #00ffe5, #ff00ff);
+      background: linear-gradient(135deg, #d4af37, #f8e5a0);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -588,7 +685,7 @@
     .event-card h3 {
       font-size: 22px;
       margin-bottom: 15px;
-      color: #00ffe5;
+      color: #f8e5a0;
     }
 
     .event-card p {
@@ -601,11 +698,12 @@
       padding: 10px 20px;
       border: none;
       border-radius: 25px;
-      background: linear-gradient(90deg, #ff0066, #ffcc00);
-      color: white;
+      background: linear-gradient(90deg, #d4af37, #f8e5a0);
+      color: #333;
       font-weight: bold;
       cursor: pointer;
       transition: transform 0.3s;
+      font-family: 'Cinzel', serif;
     }
 
     .event-card button:hover {
@@ -617,7 +715,7 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 40px 20px;
       text-align: center;
-      border-top: 1px solid rgba(0, 255, 255, 0.3);
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
     }
 
     .footer-content {
@@ -636,9 +734,10 @@
     }
 
     .footer-section h3 {
-      color: #00ffe5;
+      color: #d4af37;
       margin-bottom: 20px;
       font-size: 20px;
+      font-family: 'Cinzel', serif;
     }
 
     .footer-section p, .footer-section a {
@@ -650,7 +749,7 @@
     }
 
     .footer-section a:hover {
-      color: #ff00ff;
+      color: #f8e5a0;
     }
 
     .copyright {
@@ -668,6 +767,10 @@
       
       .nav-center {
         margin: 0 20px;
+      }
+
+      .golden-title {
+        font-size: 65px;
       }
     }
 
@@ -696,8 +799,12 @@
         margin-top: 300px;
       }
       
-      .overlay h1 {
-        font-size: 70px;
+      .golden-title {
+        font-size: 50px;
+      }
+      
+      .golden-subtitle {
+        font-size: 28px;
       }
       
       .header-banner h1 {
@@ -710,8 +817,16 @@
         gap: 15px;
       }
       
-      .overlay h1 {
+      .golden-title {
         font-size: 36px;
+      }
+      
+      .golden-subtitle {
+        font-size: 22px;
+      }
+      
+      .golden-date {
+        font-size: 18px;
       }
       
       .buttons button {
@@ -723,6 +838,9 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
+
+  <!-- GOLDEN THREADS BACKGROUND -->
+  <div class="golden-threads-container" id="goldenThreads"></div>
 
   <!-- HEADER -->
   <header>
@@ -760,11 +878,11 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO - UPDATED WITH GOLDEN THREADS STYLE -->
   <div class="overlay">
-    <h1>SAMKALP 2025</h1>
-    <p style="font-size:28px">KHIT</p>
-    <p style="font-size:28px">Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
+    <h1 class="golden-title">SAMKALP 2025</h1>
+    <p class="golden-subtitle">KHIT</p>
+    <p class="golden-date">Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
     <div class="buttons">
       <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
       <button id="registerBtn" onclick="window.location.href='registernow.html'">REGISTER NOW</button>
@@ -908,6 +1026,19 @@
   </footer>
 
   <script>
+    // Golden Threads Animation
+    function createGoldenThreads() {
+      const container = document.getElementById('goldenThreads');
+      for (let i = 0; i < 25; i++) {
+        const thread = document.createElement('div');
+        thread.className = 'golden-thread';
+        thread.style.left = Math.random() * 100 + 'vw';
+        thread.style.animationDelay = Math.random() * 15 + 's';
+        thread.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(thread);
+      }
+    }
+
     // Particle Animation
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
@@ -925,7 +1056,7 @@
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 3 + 1,
-        color: `hsl(${Math.random() * 360},100%,70%)`,
+        color: `hsl(${45 + Math.random() * 20},100%,${50 + Math.random() * 20}%)`,
         speedX: (Math.random() - 0.5) * 0.3,
         speedY: (Math.random() - 0.5) * 0.3
       });
@@ -945,6 +1076,9 @@
       });
       requestAnimationFrame(animate);
     }
+
+    // Initialize animations
+    createGoldenThreads();
     animate();
 
     // Button hover effects
