@@ -5,58 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samkalp 2025 - KHIT</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    body {
-      font-family: 'Poppins', sans-serif;
+    
+    .search-and-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px 25px 25px 25px;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
       color: white;
-      background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 50%, #2d2d6b 100%);
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background: url('img.png') no-repeat center center fixed;
+      background-size: cover;
       overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* FESTIVE BACKGROUND ELEMENTS */
-    .festive-elements {
+    canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
       z-index: -1;
-      overflow: hidden;
-    }
-
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 20px;
-      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
-      opacity: 0.7;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.7;
-      }
-      90% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
     }
 
     /* HEADER STYLES */
@@ -64,149 +52,181 @@
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 1000;
-      background: rgba(10, 10, 40, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
-      border-bottom: 1px solid rgba(100, 200, 255, 0.3);
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* SEARCH BAR STYLES */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 2px;
     }
 
-    .header-top {
-      background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57);
-      padding: 8px 0;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
+    .search-bar input {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 25px 0 0 25px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      outline: none;
+      width: 100%;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
+    }
+
+    .search-bar button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 0 25px 25px 0;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
       color: white;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+    }
+
+    .search-bar button:hover {
+      background: linear-gradient(90deg, #ff00ff, #00ffe5);
+      transform: scale(1.05);
+    }
+
+    /* Make search icon bigger */
+    .search-bar button i {
+      font-size: 20px;
+    }
+
+    .header-banner {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .header-banner h1 {
+      font-size: 42px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      margin: 0;
+      z-index: 1;
+      position: relative;
     }
 
     .header-content {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
+      background: rgba(0, 0, 0, 0.9);
     }
 
-    .logo-section {
+    .logo-title {
       display: flex;
       align-items: center;
-      gap: 15px;
+      width: 250px;
     }
 
-    .logo-section img {
+    .logo-title img {
       height: 50px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+      margin-right: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
 
-    .college-info {
-      text-align: left;
+    .gold-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      margin: 0;
     }
 
-    .college-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #00ccff;
-      text-shadow: 0 0 10px rgba(0, 200, 255, 0.7);
-      line-height: 1.2;
-    }
-
-    .college-affiliation {
-      font-size: 11px;
-      color: #88ddff;
-      margin-top: 2px;
-    }
-
+    /* NAVIGATION STYLES */
     .nav-center {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 25px;
+      flex: 1;
+      justify-content: center;
+      margin: 0 40px;
     }
 
-    .search-bar {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 25px;
-      padding: 5px;
-      border: 1px solid rgba(100, 200, 255, 0.3);
-    }
-
-    .search-bar input {
-      background: transparent;
-      border: none;
-      padding: 8px 15px;
-      color: white;
-      outline: none;
-      width: 200px;
-      font-size: 14px;
-    }
-
-    .search-bar input::placeholder {
-      color: #88ddff;
-    }
-
-    .search-bar button {
-      background: linear-gradient(90deg, #0066ff, #00ccff);
-      border: none;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .search-bar button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px rgba(0, 200, 255, 0.8);
-    }
-
+    /* DROPDOWN STYLES */
     .dropdown {
       position: relative;
+      display: inline-block;
     }
 
     .dropbtn {
-      background: linear-gradient(90deg, #ff6b6b, #feca57);
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
       color: white;
-      padding: 10px 20px;
+      padding: 12px 30px 12px 20px;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+      position: relative;
+    }
+
+    .dropbtn::after {
+      content: "▼";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
     }
 
     .dropbtn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
-      background: rgba(20, 20, 60, 0.95);
-      backdrop-filter: blur(10px);
-      min-width: 200px;
+      background: rgba(0, 0, 0, 0.95);
+      min-width: 220px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
       z-index: 1;
       border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(100, 200, 255, 0.3);
+      left: 50%;
+      transform: translateX(-50%);
       margin-top: 10px;
+      border: 1px solid rgba(0, 255, 255, 0.3);
     }
 
     .dropdown-content a {
       color: white;
-      padding: 12px 20px;
+      padding: 14px 20px;
       text-decoration: none;
       display: block;
       transition: 0.3s;
+      text-align: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 14px;
     }
 
     .dropdown-content a:last-child {
@@ -214,7 +234,8 @@
     }
 
     .dropdown-content a:hover {
-      background: linear-gradient(90deg, #ff6b6b, #feca57);
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: black;
       padding-left: 25px;
     }
 
@@ -223,144 +244,94 @@
       animation: fadeIn 0.3s ease;
     }
 
+    .dropdown.active .dropbtn::after {
+      content: "✕";
+      font-size: 14px;
+    }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* HEADER SPACER */
+    .header-spacer {
+      width: 250px;
     }
 
     /* HERO SECTION */
-    .hero {
-      min-height: 100vh;
+    .overlay {
+      position: relative;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+      color: white;
+      z-index: 5;
+      margin-top: 230px;
       padding: 0 20px;
-      position: relative;
-      overflow: hidden;
-      margin-top: 120px;
     }
 
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(254, 202, 87, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(78, 205, 196, 0.3) 0%, transparent 50%);
-      z-index: -1;
+    /* Change to glowing golden color */
+    .overlay h1 {
+      font-size: 72px;
+      margin: 10px 0;
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange;
+      animation: glow 2s infinite alternate;
     }
 
-    .event-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 6rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #ff6b6b 0%, #feca57 25%, #4ecdc4 50%, #45b7d1 75%, #96ceb4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-      margin-bottom: 10px;
-      letter-spacing: 2px;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
+      to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
     }
 
-    .event-year {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
-      color: #feca57;
-      text-shadow: 0 0 20px rgba(254, 202, 87, 0.8);
-      margin-bottom: 30px;
+    .overlay p {
+      font-size: 22px;
+      margin: 15px 0;
+      text-shadow: 0 0 10px magenta;
     }
 
-    .event-tagline {
-      font-size: 1.5rem;
-      color: #88ddff;
-      margin-bottom: 20px;
-      font-weight: 300;
-      text-shadow: 0 0 10px rgba(136, 221, 255, 0.5);
-    }
-
-    .event-dates {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #4ecdc4;
-      margin-bottom: 40px;
-      text-shadow: 0 0 15px rgba(78, 205, 196, 0.6);
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 25px;
+    .buttons {
       margin-top: 30px;
     }
 
-    .cta-button {
+    .buttons button {
+      margin: 15px;
       padding: 18px 40px;
       border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
+      border-radius: 30px;
+      font-size: 18px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button.primary {
-      background: linear-gradient(135deg, #ff6b6b, #feca57);
       color: white;
-      box-shadow: 0 0 25px rgba(255, 107, 107, 0.7);
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      box-shadow: 0 0 25px rgba(0, 255, 229, 0.8);
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-weight: bold;
     }
 
-    .cta-button.secondary {
-      background: transparent;
-      color: #4ecdc4;
-      border: 2px solid #4ecdc4;
-      box-shadow: 0 0 20px rgba(78, 205, 196, 0.4);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 35px rgba(255, 255, 255, 0.9);
-    }
-
-    .cta-button.primary:hover {
-      background: linear-gradient(135deg, #feca57, #ff6b6b);
-    }
-
-    .cta-button.secondary:hover {
-      background: rgba(78, 205, 196, 0.1);
+    .buttons button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px rgba(0, 255, 229, 1);
     }
 
     /* ABOUT SECTION */
     .about-section {
+      position: relative;
+      z-index: 2;
       padding: 100px 40px;
-      background: rgba(15, 15, 45, 0.9);
-      margin-top: 50px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #feca57;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 20px rgba(254, 202, 87, 0.6);
+      background: rgba(10, 10, 20, 0.85);
+      margin-top: 40px;
     }
 
     .about-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
+      gap: 30px;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -369,25 +340,47 @@
       flex: 1;
       min-width: 300px;
       padding: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      border: 1px solid rgba(0, 255, 255, 0.2);
     }
 
     .about-text h2 {
-      color: #4ecdc4;
-      font-size: 2rem;
+      color: #fff;
+      text-shadow: 0 0 12px #00eaff, 0 0 25px #ff00ff;
+      font-size: 32px;
       margin-bottom: 20px;
-      text-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+    }
+
+    .about-text h3 {
+      color: #00ffe5;
+      margin-bottom: 15px;
+      font-size: 24px;
     }
 
     .about-text p {
-      color: #ccddff;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      font-size: 1.1rem;
+      color: #ddd;
+      text-shadow: 0 0 8px #ff00ff;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .about-text button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ff0066, #ffcc00);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff3399, 0 0 25px #ffcc00;
+      transition: transform 0.3s;
+    }
+
+    .about-text button:hover {
+      transform: scale(1.05);
     }
 
     .about-images {
@@ -401,86 +394,60 @@
 
     .about-images img {
       width: 100%;
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 25px rgba(254, 202, 87, 0.4);
-      transition: transform 0.3s ease;
+      max-width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      transition: transform 0.3s;
+      height: 200px;
+      object-fit: cover;
     }
 
     .about-images img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
-    /* EVENTS SECTION */
-    .events-section {
-      padding: 100px 40px;
-      background: rgba(20, 20, 50, 0.9);
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .stats {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
       gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
+      flex-wrap: wrap;
     }
 
-    .event-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 30px;
+    .stat-box {
+      flex: 1;
+      min-width: 200px;
+      padding: 30px 20px;
       text-align: center;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 30px rgba(69, 183, 209, 0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .event-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 40px rgba(255, 107, 107, 0.5);
-    }
-
-    .event-icon {
-      font-size: 50px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #ff6b6b, #feca57, #4ecdc4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .event-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: #feca57;
-    }
-
-    .event-card p {
-      color: #ccddff;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-
-    .event-card button {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(90deg, #ff6b6b, #feca57);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+      border: 1px solid rgba(255, 0, 255, 0.2);
       transition: transform 0.3s;
-      font-size: 0.9rem;
     }
 
-    .event-card button:hover {
-      transform: scale(1.05);
+    .stat-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .stat-box h3 {
+      font-size: 42px;
+      text-shadow: 0 0 15px #00ffe5, 0 0 25px #ff00ff;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      font-size: 18px;
+      color: #ccc;
     }
 
     /* INFO SECTION */
     .info-section {
+      position: relative;
+      z-index: 2;
       padding: 80px 40px;
-      background: rgba(15, 15, 45, 0.9);
+      background: rgba(5, 5, 15, 0.9);
+      margin-top: 40px;
     }
 
     .info-container {
@@ -496,26 +463,25 @@
       flex: 1;
       min-width: 280px;
       padding: 30px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 25px rgba(150, 206, 180, 0.3);
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      border: 1px solid rgba(0, 255, 255, 0.2);
     }
 
     .info-box h3 {
-      color: #4ecdc4;
-      text-shadow: 0 0 10px rgba(78, 205, 196, 0.7);
-      font-size: 1.5rem;
+      color: #fff;
+      text-shadow: 0 0 10px cyan, 0 0 20px magenta;
+      font-size: 24px;
       margin-bottom: 20px;
-      font-family: 'Orbitron', sans-serif;
     }
 
     .info-box p, .info-box a {
-      color: #ccddff;
+      color: #ddd;
       text-decoration: none;
       display: block;
       margin: 12px 0;
+      text-shadow: 0 0 8px #ff00ff;
     }
 
     .info-box ul {
@@ -525,20 +491,21 @@
 
     .info-box li {
       margin: 15px 0;
-      color: #ccddff;
+      color: #ddd;
+      text-shadow: 0 0 8px #ff00ff;
       padding-left: 20px;
       position: relative;
     }
 
     .info-box li::before {
       content: "•";
-      color: #feca57;
+      color: #00ffe5;
       position: absolute;
       left: 0;
       font-size: 20px;
     }
 
-    /* SOCIAL ICONS */
+    /* ICONS */
     .social-icons {
       display: flex;
       gap: 15px;
@@ -551,31 +518,107 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      background: linear-gradient(135deg, #00ffe5, #ff00ff);
       color: white;
-      font-size: 20px;
+      font-size: 24px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+      box-shadow: 0 0 15px rgba(0, 255, 229, 0.5);
     }
 
     .social-icons a:hover {
       transform: scale(1.2) rotate(10deg);
-      box-shadow: 0 0 25px rgba(254, 202, 87, 0.8);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
     }
 
     /* MAP */
     iframe {
-      border-radius: 15px;
+      border-radius: 10px;
       margin-top: 15px;
-      box-shadow: 0 0 20px rgba(69, 183, 209, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    /* EVENTS SECTION */
+    .events-section {
+      position: relative;
+      z-index: 2;
+      padding: 80px 40px;
+      background: rgba(15, 15, 30, 0.85);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      text-shadow: 0 0 15px cyan, 0 0 30px magenta;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .event-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+    }
+
+    .event-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00ffe5, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .event-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #00ffe5;
+    }
+
+    .event-card p {
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .event-card button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #ff0066, #ffcc00);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .event-card button:hover {
+      transform: scale(1.05);
     }
 
     /* FOOTER */
     footer {
-      background: rgba(10, 10, 30, 0.95);
-      padding: 60px 20px 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 255, 0.3);
     }
 
     .footer-content {
@@ -584,7 +627,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 40px;
+      gap: 30px;
     }
 
     .footer-section {
@@ -594,186 +637,229 @@
     }
 
     .footer-section h3 {
-      color: #feca57;
+      color: #00ffe5;
       margin-bottom: 20px;
-      font-size: 1.3rem;
-      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
     }
 
     .footer-section p, .footer-section a {
-      color: #ccddff;
-      margin-bottom: 12px;
+      color: #ddd;
+      margin-bottom: 10px;
       display: block;
       text-decoration: none;
       transition: color 0.3s;
     }
 
     .footer-section a:hover {
-      color: #4ecdc4;
+      color: #ff00ff;
     }
 
     .copyright {
-      margin-top: 50px;
+      margin-top: 40px;
       padding-top: 20px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #88aaff;
-      text-align: center;
-      font-size: 0.9rem;
+      color: #aaa;
     }
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 1024px) {
-      .event-title {
-        font-size: 4.5rem;
-      }
-      
-      .event-year {
-        font-size: 3rem;
-      }
-      
       .header-content {
         padding: 15px 20px;
+      }
+      
+      .nav-center {
+        margin: 0 20px;
       }
     }
 
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
+        gap: 20px;
       }
       
       .nav-center {
+        order: 3;
+        width: 100%;
+        margin: 10px 0;
+      }
+      
+      .logo-title {
         width: 100%;
         justify-content: center;
       }
       
-      .hero {
-        margin-top: 180px;
+      .header-spacer {
+        display: none;
       }
       
-      .event-title {
-        font-size: 3.5rem;
+      .overlay {
+        margin-top: 300px;
       }
       
-      .event-year {
-        font-size: 2.5rem;
+      .overlay h1 {
+        font-size: 70px;
       }
       
-      .hero-buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .cta-button {
-        padding: 15px 30px;
-        font-size: 1rem;
-      }
-      
-      .info-container {
-        flex-direction: column;
+      .header-banner h1 {
+        font-size: 32px;
       }
     }
 
     @media (max-width: 480px) {
-      .event-title {
-        font-size: 2.8rem;
+      .nav-center {
+        gap: 15px;
       }
       
-      .event-year {
-        font-size: 2rem;
+      .overlay h1 {
+        font-size: 36px;
       }
       
-      .event-tagline {
-        font-size: 1.2rem;
-      }
-      
-      .event-dates {
-        font-size: 1.4rem;
-      }
-      
-      .search-bar input {
-        width: 150px;
-      }
-      
-      .college-name {
-        font-size: 14px;
+      .buttons button {
+        padding: 15px 25px;
+        font-size: 16px;
       }
     }
+    /* Add these styles to your existing CSS */
+
+/* Cursive big stylish italic text */
+.cursive-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 8rem;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 
+    0 0 10px #ffd700,
+    0 0 20px #ffae00,
+    0 0 30px #ffae00,
+    0 0 40px #ffae00;
+  animation: flicker 2s infinite;
+  line-height: 1.1;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+}
+
+.cursive-subtitle {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  font-style: italic;
+  text-align: center;
+  color: #f8e5a0;
+  text-shadow: 0 0 15px rgba(248, 229, 160, 0.7);
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Full page container */
+.full-page-text {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #000000 0%, #1a1a1a 100%);
+  overflow: hidden;
+   }
   </style>
 </head>
 <body>
-  <!-- FESTIVE BACKGROUND -->
-  <div class="festive-elements" id="festiveElements"></div>
+  <canvas id="bg"></canvas>
 
   <!-- HEADER -->
   <header>
-    <div class="header-top">
-      KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY (Autonomous)
+    <div class="header-banner">
+      <img src="/khitbanner.webp" alt="KHIT Sankalp 2025 Banner" class="banner-image">
     </div>
     <div class="header-content">
-      <div class="logo-section">
+      <div class="logo-title">
         <img src="khitlogo.jpg" alt="KHIT Logo">
-        <div class="college-info">
-          <div class="college-name">KHIT SAMKALP 2025</div>
-          <div class="college-affiliation">Approved by AICTE-New Delhi, permanently affiliated to JNTUK-Kakinada</div>
-        </div>
+        <span class="gold-title">KHIT SAMKALP 2025</span>
       </div>
       
+      <!-- Centered Navigation Area -->
       <div class="nav-center">
-        <div class="search-bar">
-          <input type="text" id="searchInput" placeholder="Search events...">
-          <button id="searchBtn"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="dropdown">
-          <button class="dropbtn">CSE Events ▼</button>
-          <div class="dropdown-content">
-            <a href="technicalquiz.html">Technical Quiz</a>
-            <a href="paperpresentation.html">Paper Presentation</a>
-            <a href="posterpresentation.html">Poster Presentation</a>
-            <a href="projectexpo.html">Project Expo</a>
+        <div class="search-and-dropdown">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search events...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">CSE Events</button>
+            <div class="dropdown-content">
+              <a href="technicalquiz.html">Technical Quiz</a>
+              <a href="paperpresentation.html">Paper Presentation</a>
+              <a href="posterpresentation.html">Poster Presentation</a>
+              <a href="projectexpo.html">Project Expo</a>
+            </div>
           </div>
         </div>
+        <div class="header-spacer"></div>
       </div>
+      
+      <!-- Empty div for spacing -->
+      <div class="header-spacer"></div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    
-    <h1 class="event-title">SAMKALP</h1>
-    <div class="event-year">2025</div>
-    <p class="event-tagline">INNOVATION • CULTURE • TECHNOLOGY CONFLUENCE</p>
-    <div class="event-dates">NOV 15 - 18, 2025</div>
-    
-    <div class="hero-buttons">
-      <button class="cta-button primary" id="exploreBtn">EXPLORE EVENTS</button>
-      <button class="cta-button secondary" id="registerBtn">REGISTER NOW</button>
+  <!-- HERO -->
+  <div class="overlay">
+     <section class="full-page-text">
+       <h1 class="cursive-title">SANKALP 2025 KHIT</h1>
+       <p class="cursive-subtitle">Golden Threads of Innovation</p>
+      </section>
+    <p style="font-size:28px">Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
+    <div class="buttons">
+      <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
+      <button id="registerBtn" onclick="window.location.href='registernow.html'">REGISTER NOW</button>
     </div>
-  </section>
+  </div>
 
   <!-- ABOUT SECTION -->
   <section class="about-section">
-    <h2 class="section-title">ABOUT KHIT</h2>
     <div class="about-container">
       <div class="about-text">
-        <h2>Welcome to KHIT</h2>
+        <h2>ABOUT KHIT</h2>
+        <h3>Welcome to Our KHIT College</h3>
         <p>
           Established with a vision to excel in engineering education and research,  
           KHIT Engineering College stands as a beacon of innovation and academic excellence.  
           Located in the heart of a bustling academic hub, our institution is dedicated to nurturing  
           the next generation of engineering leaders and problem solvers.
         </p>
-        <p>
-          With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, 
-          KHIT provides an excellent environment for holistic development of future engineers.
-        </p>
-        <button class="cta-button primary" id="aboutBtn">READ MORE</button>
+        <button id="aboutBtn">READ MORE</button>
       </div>
       <div class="about-images">
         <img src="img1.webp" alt="KHIT Campus">
         <img src="img2.webp" alt="College Event">
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat-box">
+        <h3>3.5k+</h3>
+        <p>Students</p>
+      </div>
+      <div class="stat-box">
+        <h3>7.5</h3>
+        <p>Average CGPA</p>
+      </div>
+      <div class="stat-box">
+        <h3>90%</h3>
+        <p>Graduates</p>
       </div>
     </div>
   </section>
@@ -788,7 +874,7 @@
         </div>
         <h3>Technical Quiz</h3>
         <p>Test your technical knowledge in this exciting quiz competition with amazing prizes for winners.</p>
-        <button onclick="window.location.href='exploreevent.html'">Learn More</button>
+        <button onclick="window.location.href='exploreevent.html'">Learn More at explore events </button>
       </div>
       <div class="event-card">
         <div class="event-icon">
@@ -796,7 +882,7 @@
         </div>
         <h3>Paper Presentation</h3>
         <p>Showcase your research and innovative ideas in front of esteemed judges and audience.</p>
-        <button onclick="window.location.href='exploreevent.html'">Learn More</button>
+        <button onclick="window.location.href='exploreevent.html'">Learn More at explore events</button>
       </div>
       <div class="event-card">
         <div class="event-icon">
@@ -804,7 +890,7 @@
         </div>
         <h3>Poster Presentation</h3>
         <p>Display your creative and technical skills through visually appealing poster designs.</p>
-        <button onclick="window.location.href='exploreevent.html'">Learn More</button>
+        <button onclick="window.location.href='exploreevent.html'">Learn More at explore events</button>
       </div>
       <div class="event-card">
         <div class="event-icon">
@@ -812,7 +898,7 @@
         </div>
         <h3>Project Expo</h3>
         <p>Exhibit your innovative projects and prototypes to industry experts and fellow students.</p>
-        <button onclick="window.location.href='exploreevent.html'">Learn More</button>
+        <button onclick="window.location.href='exploreevent.html'">Learn More at explore events</button>
       </div>
     </div>
   </section>
@@ -835,7 +921,7 @@
         <h3>Find Us</h3>
         <p>KHIT College, Guntur, Andhra Pradesh</p>
         <iframe src="https://maps.google.com/maps?q=KHIT%20Guntur&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-          width="100%" height="200" style="border:0;"></iframe>
+          width="100%" height="200" style="border-radius:8px; border:0;"></iframe>
       </div>
 
       <div class="info-box quick-info">
@@ -843,7 +929,7 @@
         <ul>
           <li>Registration Opens: Jan 20, 2025</li>
           <li>Early Bird Deadline: Jan 30, 2025</li>
-          <li>Festival Dates: Nov 15-18, 2025</li>
+          <li>Festival Dates: Feb 15-18, 2025</li>
           <li>Venue: KHIT College, Guntur</li>
           <li>Contact: sankalp2025@khit.edu</li>
         </ul>
@@ -880,47 +966,56 @@
   </footer>
 
   <script>
-    // Create festive confetti
-    function createConfetti() {
-      const container = document.getElementById('festiveElements');
-      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
-      
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 15 + 's';
-        confetti.style.animationDuration = (5 + Math.random() * 10) + 's';
-        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-        container.appendChild(confetti);
-      }
+    // Particle Animation
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const particles = [];
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        color: `hsl(${Math.random() * 360},100%,70%)`,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3
+      });
     }
 
-    // Dropdown functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const dropdown = document.querySelector('.dropdown');
-      const dropbtn = document.querySelector('.dropbtn');
-      
-      dropbtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        dropdown.classList.toggle('active');
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
       });
-      
-      document.addEventListener('click', function(e) {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('active');
-        }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Button hover effects
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
       });
-      
-      document.querySelectorAll('.dropdown-content a').forEach(link => {
-        link.addEventListener('click', function() {
-          dropdown.classList.remove('active');
-        });
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
       });
     });
 
-    // Button functionality
+    // Navigation Functions
     document.getElementById('exploreBtn').addEventListener('click', function() {
       document.getElementById('events').scrollIntoView({ 
         behavior: 'smooth' 
@@ -935,22 +1030,69 @@
       alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
     });
 
-    // Search functionality
+    // Dropdown toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdown = document.querySelector('.dropdown');
+      const dropbtn = document.querySelector('.dropbtn');
+      
+      // Toggle dropdown on button click
+      dropbtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('active');
+        }
+      });
+      
+      // Close dropdown when clicking on a link
+      document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', function() {
+          dropdown.classList.remove('active');
+        });
+      });
+    });
+
+    // Search Functionality
     document.getElementById('searchBtn').addEventListener('click', function() {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-      if (searchTerm) {
-        alert(`Searching for: ${searchTerm}`);
+      
+      // Define search mappings
+      const searchMappings = {
+        'technical quiz': 'technicalquiz.html',
+        'paper presentation': 'paperpresentation.html', 
+        'poster presentation': 'posterpresentation.html',
+        'project expo': 'projectexpo.html',
+        'quiz': 'technicalquiz.html',
+        'paper': 'paperpresentation.html',
+        'poster': 'posterpresentation.html',
+        'project': 'projectexpo.html',
+        'expo': 'projectexpo.html'
+      };
+      
+      // Check if search term matches any event
+      const matchingKey = Object.keys(searchMappings).find(key => 
+        searchTerm.includes(key)
+      );
+      
+      if (matchingKey) {
+        alert(`Redirecting to ${matchingKey} page`);
+        // Uncomment the line below when you have actual event pages
+        // window.location.href = searchMappings[matchingKey];
+      } else if (searchTerm) {
+        alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
       }
     });
 
+    // Allow pressing Enter to search
     document.getElementById('searchInput').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
         document.getElementById('searchBtn').click();
       }
     });
-
-    // Initialize festive elements
-    createConfetti();
   </script>
 </body>
 </html>
