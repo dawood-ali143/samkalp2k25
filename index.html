@@ -259,7 +259,7 @@
       width: 250px;
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION - UPDATED */
     .overlay {
       position: relative;
       height: 100vh;
@@ -274,7 +274,46 @@
       padding: 0 20px;
     }
 
-    /* Change to glowing golden color */
+    /* Cursive big stylish italic text - FIXED POSITIONING */
+    .cursive-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 8rem;
+      font-weight: 700;
+      font-style: italic;
+      text-align: center;
+      color: #ffd700;
+      text-shadow: 
+        0 0 10px #ffd700,
+        0 0 20px #ffae00,
+        0 0 30px #ffae00,
+        0 0 40px #ffae00;
+      animation: flicker 2s infinite;
+      line-height: 1.1;
+      margin: 0;
+      position: relative;
+      width: 90%;
+      z-index: 2;
+    }
+
+    .cursive-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      font-style: italic;
+      text-align: center;
+      color: #f8e5a0;
+      text-shadow: 0 0 15px rgba(248, 229, 160, 0.7);
+      position: relative;
+      width: 80%;
+      margin-top: 20px;
+      z-index: 2;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    /* Original overlay styles */
     .overlay h1 {
       font-size: 72px;
       margin: 10px 0;
@@ -292,10 +331,14 @@
       font-size: 22px;
       margin: 15px 0;
       text-shadow: 0 0 10px magenta;
+      z-index: 2;
+      position: relative;
     }
 
     .buttons {
       margin-top: 30px;
+      z-index: 2;
+      position: relative;
     }
 
     .buttons button {
@@ -670,6 +713,14 @@
       .nav-center {
         margin: 0 20px;
       }
+      
+      .cursive-title {
+        font-size: 6rem;
+      }
+      
+      .cursive-subtitle {
+        font-size: 2.5rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -697,8 +748,12 @@
         margin-top: 300px;
       }
       
-      .overlay h1 {
-        font-size: 70px;
+      .cursive-title {
+        font-size: 4rem;
+      }
+      
+      .cursive-subtitle {
+        font-size: 2rem;
       }
       
       .header-banner h1 {
@@ -711,8 +766,12 @@
         gap: 15px;
       }
       
-      .overlay h1 {
-        font-size: 36px;
+      .cursive-title {
+        font-size: 3rem;
+      }
+      
+      .cursive-subtitle {
+        font-size: 1.5rem;
       }
       
       .buttons button {
@@ -720,61 +779,6 @@
         font-size: 16px;
       }
     }
-    /* Add these styles to your existing CSS */
-
-/* Cursive big stylish italic text */
-.cursive-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: 8rem;
-  font-weight: 700;
-  font-style: italic;
-  text-align: center;
-  color: #ffd700;
-  text-shadow: 
-    0 0 10px #ffd700,
-    0 0 20px #ffae00,
-    0 0 30px #ffae00,
-    0 0 40px #ffae00;
-  animation: flicker 2s infinite;
-  line-height: 1.1;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-}
-
-.cursive-subtitle {
-  font-family: 'Dancing Script', cursive;
-  font-size: 3rem;
-  font-style: italic;
-  text-align: center;
-  color: #f8e5a0;
-  text-shadow: 0 0 15px rgba(248, 229, 160, 0.7);
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-}
-
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
-}
-
-/* Full page container */
-.full-page-text {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at center, #000000 0%, #1a1a1a 100%);
-  overflow: hidden;
-   }
   </style>
 </head>
 <body>
@@ -816,12 +820,13 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO - UPDATED WITH CURSIVE TEXT -->
   <div class="overlay">
-     <section class="full-page-text">
-       <h1 class="cursive-title">SANKALP 2025 KHIT</h1>
-       <p class="cursive-subtitle">Golden Threads of Innovation</p>
-      </section>
+    <!-- Cursive text section -->
+    <h1 class="cursive-title">SANKALP 2025 KHIT</h1>
+    <p class="cursive-subtitle">Golden Threads of Innovation</p>
+    
+    <!-- Original content -->
     <p style="font-size:28px">Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
     <div class="buttons">
       <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
@@ -829,6 +834,7 @@
     </div>
   </div>
 
+  <!-- Rest of your code remains exactly the same -->
   <!-- ABOUT SECTION -->
   <section class="about-section">
     <div class="about-container">
@@ -965,6 +971,7 @@
     </div>
   </footer>
 
+  <!-- Your existing JavaScript remains the same -->
   <script>
     // Particle Animation
     const canvas = document.getElementById('bg');
@@ -1065,10 +1072,6 @@
         'technical quiz': 'technicalquiz.html',
         'paper presentation': 'paperpresentation.html', 
         'poster presentation': 'posterpresentation.html',
-        'project expo': 'projectexpo.html',
-        'quiz': 'technicalquiz.html',
-        'paper': 'paperpresentation.html',
-        'poster': 'posterpresentation.html',
         'project': 'projectexpo.html',
         'expo': 'projectexpo.html'
       };
