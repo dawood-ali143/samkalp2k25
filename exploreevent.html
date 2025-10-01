@@ -121,7 +121,6 @@
             padding-bottom: 15px;
             background-size: cover;
             background-position: center;
-
         }
 
         /* UPDATED: Larger event images */
@@ -178,12 +177,139 @@
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
+            margin-right: 15px;
         }
 
         .register-btn:hover {
             background-color: #b8941f;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* NEW: View Posters Button */
+        .view-posters-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: #D4AF37;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .view-posters-btn:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* NEW: Posters Modal */
+        .posters-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.8);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1200px;
+            border: 2px solid #D4AF37;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #D4AF37;
+            padding-bottom: 15px;
+        }
+
+        .modal-title {
+            color: #D4AF37;
+            font-size: 2.2rem;
+        }
+
+        .close-modal {
+            color: #D4AF37;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .posters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .poster-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .poster-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+
+        .poster-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .poster-info {
+            padding: 15px;
+        }
+
+        .poster-title {
+            color: #D4AF37;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .poster-author {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .poster-category {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 5px;
         }
 
         /* Footer Styles */
@@ -233,6 +359,18 @@
                 margin-right: 0;
                 margin-bottom: 10px;
             }
+            
+            .register-btn, .view-posters-btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                margin-right: 0;
+                text-align: center;
+            }
+            
+            .posters-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
         }
     </style>
 </head>
@@ -278,6 +416,7 @@
                             emerging technologies to social innovations.
                         </p>
                         <a href="register.html" class="register-btn">Register Now</a>
+                        <button class="view-posters-btn" id="viewPostersBtn">View Posters</button>
                     </div>
                 </div>
             </div>
@@ -358,6 +497,73 @@
         </div>
     </div>
 
+    <!-- NEW: Posters Modal -->
+    <div class="posters-modal" id="postersModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Poster Gallery</h2>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <p>Browse through the amazing posters submitted by our participants. Click on any poster to view it in full size.</p>
+            
+            <div class="posters-grid">
+                <div class="poster-item">
+                    <img src="poster1.jpg" alt="AI in Healthcare" class="poster-image">
+                    <div class="poster-info">
+                        <h3 class="poster-title">AI in Healthcare</h3>
+                        <p class="poster-author">By: Priya Sharma</p>
+                        <span class="poster-category">Artificial Intelligence</span>
+                    </div>
+                </div>
+                
+                <div class="poster-item">
+                    <img src="poster2.jpg" alt="Sustainable Energy Solutions" class="poster-image">
+                    <div class="poster-info">
+                        <h3 class="poster-title">Sustainable Energy Solutions</h3>
+                        <p class="poster-author">By: Raj Patel</p>
+                        <span class="poster-category">Renewable Energy</span>
+                    </div>
+                </div>
+                
+                <div class="poster-item">
+                    <img src="poster3.jpg" alt="Blockchain Security" class="poster-image">
+                    <div class="poster-info">
+                        <h3 class="poster-title">Blockchain Security</h3>
+                        <p class="poster-author">By: Ananya Singh</p>
+                        <span class="poster-category">Cybersecurity</span>
+                    </div>
+                </div>
+                
+                <div class="poster-item">
+                    <img src="poster4.jpg" alt="IoT in Agriculture" class="poster-image">
+                    <div class="poster-info">
+                        <h3 class="poster-title">IoT in Agriculture</h3>
+                        <p class="poster-author">By: Vikram Reddy</p>
+                        <span class="poster-category">Internet of Things</span>
+                    </div>
+                </div>
+                
+                <div class="poster-item">
+                    <img src="poster5.jpg" alt="Quantum Computing" class="poster-image">
+                    <div class="poster-info">
+                        <h3 class="poster-title">Quantum Computing</h3>
+                        <p class="poster-author">By: Meera Iyer</p>
+                        <span class="poster-category">Advanced Computing</span>
+                    </div>
+                </div>
+                
+                <div class="poster-item">
+                    <img src="poster6.jpg" alt="VR in Education" class="poster-image">
+                    <div class="poster-info">
+                        <h3 class="poster-title">VR in Education</h3>
+                        <p class="poster-author">By: Arjun Kumar</p>
+                        <span class="poster-category">Virtual Reality</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 KHIT Samkalp. All Rights Reserved.</p>
@@ -382,6 +588,37 @@
                     this.classList.add('active');
                     document.getElementById(target).classList.add('active');
                 });
+            });
+            
+            // NEW: Modal functionality
+            const viewPostersBtn = document.getElementById('viewPostersBtn');
+            const postersModal = document.getElementById('postersModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            viewPostersBtn.addEventListener('click', function() {
+                postersModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+            
+            closeModal.addEventListener('click', function() {
+                postersModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            });
+            
+            // Close modal when clicking outside the content
+            window.addEventListener('click', function(event) {
+                if (event.target === postersModal) {
+                    postersModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    postersModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
             });
         });
     </script>
