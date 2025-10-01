@@ -14,7 +14,7 @@
 
     body {
       background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-                  url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+                  url('img15.png') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       line-height: 1.6;
@@ -39,44 +39,11 @@
     .khit-banner {
       width: 100%;
       height: 120px;
-      background: linear-gradient(135deg, #1a3a6d 0%, #2a5298 100%);
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('khitbanner.webp') no-repeat center center;
+      background-size: cover;  /* ✅ Changed to cover */
       margin-bottom: 10px;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-
-    .khit-banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path fill="%23D4AF37" d="M50,5 L60,40 L95,40 L65,60 L75,95 L50,75 L25,95 L35,60 L5,40 L40,40 Z"/></svg>');
-    }
-
-    .banner-content {
-      text-align: center;
-      z-index: 2;
-      padding: 0 20px;
-    }
-
-    .banner-title {
-      font-size: 2.5rem;
-      color: #fff;
-      margin-bottom: 5px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .banner-subtitle {
-      font-size: 1.2rem;
-      color: #D4AF37;
-      font-weight: 500;
     }
 
     .header-content {
@@ -92,15 +59,6 @@
       margin-right: 20px;
       border-radius: 50%;
       border: 2px solid #D4AF37;
-      background: linear-gradient(135deg, #1a3a6d 0%, #2a5298 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #D4AF37;
-      font-weight: bold;
-      font-size: 0.9rem;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     .main-heading {
@@ -155,11 +113,11 @@
       display: none;
       position: relative;
       width: 100%;
-      min-height: 70vh;
+      min-height: 70vh;   /* ✅ Ensure visible area */
     }
 
     .event-content.active {
-      display: flex;
+      display: block;
       animation: fadeIn 0.8s ease;
     }
 
@@ -197,32 +155,6 @@
       padding: 40px;
       z-index: 3;
       position: relative;
-    }
-
-    .event-image {
-      position: absolute;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40%;
-      max-width: 500px;
-      height: 70%;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      z-index: 3;
-      border: 3px solid #D4AF37;
-    }
-
-    .event-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .event-image:hover img {
-      transform: scale(1.05);
     }
 
     .event-title {
@@ -303,10 +235,6 @@
       .event-title {
         font-size: 2.5rem;
       }
-      .event-image {
-        width: 35%;
-        right: 20px;
-      }
     }
 
     @media (max-width: 768px) {
@@ -322,7 +250,7 @@
         font-size: 1.8rem;
       }
       .event-details {
-        max-width: 100%;
+        max-width: 90%;
         padding: 20px;
       }
       .event-title {
@@ -339,15 +267,6 @@
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
         align-items: flex-start;
         padding-top: 30px;
-      }
-      .event-image {
-        position: relative;
-        width: 80%;
-        height: 300px;
-        margin: 20px auto;
-        right: auto;
-        top: auto;
-        transform: none;
       }
     }
 
@@ -367,12 +286,6 @@
       .event-title {
         font-size: 1.8rem;
       }
-      .banner-title {
-        font-size: 1.8rem;
-      }
-      .banner-subtitle {
-        font-size: 1rem;
-      }
     }
 
     @keyframes fadeIn {
@@ -384,14 +297,9 @@
 <body>
   <header>
     <div class="container">
-      <div class="khit-banner">
-        <div class="banner-content">
-          <h1 class="banner-title">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY</h1>
-          <p class="banner-subtitle">Approved by AICTE- New Delhi, Permanently affiliated to JNTUK- Kakinada</p>
-        </div>
-      </div>
+      <div class="khit-banner"></div>
       <div class="header-content">
-        <div class="khit-logo">KHIT<br>LOGO</div>
+        <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
         <h1 class="main-heading">KHIT Samkalp 2025</h1>
       </div>
     </div>
@@ -409,7 +317,7 @@
     <div class="events-container">
       <!-- Poster Presentation -->
       <div class="event-content active" id="poster">
-        <div class="event-background" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="event-background" style="background-image: url('img11.jpg');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Poster Presentation</h2>
@@ -422,19 +330,15 @@
             <p class="event-description">
               Showcase your innovative ideas and research through visually appealing posters.
               Participants will have 10 minutes to present followed by a 5-minute Q&A session.
-              This event provides a platform to demonstrate your creativity and communication skills.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
-          </div>
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Poster Presentation">
           </div>
         </div>
       </div>
 
       <!-- Technical Quiz -->
       <div class="event-content" id="quiz">
-        <div class="event-background" style="background-image: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="event-background" style="background-image: url('img12.jpg');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Technical Quiz</h2>
@@ -446,20 +350,15 @@
             </div>
             <p class="event-description">
               Test your technical knowledge and problem-solving skills in this exciting quiz competition.
-              Compete with the brightest minds and win exciting prizes. The quiz covers various domains
-              of computer science including programming, algorithms, databases, and emerging technologies.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
-          </div>
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Technical Quiz">
           </div>
         </div>
       </div>
 
       <!-- Project Expo -->
       <div class="event-content" id="expo">
-        <div class="event-background" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="event-background" style="background-image: url('img13.jpg');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Project Expo</h2>
@@ -471,21 +370,15 @@
             </div>
             <p class="event-description">
               Display your innovative projects and prototypes at our grand Project Expo.
-              Get feedback from industry experts and showcase your technical prowess.
-              This is an excellent opportunity to demonstrate real-world applications of
-              your knowledge and network with potential employers.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
-          </div>
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Project Expo">
           </div>
         </div>
       </div>
 
       <!-- Paper Presentation -->
       <div class="event-content" id="paper">
-        <div class="event-background" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="event-background" style="background-image: url('img14.png');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Paper Presentation</h2>
@@ -497,14 +390,8 @@
             </div>
             <p class="event-description">
               Present your research papers and findings to an audience of peers and experts.
-              Share your knowledge and contribute to the advancement of computer science.
-              This event provides a platform for academic discourse and intellectual exchange
-              on cutting-edge research topics.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
-          </div>
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1588690154757-badf464419d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Paper Presentation">
           </div>
         </div>
       </div>
@@ -534,3 +421,4 @@
   </script>
 </body>
 </html>
+
