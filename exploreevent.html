@@ -1,626 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KHIT Samkalp 2025 - Explore Events</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHIT Samkalp 2025 - Explore Events</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background: url('img15.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            line-height: 1.6;
-        }
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                  url('img15.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-        /* Header Styles */
-        header {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
-            border-bottom: 3px solid #D4AF37;
-        }
+    /* Header */
+    header {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 10px 0;
+      border-bottom: 3px solid #D4AF37;
+      position: relative;
+      z-index: 10;
+    }
 
-        .khit-banner {
-            width: 100%;
-            height: 120px;
-            background: url('khitbanner.webp') no-repeat center center;
-            background-size: contain;
-            margin-bottom: 10px;
-        }
+    .khit-banner {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('khitbanner.webp') no-repeat center center;
+      background-size: cover;  /* ✅ Changed to cover */
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 0;
-        }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+    }
 
-        .khit-logo {
-            width: 80px;
-            height: 80px;
-            margin-right: 20px;
-            border-radius: 50%;
-            border: 2px solid #D4AF37;
-        }
+    .khit-logo {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+      border-radius: 50%;
+      border: 2px solid #D4AF37;
+    }
 
-        .main-heading {
-            color: #D4AF37;
-            font-size: 2.5rem;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+    .main-heading {
+      color: #D4AF37;
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-        /* Navigation Styles */
-        .events-nav {
-            display: flex;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 15px 0;
-            margin-top: 20px;
-            border-radius: 10px;
-            flex-wrap: wrap;
-        }
+    /* Navigation */
+    .events-nav {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 15px 0;
+      margin: 20px 0;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 5;
+    }
 
-        .event-tab {
-            padding: 12px 25px;
-            margin: 0 10px;
-            background-color: rgba(212, 175, 55, 0.2);
-            border: 1px solid #D4AF37;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
+    .event-tab {
+      padding: 12px 25px;
+      margin: 0 10px;
+      background-color: rgba(212, 175, 55, 0.2);
+      border: 1px solid #D4AF37;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
 
-        .event-tab:hover, .event-tab.active {
-            background-color: #D4AF37;
-            color: #000;
-        }
+    .event-tab:hover, .event-tab.active {
+      background-color: #D4AF37;
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
 
-        /* Event Content Styles */
-        .events-container {
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 30px;
-            margin-top: 20px;
-            min-height: 500px;
-        }
+    /* Event Sections */
+    .events-container {
+      position: relative;
+      margin-top: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
 
-        .event-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+    .event-content {
+      display: none;
+      position: relative;
+      width: 100%;
+      min-height: 70vh;   /* ✅ Ensure visible area */
+    }
 
-        .event-content.active {
-            display: block;
-        }
+    .event-content.active {
+      display: block;
+      animation: fadeIn 0.8s ease;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .event-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+      transition: transform 0.5s ease;
+    }
 
-        .event-header {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #D4AF37;
-            padding-bottom: 15px;
-            background-size: cover;
-            background-position: center;
-        }
+    .event-background:hover {
+      transform: scale(1.03);
+    }
 
-        /* UPDATED: Larger event images */
-        .event-image {
-            width: 300px; /* Increased from 200px */
-            height: 350px; /* Increased from 250px */
-            object-fit: cover;
-            border-radius: 10px;
-            margin-right: 30px;
-            border: 2px solid #D4AF37;
-        }
+    .event-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.4) 100%);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+    }
 
-        .event-details {
-            flex: 1;
-        }
+    .event-details {
+      max-width: 50%;
+      padding: 40px;
+      z-index: 3;
+      position: relative;
+    }
 
-        .event-title {
-            color: #D4AF37;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+    .event-title {
+      color: #D4AF37;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
 
-        .event-info {
-            display: flex;
-            margin-bottom: 15px;
-        }
+    .event-info {
+      display: flex;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
 
-        .info-item {
-            margin-right: 30px;
-            display: flex;
-            align-items: center;
-        }
+    .info-item {
+      margin-right: 40px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      background: rgba(212, 175, 55, 0.2);
+      padding: 8px 15px;
+      border-radius: 5px;
+      border-left: 3px solid #D4AF37;
+    }
 
-        .info-label {
-            font-weight: bold;
-            margin-right: 5px;
-            color: #D4AF37;
-        }
+    .info-label {
+      font-weight: bold;
+      margin-right: 8px;
+      color: #D4AF37;
+    }
 
-        .event-description {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
+    .event-description {
+      margin-bottom: 30px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #D4AF37;
+    }
 
-        .register-btn {
-            display: inline-block;
-            background-color: #D4AF37;
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin-right: 15px;
-        }
+    .register-btn {
+      display: inline-block;
+      background-color: #D4AF37;
+      color: #000;
+      padding: 15px 35px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
 
-        .register-btn:hover {
-            background-color: #b8941f;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
+    .register-btn:hover {
+      background-color: #b8941f;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
 
-        /* NEW: View Posters Button */
-        .view-posters-btn {
-            display: inline-block;
-            background-color: transparent;
-            color: #D4AF37;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid #D4AF37;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-top: 2px solid #D4AF37;
+    }
 
-        .view-posters-btn:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
+    /* Responsive */
+    @media (max-width: 992px) {
+      .event-details {
+        max-width: 70%;
+      }
+      .event-title {
+        font-size: 2.5rem;
+      }
+    }
 
-        /* NEW: Posters Modal */
-        .posters-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            overflow-y: auto;
-        }
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .khit-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      .main-heading {
+        font-size: 1.8rem;
+      }
+      .event-details {
+        max-width: 90%;
+        padding: 20px;
+      }
+      .event-title {
+        font-size: 2rem;
+      }
+      .event-info {
+        flex-direction: column;
+      }
+      .info-item {
+        margin-right: 0;
+        width: 100%;
+      }
+      .event-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
+        align-items: flex-start;
+        padding-top: 30px;
+      }
+    }
 
-        .modal-content {
-            background-color: rgba(0, 0, 0, 0.8);
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 1200px;
-            border: 2px solid #D4AF37;
-            position: relative;
-        }
+    @media (max-width: 576px) {
+      .events-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      .event-tab {
+        width: 80%;
+        margin: 5px 0;
+        text-align: center;
+      }
+      .event-details {
+        max-width: 95%;
+      }
+      .event-title {
+        font-size: 1.8rem;
+      }
+    }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #D4AF37;
-            padding-bottom: 15px;
-        }
-
-        .modal-title {
-            color: #D4AF37;
-            font-size: 2.2rem;
-        }
-
-        .close-modal {
-            color: #D4AF37;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        .posters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .poster-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .poster-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-            border-color: #D4AF37;
-        }
-
-        .poster-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .poster-info {
-            padding: 15px;
-        }
-
-        .poster-title {
-            color: #D4AF37;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .poster-author {
-            color: #ccc;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .poster-category {
-            display: inline-block;
-            background-color: rgba(212, 175, 55, 0.2);
-            color: #D4AF37;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-top: 5px;
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-top: 2px solid #D4AF37;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .khit-logo {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .main-heading {
-                font-size: 1.8rem;
-            }
-            
-            .event-header {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            /* UPDATED: Responsive sizing for larger images */
-            .event-image {
-                width: 100%;
-                max-width: 400px; /* Increased from 300px */
-                height: 300px; /* Maintain aspect ratio */
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-            .event-info {
-                flex-direction: column;
-            }
-            
-            .info-item {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .register-btn, .view-posters-btn {
-                display: block;
-                width: 100%;
-                margin-bottom: 10px;
-                margin-right: 0;
-                text-align: center;
-            }
-            
-            .posters-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-        }
-    </style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="khit-banner"></div>
-            <div class="header-content">
-                <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
-                <h1 class="main-heading">KHIT Samkalp 2025</h1>
-            </div>
-        </div>
-    </header>
-
+  <header>
     <div class="container">
-            <h1 class="main-heading">Explore CSE Events</h1>
-        <div class="events-nav">
-            <div class="event-tab active" data-target="poster">Poster Presentation</div>
-            <div class="event-tab" data-target="quiz">Technical Quiz</div>
-            <div class="event-tab" data-target="expo">Project Expo</div>
-            <div class="event-tab" data-target="paper">Paper Presentation</div>
-        </div>
+      <div class="khit-banner"></div>
+      <div class="header-content">
+        <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
+        <h1 class="main-heading">KHIT Samkalp 2025</h1>
+      </div>
+    </div>
+  </header>
 
-        <div class="events-container">
-            <!-- Poster Presentation -->
-            <div class="event-content active" id="poster">
-                <div class="event-header">
-                    <img src="img11.jpg" alt="Poster Presentation" class="event-image">
-                    <div class="event-details">
-                        <h2 class="event-title">Poster Presentation</h2>
-                        <div class="event-info">
-                            <div class="info-item">
-                                <span class="info-label">Date:</span> November 15, 2025
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Registration Fee:</span> ₹100
-                            </div>
-                        </div>
-                        <p class="event-description">
-                            Showcase your innovative ideas and research through visually appealing posters. 
-                            This event provides a platform for students to present their work, receive feedback, 
-                            and engage in meaningful discussions with peers and experts. Topics can range from 
-                            emerging technologies to social innovations.
-                        </p>
-                        <a href="register.html" class="register-btn">Register Now</a>
-                        <button class="view-posters-btn" id="viewPostersBtn">View Posters</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Technical Quiz -->
-            <div class="event-content" id="quiz">
-                <div class="event-header">
-                    <img src="img12.jpg" alt="Technical Quiz" class="event-image">
-                    <div class="event-details">
-                        <h2 class="event-title">Technical Quiz</h2>
-                        <div class="event-info">
-                            <div class="info-item">
-                                <span class="info-label">Date:</span> November 15, 2025
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Registration Fee:</span> ₹100
-                            </div>
-                        </div>
-                        <p class="event-description">
-                            Test your technical knowledge and problem-solving skills in this exciting quiz competition. 
-                            Teams will compete in multiple rounds covering various domains of engineering and technology. 
-                            Sharpen your minds and get ready for challenging questions that will push your boundaries.
-                        </p>
-                        <a href="register.html" class="register-btn">Register Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Expo -->
-            <div class="event-content" id="expo">
-                <div class="event-header">
-                    <img src="img13.jpg" alt="Project Expo" class="event-image">
-                    <div class="event-details">
-                        <h2 class="event-title">Project Expo</h2>
-                        <div class="event-info">
-                            <div class="info-item">
-                                <span class="info-label">Date:</span> November 15, 2025
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Registration Fee:</span> ₹100
-                            </div>
-                        </div>
-                        <p class="event-description">
-                            Display your innovative projects and prototypes at our grand Project Expo. 
-                            This is your chance to demonstrate practical applications of engineering concepts 
-                            and connect with potential collaborators or investors. Projects from all engineering 
-                            disciplines are welcome.
-                        </p>
-                        <a href="register.html" class="register-btn">Register Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paper Presentation -->
-            <div class="event-content" id="paper">
-                <div class="event-header">
-                    <img src="img14.png" alt="Paper Presentation" class="event-image">
-                    <div class="event-details">
-                        <h2 class="event-title">Paper Presentation</h2>
-                        <div class="event-info">
-                            <div class="info-item">
-                                <span class="info-label">Date:</span> November 15, 2025
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Registration Fee:</span> ₹100
-                            </div>
-                        </div>
-                        <p class="event-description">
-                            Present your research papers and findings to an audience of peers and experts. 
-                            This event provides a platform for sharing knowledge, receiving valuable feedback, 
-                            and networking with like-minded individuals. Papers on cutting-edge technologies 
-                            and innovative research are especially encouraged.
-                        </p>
-                        <a href="register.html" class="register-btn">Register Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <h1 class="main-heading">Explore CSE Events</h1>
+    <div class="events-nav">
+      <div class="event-tab active" data-target="poster">Poster Presentation</div>
+      <div class="event-tab" data-target="quiz">Technical Quiz</div>
+      <div class="event-tab" data-target="expo">Project Expo</div>
+      <div class="event-tab" data-target="paper">Paper Presentation</div>
     </div>
 
-    <!-- NEW: Posters Modal -->
-    <div class="posters-modal" id="postersModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Poster Gallery</h2>
-                <span class="close-modal" id="closeModal">&times;</span>
+    <div class="events-container">
+      <!-- Poster Presentation -->
+      <div class="event-content active" id="poster">
+        <div class="event-background" style="background-image: url('img11.jpg');"></div>
+        <div class="event-overlay">
+          <div class="event-details">
+            <h2 class="event-title">Poster Presentation</h2>
+            <div class="event-info">
+              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
+              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
+              <div class="info-item"><span class="info-label">Time:</span> 10:00 AM - 1:00 PM</div>
+              <div class="info-item"><span class="info-label">Venue:</span> Main Auditorium</div>
             </div>
-            <p>Browse through the amazing posters submitted by our participants. Click on any poster to view it in full size.</p>
-            
-            <div class="posters-grid">
-                <div class="poster-item">
-                    <img src="poster1.jpg" alt="AI in Healthcare" class="poster-image">
-                    <div class="poster-info">
-                        <h3 class="poster-title">AI in Healthcare</h3>
-                        <p class="poster-author">By: Priya Sharma</p>
-                        <span class="poster-category">Artificial Intelligence</span>
-                    </div>
-                </div>
-                
-                <div class="poster-item">
-                    <img src="poster2.jpg" alt="Sustainable Energy Solutions" class="poster-image">
-                    <div class="poster-info">
-                        <h3 class="poster-title">Sustainable Energy Solutions</h3>
-                        <p class="poster-author">By: Raj Patel</p>
-                        <span class="poster-category">Renewable Energy</span>
-                    </div>
-                </div>
-                
-                <div class="poster-item">
-                    <img src="poster3.jpg" alt="Blockchain Security" class="poster-image">
-                    <div class="poster-info">
-                        <h3 class="poster-title">Blockchain Security</h3>
-                        <p class="poster-author">By: Ananya Singh</p>
-                        <span class="poster-category">Cybersecurity</span>
-                    </div>
-                </div>
-                
-                <div class="poster-item">
-                    <img src="poster4.jpg" alt="IoT in Agriculture" class="poster-image">
-                    <div class="poster-info">
-                        <h3 class="poster-title">IoT in Agriculture</h3>
-                        <p class="poster-author">By: Vikram Reddy</p>
-                        <span class="poster-category">Internet of Things</span>
-                    </div>
-                </div>
-                
-                <div class="poster-item">
-                    <img src="poster5.jpg" alt="Quantum Computing" class="poster-image">
-                    <div class="poster-info">
-                        <h3 class="poster-title">Quantum Computing</h3>
-                        <p class="poster-author">By: Meera Iyer</p>
-                        <span class="poster-category">Advanced Computing</span>
-                    </div>
-                </div>
-                
-                <div class="poster-item">
-                    <img src="poster6.jpg" alt="VR in Education" class="poster-image">
-                    <div class="poster-info">
-                        <h3 class="poster-title">VR in Education</h3>
-                        <p class="poster-author">By: Arjun Kumar</p>
-                        <span class="poster-category">Virtual Reality</span>
-                    </div>
-                </div>
-            </div>
+            <p class="event-description">
+              Showcase your innovative ideas and research through visually appealing posters.
+              Participants will have 10 minutes to present followed by a 5-minute Q&A session.
+            </p>
+            <a href="register.html" class="register-btn">Register Now</a>
+          </div>
         </div>
+      </div>
+
+      <!-- Technical Quiz -->
+      <div class="event-content" id="quiz">
+        <div class="event-background" style="background-image: url('img12.jpg');"></div>
+        <div class="event-overlay">
+          <div class="event-details">
+            <h2 class="event-title">Technical Quiz</h2>
+            <div class="event-info">
+              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
+              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
+              <div class="info-item"><span class="info-label">Time:</span> 2:00 PM - 4:30 PM</div>
+              <div class="info-item"><span class="info-label">Venue:</span> Seminar Hall</div>
+            </div>
+            <p class="event-description">
+              Test your technical knowledge and problem-solving skills in this exciting quiz competition.
+            </p>
+            <a href="register.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Expo -->
+      <div class="event-content" id="expo">
+        <div class="event-background" style="background-image: url('img13.jpg');"></div>
+        <div class="event-overlay">
+          <div class="event-details">
+            <h2 class="event-title">Project Expo</h2>
+            <div class="event-info">
+              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
+              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
+              <div class="info-item"><span class="info-label">Time:</span> 9:30 AM - 4:00 PM</div>
+              <div class="info-item"><span class="info-label">Venue:</span> Exhibition Hall</div>
+            </div>
+            <p class="event-description">
+              Display your innovative projects and prototypes at our grand Project Expo.
+            </p>
+            <a href="register.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper Presentation -->
+      <div class="event-content" id="paper">
+        <div class="event-background" style="background-image: url('img14.png');"></div>
+        <div class="event-overlay">
+          <div class="event-details">
+            <h2 class="event-title">Paper Presentation</h2>
+            <div class="event-info">
+              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
+              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
+              <div class="info-item"><span class="info-label">Time:</span> 11:00 AM - 2:00 PM</div>
+              <div class="info-item"><span class="info-label">Venue:</span> Conference Hall</div>
+            </div>
+            <p class="event-description">
+              Present your research papers and findings to an audience of peers and experts.
+            </p>
+            <a href="register.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 KHIT Samkalp. All Rights Reserved.</p>
-        </div>
-    </footer>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 KHIT Samkalp. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-    <script>
-        // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.event-tab');
-            const contents = document.querySelectorAll('.event-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const target = this.getAttribute('data-target');
-                    
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to current tab and content
-                    this.classList.add('active');
-                    document.getElementById(target).classList.add('active');
-                });
-            });
-            
-            // NEW: Modal functionality
-            const viewPostersBtn = document.getElementById('viewPostersBtn');
-            const postersModal = document.getElementById('postersModal');
-            const closeModal = document.getElementById('closeModal');
-            
-            viewPostersBtn.addEventListener('click', function() {
-                postersModal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-            
-            closeModal.addEventListener('click', function() {
-                postersModal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Restore scrolling
-            });
-            
-            // Close modal when clicking outside the content
-            window.addEventListener('click', function(event) {
-                if (event.target === postersModal) {
-                    postersModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
-                    postersModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.event-tab');
+      const contents = document.querySelectorAll('.event-content');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const target = this.getAttribute('data-target');
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById(target).classList.add('active');
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
