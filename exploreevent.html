@@ -13,41 +13,31 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), 
-                        #1a1a2e;
+            background: url('img15.png') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
         /* Header Styles */
         header {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 0;
             border-bottom: 3px solid #D4AF37;
-            position: relative;
-            z-index: 10;
         }
 
         .khit-banner {
             width: 100%;
             height: 120px;
-            background: linear-gradient(90deg, #0c2461, #1e3799, #0c2461);
+            background: url('khitbanner.webp') no-repeat center center;
+            background-size: contain;
             margin-bottom: 10px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #D4AF37;
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .header-content {
@@ -63,12 +53,6 @@
             margin-right: 20px;
             border-radius: 50%;
             border: 2px solid #D4AF37;
-            background: linear-gradient(45deg, #0c2461, #1e3799);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #D4AF37;
-            font-weight: bold;
         }
 
         .main-heading {
@@ -82,13 +66,11 @@
         .events-nav {
             display: flex;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 15px 0;
-            margin: 20px 0;
+            margin-top: 20px;
             border-radius: 10px;
             flex-wrap: wrap;
-            position: relative;
-            z-index: 5;
         }
 
         .event-tab {
@@ -106,127 +88,102 @@
         .event-tab:hover, .event-tab.active {
             background-color: #D4AF37;
             color: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
         /* Event Content Styles */
         .events-container {
-            position: relative;
-            min-height: 70vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
             margin-top: 20px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            min-height: 500px;
         }
 
         .event-content {
             display: none;
-            position: relative;
-            width: 100%;
-            height: 100%;
+            animation: fadeIn 0.5s ease;
         }
 
         .event-content.active {
             display: block;
-            animation: fadeIn 0.8s ease;
         }
 
-        .event-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .event-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 15px;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
-            transition: transform 0.5s ease;
+
         }
 
-        .event-background:hover {
-            transform: scale(1.03);
-        }
-
-        .event-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.4) 100%);
-            z-index: 2;
-            display: flex;
-            align-items: center;
+        /* UPDATED: Larger event images */
+        .event-image {
+            width: 300px; /* Increased from 200px */
+            height: 350px; /* Increased from 250px */
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 30px;
+            border: 2px solid #D4AF37;
         }
 
         .event-details {
-            max-width: 50%;
-            padding: 40px;
-            z-index: 3;
-            position: relative;
+            flex: 1;
         }
 
         .event-title {
             color: #D4AF37;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
 
         .event-info {
             display: flex;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
 
         .info-item {
-            margin-right: 40px;
-            margin-bottom: 15px;
+            margin-right: 30px;
             display: flex;
             align-items: center;
-            background: rgba(212, 175, 55, 0.2);
-            padding: 8px 15px;
-            border-radius: 5px;
-            border-left: 3px solid #D4AF37;
         }
 
         .info-label {
             font-weight: bold;
-            margin-right: 8px;
+            margin-right: 5px;
             color: #D4AF37;
         }
 
         .event-description {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             line-height: 1.8;
-            font-size: 1.1rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #D4AF37;
         }
 
         .register-btn {
             display: inline-block;
             background-color: #D4AF37;
             color: #000;
-            padding: 15px 35px;
+            padding: 12px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.1rem;
         }
 
         .register-btn:hover {
             background-color: #b8941f;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer Styles */
@@ -234,21 +191,11 @@
             text-align: center;
             padding: 20px 0;
             margin-top: 40px;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.8);
             border-top: 2px solid #D4AF37;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .event-details {
-                max-width: 70%;
-            }
-            
-            .event-title {
-                font-size: 2.5rem;
-            }
-        }
-
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -264,13 +211,18 @@
                 font-size: 1.8rem;
             }
             
-            .event-details {
-                max-width: 90%;
-                padding: 20px;
+            .event-header {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .event-title {
-                font-size: 2rem;
+            /* UPDATED: Responsive sizing for larger images */
+            .event-image {
+                width: 100%;
+                max-width: 400px; /* Increased from 300px */
+                height: 300px; /* Maintain aspect ratio */
+                margin-right: 0;
+                margin-bottom: 20px;
             }
             
             .event-info {
@@ -279,69 +231,24 @@
             
             .info-item {
                 margin-right: 0;
-                width: 100%;
+                margin-bottom: 10px;
             }
-            
-            .event-overlay {
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
-                align-items: flex-start;
-                padding-top: 30px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .events-nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .event-tab {
-                width: 80%;
-                margin: 5px 0;
-                text-align: center;
-            }
-            
-            .event-details {
-                max-width: 95%;
-            }
-            
-            .event-title {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Animation for content switching */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Placeholder image styles */
-        .placeholder-image {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="khit-banner">KHIT SAMKALP 2025</div>
+            <div class="khit-banner"></div>
             <div class="header-content">
-                <div class="khit-logo">KHIT</div>
-                <h1 class="main-heading">Explore CSE Events</h1>
+                <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
+                <h1 class="main-heading">KHIT Samkalp 2025</h1>
             </div>
         </div>
     </header>
 
     <div class="container">
+            <h1 class="main-heading">Explore CSE Events</h1>
         <div class="events-nav">
             <div class="event-tab active" data-target="poster">Poster Presentation</div>
             <div class="event-tab" data-target="quiz">Technical Quiz</div>
@@ -352,10 +259,8 @@
         <div class="events-container">
             <!-- Poster Presentation -->
             <div class="event-content active" id="poster">
-                <div class="event-background">
-                    <div class="placeholder-image">Poster Presentation Image</div>
-                </div>
-                <div class="event-overlay">
+                <div class="event-header">
+                    <img src="img11.jpg" alt="Poster Presentation" class="event-image">
                     <div class="event-details">
                         <h2 class="event-title">Poster Presentation</h2>
                         <div class="event-info">
@@ -365,19 +270,12 @@
                             <div class="info-item">
                                 <span class="info-label">Registration Fee:</span> ₹100
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">Time:</span> 10:00 AM - 1:00 PM
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Venue:</span> Main Auditorium
-                            </div>
                         </div>
                         <p class="event-description">
                             Showcase your innovative ideas and research through visually appealing posters. 
                             This event provides a platform for students to present their work, receive feedback, 
                             and engage in meaningful discussions with peers and experts. Topics can range from 
-                            emerging technologies to social innovations. Participants will have 10 minutes to 
-                            present followed by a 5-minute Q&A session.
+                            emerging technologies to social innovations.
                         </p>
                         <a href="register.html" class="register-btn">Register Now</a>
                     </div>
@@ -386,10 +284,8 @@
 
             <!-- Technical Quiz -->
             <div class="event-content" id="quiz">
-                <div class="event-background">
-                    <div class="placeholder-image">Technical Quiz Image</div>
-                </div>
-                <div class="event-overlay">
+                <div class="event-header">
+                    <img src="img12.jpg" alt="Technical Quiz" class="event-image">
                     <div class="event-details">
                         <h2 class="event-title">Technical Quiz</h2>
                         <div class="event-info">
@@ -399,18 +295,11 @@
                             <div class="info-item">
                                 <span class="info-label">Registration Fee:</span> ₹100
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">Time:</span> 2:00 PM - 4:30 PM
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Venue:</span> Seminar Hall
-                            </div>
                         </div>
                         <p class="event-description">
                             Test your technical knowledge and problem-solving skills in this exciting quiz competition. 
                             Teams will compete in multiple rounds covering various domains of engineering and technology. 
-                            Sharpen your minds and get ready for challenging questions that will push your boundaries. 
-                            The quiz will include rounds on programming, algorithms, data structures, and emerging technologies.
+                            Sharpen your minds and get ready for challenging questions that will push your boundaries.
                         </p>
                         <a href="register.html" class="register-btn">Register Now</a>
                     </div>
@@ -419,10 +308,8 @@
 
             <!-- Project Expo -->
             <div class="event-content" id="expo">
-                <div class="event-background">
-                    <div class="placeholder-image">Project Expo Image</div>
-                </div>
-                <div class="event-overlay">
+                <div class="event-header">
+                    <img src="img13.jpg" alt="Project Expo" class="event-image">
                     <div class="event-details">
                         <h2 class="event-title">Project Expo</h2>
                         <div class="event-info">
@@ -432,19 +319,12 @@
                             <div class="info-item">
                                 <span class="info-label">Registration Fee:</span> ₹100
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">Time:</span> 9:30 AM - 4:00 PM
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Venue:</span> Exhibition Hall
-                            </div>
                         </div>
                         <p class="event-description">
                             Display your innovative projects and prototypes at our grand Project Expo. 
                             This is your chance to demonstrate practical applications of engineering concepts 
                             and connect with potential collaborators or investors. Projects from all engineering 
-                            disciplines are welcome. The expo will feature live demonstrations, prototype displays, 
-                            and opportunities to network with industry professionals.
+                            disciplines are welcome.
                         </p>
                         <a href="register.html" class="register-btn">Register Now</a>
                     </div>
@@ -453,10 +333,8 @@
 
             <!-- Paper Presentation -->
             <div class="event-content" id="paper">
-                <div class="event-background">
-                    <div class="placeholder-image">Paper Presentation Image</div>
-                </div>
-                <div class="event-overlay">
+                <div class="event-header">
+                    <img src="img14.png" alt="Paper Presentation" class="event-image">
                     <div class="event-details">
                         <h2 class="event-title">Paper Presentation</h2>
                         <div class="event-info">
@@ -466,19 +344,12 @@
                             <div class="info-item">
                                 <span class="info-label">Registration Fee:</span> ₹100
                             </div>
-                            <div class="info-item">
-                                <span class="info-label">Time:</span> 11:00 AM - 2:00 PM
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Venue:</span> Conference Hall
-                            </div>
                         </div>
                         <p class="event-description">
                             Present your research papers and findings to an audience of peers and experts. 
                             This event provides a platform for sharing knowledge, receiving valuable feedback, 
                             and networking with like-minded individuals. Papers on cutting-edge technologies 
-                            and innovative research are especially encouraged. Each presentation will be 15 minutes 
-                            followed by a 5-minute Q&A session with our panel of judges.
+                            and innovative research are especially encouraged.
                         </p>
                         <a href="register.html" class="register-btn">Register Now</a>
                     </div>
