@@ -13,7 +13,7 @@
     }
 
     body {
-      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
                   url('img15.png') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
@@ -29,21 +29,18 @@
 
     /* Header */
     header {
-      background-color: rgba(0, 0, 0, 0.85);
-      padding: 10px 0;
+      background-color: #000; /* ✅ Keep header visible */
       border-bottom: 3px solid #D4AF37;
-      position: relative;
-      z-index: 10;
     }
 
     .khit-banner {
       width: 100%;
-      height: 120px;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                  url('khitbanner.webp') no-repeat center center;
-      background-size: cover;  /* ✅ Changed to cover */
-      margin-bottom: 10px;
+      height: 140px;
+      background: url('khitbanner.webp') no-repeat center center;
+      background-size: cover;
+      margin-bottom: 15px;
       border-radius: 8px;
+      border: 3px solid #D4AF37;
     }
 
     .header-content {
@@ -77,8 +74,6 @@
       margin: 20px 0;
       border-radius: 10px;
       flex-wrap: wrap;
-      position: relative;
-      z-index: 5;
     }
 
     .event-tab {
@@ -102,120 +97,94 @@
 
     /* Event Sections */
     .events-container {
-      position: relative;
       margin-top: 20px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .event-content {
       display: none;
       position: relative;
       width: 100%;
-      min-height: 70vh;   /* ✅ Ensure visible area */
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 12px;
+      margin-bottom: 30px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .event-content.active {
-      display: block;
+      display: flex;
       animation: fadeIn 0.8s ease;
     }
 
-    .event-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: 1;
-      transition: transform 0.5s ease;
-    }
-
-    .event-background:hover {
-      transform: scale(1.03);
-    }
-
-    .event-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.4) 100%);
-      z-index: 2;
-      display: flex;
-      align-items: center;
-    }
-
     .event-details {
-      max-width: 50%;
-      padding: 40px;
-      z-index: 3;
-      position: relative;
+      flex: 1;
+      padding: 20px;
     }
 
     .event-title {
       color: #D4AF37;
-      font-size: 3rem;
+      font-size: 2.2rem;
       margin-bottom: 20px;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     }
 
     .event-info {
-      display: flex;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     .info-item {
-      margin-right: 40px;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      background: rgba(212, 175, 55, 0.2);
-      padding: 8px 15px;
-      border-radius: 5px;
-      border-left: 3px solid #D4AF37;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
     }
 
     .info-label {
       font-weight: bold;
-      margin-right: 8px;
       color: #D4AF37;
+      margin-right: 5px;
     }
 
     .event-description {
-      margin-bottom: 30px;
-      line-height: 1.8;
-      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+      font-size: 1rem;
       background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
+      padding: 15px;
       border-radius: 8px;
       border-left: 4px solid #D4AF37;
     }
 
-    .register-btn {
-      display: inline-block;
-      background-color: #D4AF37;
-      color: #000;
-      padding: 15px 35px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1.2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    .event-image {
+      flex: 0.6;
+      text-align: center;
     }
 
-    .register-btn:hover {
-      background-color: #b8941f;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    .event-image img {
+      width: 260px;
+      height: auto;
+      border: 4px solid #D4AF37;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+
+    .view-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 18px;
+      background: #D4AF37;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .view-btn:hover {
+      background: #000;
+      color: #FFD700;
+      border: 2px solid #FFD700;
     }
 
     /* Footer */
@@ -225,67 +194,6 @@
       margin-top: 40px;
       background-color: rgba(0, 0, 0, 0.9);
       border-top: 2px solid #D4AF37;
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .event-details {
-        max-width: 70%;
-      }
-      .event-title {
-        font-size: 2.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      .khit-logo {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-      .main-heading {
-        font-size: 1.8rem;
-      }
-      .event-details {
-        max-width: 90%;
-        padding: 20px;
-      }
-      .event-title {
-        font-size: 2rem;
-      }
-      .event-info {
-        flex-direction: column;
-      }
-      .info-item {
-        margin-right: 0;
-        width: 100%;
-      }
-      .event-overlay {
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
-        align-items: flex-start;
-        padding-top: 30px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .events-nav {
-        flex-direction: column;
-        align-items: center;
-      }
-      .event-tab {
-        width: 80%;
-        margin: 5px 0;
-        text-align: center;
-      }
-      .event-details {
-        max-width: 95%;
-      }
-      .event-title {
-        font-size: 1.8rem;
-      }
     }
 
     @keyframes fadeIn {
@@ -317,82 +225,86 @@
     <div class="events-container">
       <!-- Poster Presentation -->
       <div class="event-content active" id="poster">
-        <div class="event-background" style="background-image: url('img11.jpg');"></div>
-        <div class="event-overlay">
-          <div class="event-details">
-            <h2 class="event-title">Poster Presentation</h2>
-            <div class="event-info">
-              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
-              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
-              <div class="info-item"><span class="info-label">Time:</span> 10:00 AM - 1:00 PM</div>
-              <div class="info-item"><span class="info-label">Venue:</span> Main Auditorium</div>
-            </div>
-            <p class="event-description">
-              Showcase your innovative ideas and research through visually appealing posters.
-              Participants will have 10 minutes to present followed by a 5-minute Q&A session.
-            </p>
-            <a href="register.html" class="register-btn">Register Now</a>
+        <div class="event-details">
+          <h2 class="event-title">Poster Presentation</h2>
+          <div class="event-info">
+            <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
+            <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
+            <div class="info-item"><span class="info-label">Time:</span> 10:00 AM - 1:00 PM</div>
+            <div class="info-item"><span class="info-label">Venue:</span> Main Auditorium</div>
           </div>
+          <p class="event-description">
+            Showcase your innovative ideas and research through visually appealing posters.
+            Participants will have 10 minutes to present followed by a 5-minute Q&A session.
+          </p>
+          <a href="register.html" class="view-btn">Register</a>
+        </div>
+        <div class="event-image">
+          <img src="img11.png" alt="Poster Presentation">
+          <a href="poster-presentation.pdf" target="_blank" class="view-btn">View</a>
         </div>
       </div>
 
       <!-- Technical Quiz -->
       <div class="event-content" id="quiz">
-        <div class="event-background" style="background-image: url('img12.jpg');"></div>
-        <div class="event-overlay">
-          <div class="event-details">
-            <h2 class="event-title">Technical Quiz</h2>
-            <div class="event-info">
-              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
-              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
-              <div class="info-item"><span class="info-label">Time:</span> 2:00 PM - 4:30 PM</div>
-              <div class="info-item"><span class="info-label">Venue:</span> Seminar Hall</div>
-            </div>
-            <p class="event-description">
-              Test your technical knowledge and problem-solving skills in this exciting quiz competition.
-            </p>
-            <a href="register.html" class="register-btn">Register Now</a>
+        <div class="event-details">
+          <h2 class="event-title">Technical Quiz</h2>
+          <div class="event-info">
+            <div class="info-item"><span class="info-label">Date:</span> November 16, 2025</div>
+            <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
+            <div class="info-item"><span class="info-label">Time:</span> 2:00 PM - 4:30 PM</div>
+            <div class="info-item"><span class="info-label">Venue:</span> Seminar Hall</div>
           </div>
+          <p class="event-description">
+            Test your technical knowledge and problem-solving skills in this exciting quiz competition.
+          </p>
+          <a href="register.html" class="view-btn">Register</a>
+        </div>
+        <div class="event-image">
+          <img src="img12.png" alt="Technical Quiz">
+          <a href="technical-quiz.pdf" target="_blank" class="view-btn">View</a>
         </div>
       </div>
 
       <!-- Project Expo -->
       <div class="event-content" id="expo">
-        <div class="event-background" style="background-image: url('img13.jpg');"></div>
-        <div class="event-overlay">
-          <div class="event-details">
-            <h2 class="event-title">Project Expo</h2>
-            <div class="event-info">
-              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
-              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
-              <div class="info-item"><span class="info-label">Time:</span> 9:30 AM - 4:00 PM</div>
-              <div class="info-item"><span class="info-label">Venue:</span> Exhibition Hall</div>
-            </div>
-            <p class="event-description">
-              Display your innovative projects and prototypes at our grand Project Expo.
-            </p>
-            <a href="register.html" class="register-btn">Register Now</a>
+        <div class="event-details">
+          <h2 class="event-title">Project Expo</h2>
+          <div class="event-info">
+            <div class="info-item"><span class="info-label">Date:</span> November 17, 2025</div>
+            <div class="info-item"><span class="info-label">Registration Fee:</span> ₹200</div>
+            <div class="info-item"><span class="info-label">Time:</span> 9:30 AM - 4:00 PM</div>
+            <div class="info-item"><span class="info-label">Venue:</span> Exhibition Hall</div>
           </div>
+          <p class="event-description">
+            Display your innovative projects and prototypes at our grand Project Expo.
+          </p>
+          <a href="register.html" class="view-btn">Register</a>
+        </div>
+        <div class="event-image">
+          <img src="img13.png" alt="Project Expo">
+          <a href="project-expo.pdf" target="_blank" class="view-btn">View</a>
         </div>
       </div>
 
       <!-- Paper Presentation -->
       <div class="event-content" id="paper">
-        <div class="event-background" style="background-image: url('img14.png');"></div>
-        <div class="event-overlay">
-          <div class="event-details">
-            <h2 class="event-title">Paper Presentation</h2>
-            <div class="event-info">
-              <div class="info-item"><span class="info-label">Date:</span> November 15, 2025</div>
-              <div class="info-item"><span class="info-label">Registration Fee:</span> ₹100</div>
-              <div class="info-item"><span class="info-label">Time:</span> 11:00 AM - 2:00 PM</div>
-              <div class="info-item"><span class="info-label">Venue:</span> Conference Hall</div>
-            </div>
-            <p class="event-description">
-              Present your research papers and findings to an audience of peers and experts.
-            </p>
-            <a href="register.html" class="register-btn">Register Now</a>
+        <div class="event-details">
+          <h2 class="event-title">Paper Presentation</h2>
+          <div class="event-info">
+            <div class="info-item"><span class="info-label">Date:</span> November 18, 2025</div>
+            <div class="info-item"><span class="info-label">Registration Fee:</span> ₹120</div>
+            <div class="info-item"><span class="info-label">Time:</span> 11:00 AM - 2:00 PM</div>
+            <div class="info-item"><span class="info-label">Venue:</span> Conference Hall</div>
           </div>
+          <p class="event-description">
+            Present your research papers and findings to an audience of peers and experts.
+          </p>
+          <a href="register.html" class="view-btn">Register</a>
+        </div>
+        <div class="event-image">
+          <img src="img14.png" alt="Paper Presentation">
+          <a href="paper-presentation.pdf" target="_blank" class="view-btn">View</a>
         </div>
       </div>
     </div>
@@ -421,4 +333,3 @@
   </script>
 </body>
 </html>
-
