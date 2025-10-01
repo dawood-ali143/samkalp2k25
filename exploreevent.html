@@ -3,9 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Events</title>
+    <title>KHIT Samkalp 2025 - Explore Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: url('img15.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            border-bottom: 3px solid #D4AF37;
+        }
+
+        .khit-banner {
+            width: 100%;
+            height: 120px;
+            background: url('khitbanner.webp') no-repeat center center;
+            background-size: contain;
+            margin-bottom: 10px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .khit-logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            border-radius: 50%;
+            border: 2px solid #D4AF37;
+        }
+
+        .main-heading {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Navigation Styles */
+        .events-nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            margin-top: 20px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+
+        .event-tab {
+            padding: 12px 25px;
+            margin: 0 10px;
+            background-color: rgba(212, 175, 55, 0.2);
+            border: 1px solid #D4AF37;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .event-tab:hover, .event-tab.active {
+            background-color: #D4AF37;
+            color: #000;
+        }
+
+        /* Event Content Styles */
+        .events-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            min-height: 500px;
+        }
+
+        .event-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .event-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 15px;
+        }
+
+        .event-image {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 30px;
+            border: 2px solid #D4AF37;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-title {
+            color: #D4AF37;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .event-info {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-label {
+            font-weight: bold;
+            margin-right: 5px;
+            color: #D4AF37;
+        }
+
+        .event-description {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .register-btn {
+            display: inline-block;
+            background-color: #D4AF37;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .register-btn:hover {
+            background-color: #b8941f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid #D4AF37;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .khit-logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .main-heading {
+                font-size: 1.8rem;
+            }
+            
+            .event-header {
+                flex-direction: column;
+            }
+            
+            .event-image {
+                width: 100%;
+                max-width: 300px;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .event-info {
+                flex-direction: column;
+            }
+            
+            .info-item {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Explore Events</h1>
+    <header>
+        <div class="container">
+            <div class="khit-banner"></div>
+            <div class="header-content">
+                <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
+                <h1 class="main-heading">KHIT Samkalp 2025</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="events-nav">
+            <div class="event-tab active" data-target="poster">Poster Presentation</div>
+            <div class="event-tab" data-target="quiz">Technical Quiz</div>
+            <div class="event-tab" data-target="expo">Project Expo</div>
+            <div class="event-tab" data-target="paper">Paper Presentation</div>
+        </div>
+
+        <div class="events-container">
+            <!-- Poster Presentation -->
+            <div class="event-content active" id="poster">
+                <div class="event-header">
+                    <img src="img11.jpg" alt="Poster Presentation" class="event-image">
+                    <div class="event-details">
+                        <h2 class="event-title">Poster Presentation</h2>
+                        <div class="event-info">
+                            <div class="info-item">
+                                <span class="info-label">Date:</span> November 15, 2025
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Registration Fee:</span> ₹100
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Showcase your innovative ideas and research through visually appealing posters. 
+                            This event provides a platform for students to present their work, receive feedback, 
+                            and engage in meaningful discussions with peers and experts. Topics can range from 
+                            emerging technologies to social innovations.
+                        </p>
+                        <a href="register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Quiz -->
+            <div class="event-content" id="quiz">
+                <div class="event-header">
+                    <img src="img12.jpg" alt="Technical Quiz" class="event-image">
+                    <div class="event-details">
+                        <h2 class="event-title">Technical Quiz</h2>
+                        <div class="event-info">
+                            <div class="info-item">
+                                <span class="info-label">Date:</span> November 15, 2025
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Registration Fee:</span> ₹100
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Test your technical knowledge and problem-solving skills in this exciting quiz competition. 
+                            Teams will compete in multiple rounds covering various domains of engineering and technology. 
+                            Sharpen your minds and get ready for challenging questions that will push your boundaries.
+                        </p>
+                        <a href="register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Expo -->
+            <div class="event-content" id="expo">
+                <div class="event-header">
+                    <img src="img13.jpg" alt="Project Expo" class="event-image">
+                    <div class="event-details">
+                        <h2 class="event-title">Project Expo</h2>
+                        <div class="event-info">
+                            <div class="info-item">
+                                <span class="info-label">Date:</span> November 15, 2025
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Registration Fee:</span> ₹100
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Display your innovative projects and prototypes at our grand Project Expo. 
+                            This is your chance to demonstrate practical applications of engineering concepts 
+                            and connect with potential collaborators or investors. Projects from all engineering 
+                            disciplines are welcome.
+                        </p>
+                        <a href="register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paper Presentation -->
+            <div class="event-content" id="paper">
+                <div class="event-header">
+                    <img src="img14.jpg" alt="Paper Presentation" class="event-image">
+                    <div class="event-details">
+                        <h2 class="event-title">Paper Presentation</h2>
+                        <div class="event-info">
+                            <div class="info-item">
+                                <span class="info-label">Date:</span> November 15, 2025
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Registration Fee:</span> ₹100
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Present your research papers and findings to an audience of peers and experts. 
+                            This event provides a platform for sharing knowledge, receiving valuable feedback, 
+                            and networking with like-minded individuals. Papers on cutting-edge technologies 
+                            and innovative research are especially encouraged.
+                        </p>
+                        <a href="register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KHIT Samkalp. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.event-tab');
+            const contents = document.querySelectorAll('.event-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
