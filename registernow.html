@@ -1,63 +1,596 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Event Payment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samkalp 2025 - KHIT Event Registration</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .institute-name {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .institute-details {
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .event-title {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        
+        /* Event Categories */
+        .event-category {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .category-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .event-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-name {
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .event-price {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .team-size {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* Registration Form */
+        .registration-form {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .form-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .student-entry {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #154360;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #c0392b;
+        }
+        
+        /* Payment Summary */
+        .payment-summary {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        /* Notes */
+        .notes {
+            background: #fff9e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-title {
+                font-size: 1.8rem;
+            }
+            
+            .institute-name {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h2>Event Registration & Payment</h2>
-  <form id="paymentForm">
-    <label>Roll Number:</label>
-    <input type="text" name="rollno" required><br>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <!-- Replace with actual KHIT banner image -->
+            <div style="background: var(--primary); color: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <h2>KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY</h2>
+            </div>
+            <div class="institute-details">
+                (Approved by AICTE, New Delhi & Permanently Affiliated to JNTUK, Kakinada)<br>
+                NH-5, Chowdavaram, Guntur-522 019<br>
+                Accredited by NBA & NAAC with 'A' Grade<br>
+                An ISO 9001:2015 Certified Institute
+            </div>
+            <div class="event-title">
+                SAMKALP-2025
+            </div>
+        </div>
+        
+        <!-- Event Categories -->
+        <div class="event-category">
+            <h2 class="category-title">Department Level Technical Events</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-name">TECH XPLORE (Paper Presentation)</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Individual or Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">TECH GALLERY (Poster Presentation)</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Individual or Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">TECH CADENCE (Technical/Business Quiz)</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Individual</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">TECH STEW (Project Expo/Market Makers)</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Team Event</div>
+                </div>
+            </div>
+            <div class="notes">
+                <div class="note-title">Note:</div>
+                <p>Maximum THREE Events per Participant</p>
+                <p>₹100 for Single Event | ₹150 for Two Events | ₹200 for Three Events</p>
+            </div>
+        </div>
+        
+        <div class="event-category">
+            <h2 class="category-title">College Level Events</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-name">Hackathon</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Team Event</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Code Cipher</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Individual</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">CLUEDO (Treasure Hunt)</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Team Event</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="event-category">
+            <h2 class="category-title">Indoor Games</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-name">Chess</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Per Participant</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Carroms (Doubles)</div>
+                    <div class="event-price">₹200</div>
+                    <div class="team-size">Per Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Table Tennis (Singles)</div>
+                    <div class="event-price">₹100</div>
+                    <div class="team-size">Per Participant</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="event-category">
+            <h2 class="category-title">Outdoor Games</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-name">Cricket</div>
+                    <div class="event-price">₹1500</div>
+                    <div class="team-size">15 Members per Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Volley Ball</div>
+                    <div class="event-price">₹500</div>
+                    <div class="team-size">10 Members per Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Basket Ball</div>
+                    <div class="event-price">₹1000</div>
+                    <div class="team-size">10 Members per Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Throw Ball</div>
+                    <div class="event-price">₹1200</div>
+                    <div class="team-size">12 Members per Team</div>
+                </div>
+                <div class="event-card">
+                    <div class="event-name">Tennikoi</div>
+                    <div class="event-price">₹200</div>
+                    <div class="team-size">2 Members per Team</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Registration Form -->
+        <div class="registration-form">
+            <h2 class="form-title">Event Registration</h2>
+            
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group">
+                <label for="college">College Name</label>
+                <input type="text" id="college" placeholder="Enter your college name">
+            </div>
+            
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department">
+                    <option value="">Select Department</option>
+                    <option value="CSE">Computer Science & Engineering</option>
+                    <option value="ECE">Electronics & Communication Engineering</option>
+                    <option value="EEE">Electrical & Electronics Engineering</option>
+                    <option value="ME">Mechanical Engineering</option>
+                    <option value="CE">Civil Engineering</option>
+                    <option value="IT">Information Technology</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="year">Year of Study</label>
+                <select id="year">
+                    <option value="">Select Year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Select Events (Max 3 for Department Events)</label>
+                <div style="margin-top: 10px;">
+                    <div><input type="checkbox" id="event1" value="100"> <label for="event1" style="display: inline;">TECH XPLORE (Paper Presentation) - ₹100</label></div>
+                    <div><input type="checkbox" id="event2" value="100"> <label for="event2" style="display: inline;">TECH GALLERY (Poster Presentation) - ₹100</label></div>
+                    <div><input type="checkbox" id="event3" value="100"> <label for="event3" style="display: inline;">TECH CADENCE (Technical Quiz) - ₹100</label></div>
+                    <div><input type="checkbox" id="event4" value="100"> <label for="event4" style="display: inline;">TECH STEW (Project Expo) - ₹100</label></div>
+                    <div><input type="checkbox" id="event5" value="100"> <label for="event5" style="display: inline;">Hackathon - ₹100</label></div>
+                    <div><input type="checkbox" id="event6" value="100"> <label for="event6" style="display: inline;">Code Cipher - ₹100</label></div>
+                    <div><input type="checkbox" id="event7" value="100"> <label for="event7" style="display: inline;">CLUEDO (Treasure Hunt) - ₹100</label></div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" id="calculate-total">Calculate Total</button>
+        </div>
+        
+        <!-- Payment Summary -->
+        <div class="payment-summary">
+            <h2 class="form-title">Payment Summary</h2>
+            <div class="summary-item">
+                <span>Selected Events:</span>
+                <span id="selected-events">None</span>
+            </div>
+            <div class="summary-item">
+                <span>Total Amount:</span>
+                <span id="total-amount">₹0</span>
+            </div>
+            <div class="summary-item summary-total">
+                <span>Amount to Pay:</span>
+                <span id="amount-to-pay">₹0</span>
+            </div>
+            
+            <button class="btn btn-secondary" id="pay-now" style="width: 100%; margin-top: 20px; padding: 15px; font-size: 1.1rem;">
+                Pay Now with Razorpay
+            </button>
+        </div>
+        
+        <!-- Notes Section -->
+        <div class="notes">
+            <div class="note-title">Important Notes:</div>
+            <p>1. Lunch Token is provided for all participants</p>
+            <p>2. No kit for Participants of Sports events</p>
+            <p>3. Minimum 4 teams required for prizes in any event</p>
+            <p>4. 8 or more teams will have two prizes for any event</p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY © 2025</p>
+            <p>For queries contact: events@khit.ac.in | Phone: +91-XXXXXXXXXX</p>
+        </div>
+    </div>
 
-    <label>Student Name:</label>
-    <input type="text" name="name" required><br>
-
-    <label>Branch:</label>
-    <input type="text" name="branch" required><br>
-
-    <label>Select Event:</label>
-    <select name="event" required>
-      <option value="Hackathon">Hackathon</option>
-      <option value="Workshop">Workshop</option>
-    </select><br><br>
-
-    <button type="button" onclick="payNow()">Pay</button>
-  </form>
-
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script>
-    function payNow() {
-      fetch("/create-order", { method: "POST", body: new FormData(document.getElementById("paymentForm")) })
-        .then(res => res.json())
-        .then(data => {
-          var options = {
-            "key": "RAZORPAY_KEY_ID",
-            "amount": data.amount,
-            "currency": "INR",
-            "name": "Event Payment",
-            "description": "Event Registration Fee",
-            "order_id": data.id,
-            "handler": function (response) {
-              fetch("/verify-payment", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  rollno: document.querySelector("[name=rollno]").value,
-                  name: document.querySelector("[name=name]").value,
-                  branch: document.querySelector("[name=branch]").value,
-                  event: document.querySelector("[name=event]").value,
-                  razorpay_payment_id: response.razorpay_payment_id,
-                  razorpay_order_id: response.razorpay_order_id,
-                  razorpay_signature: response.razorpay_signature
-                })
-              });
-              alert("Payment Successful!");
+    <script>
+        // Event data
+        const events = {
+            "TECH XPLORE (Paper Presentation)": 100,
+            "TECH GALLERY (Poster Presentation)": 100,
+            "TECH CADENCE (Technical Quiz)": 100,
+            "TECH STEW (Project Expo)": 100,
+            "Hackathon": 100,
+            "Code Cipher": 100,
+            "CLUEDO (Treasure Hunt)": 100
+        };
+        
+        // Calculate total button
+        document.getElementById('calculate-total').addEventListener('click', function() {
+            let selectedEvents = [];
+            let totalAmount = 0;
+            
+            // Get all checked checkboxes
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            
+            if (checkboxes.length === 0) {
+                alert('Please select at least one event');
+                return;
             }
-          };
-          var rzp = new Razorpay(options);
-          rzp.open();
+            
+            // Check if more than 3 department events selected
+            let deptEvents = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.id >= 'event1' && checkbox.id <= 'event4') {
+                    deptEvents++;
+                }
+            });
+            
+            if (deptEvents > 3) {
+                alert('Maximum 3 Department Events allowed per participant');
+                return;
+            }
+            
+            // Calculate total based on number of department events
+            if (deptEvents === 1) {
+                totalAmount = 100;
+            } else if (deptEvents === 2) {
+                totalAmount = 150;
+            } else if (deptEvents >= 3) {
+                totalAmount = 200;
+            }
+            
+            // Add college level events
+            checkboxes.forEach(checkbox => {
+                if (checkbox.id >= 'event5') {
+                    totalAmount += parseInt(checkbox.value);
+                }
+            });
+            
+            // Update UI
+            document.getElementById('selected-events').textContent = checkboxes.length + ' events selected';
+            document.getElementById('total-amount').textContent = '₹' + totalAmount;
+            document.getElementById('amount-to-pay').textContent = '₹' + totalAmount;
         });
-    }
-  </script>
+        
+        // Razorpay Payment Integration
+        document.getElementById('pay-now').addEventListener('click', function() {
+            const amount = document.getElementById('amount-to-pay').textContent.replace('₹', '');
+            
+            if (amount === '0') {
+                alert('Please calculate total amount first');
+                return;
+            }
+            
+            // Create order on your server (you need backend for this)
+            // For demo, we'll use a test integration
+            
+            const options = {
+                "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
+                "amount": amount * 100, // Amount in paise
+                "currency": "INR",
+                "name": "KHIT Samkalp 2025",
+                "description": "Event Registration Fee",
+                "image": "khitlogo.jpg", // Replace with your logo
+                "handler": function (response){
+                    alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                    // Here you would typically send payment details to your server
+                },
+                "prefill": {
+                    "name": document.getElementById('full-name').value,
+                    "email": document.getElementById('email').value,
+                    "contact": document.getElementById('phone').value
+                },
+                "notes": {
+                    "address": "KHIT, Guntur"
+                },
+                "theme": {
+                    "color": "#1a5276"
+                }
+            };
+            
+            const rzp = new Razorpay(options);
+            rzp.open();
+        });
+        
+        // Form validation
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.style.borderColor = 'red';
+                } else {
+                    this.style.borderColor = '#ddd';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
