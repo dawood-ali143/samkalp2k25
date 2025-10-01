@@ -13,9 +13,8 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                        url('img15.png') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), 
+                        #1a1a2e;
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -29,7 +28,7 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 10px 0;
             border-bottom: 3px solid #D4AF37;
             position: relative;
@@ -39,11 +38,16 @@
         .khit-banner {
             width: 100%;
             height: 120px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('khitbanner.webp') no-repeat center center;
-            background-size: contain;
+            background: linear-gradient(90deg, #0c2461, #1e3799, #0c2461);
             margin-bottom: 10px;
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .header-content {
@@ -59,6 +63,12 @@
             margin-right: 20px;
             border-radius: 50%;
             border: 2px solid #D4AF37;
+            background: linear-gradient(45deg, #0c2461, #1e3799);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-weight: bold;
         }
 
         .main-heading {
@@ -119,6 +129,7 @@
 
         .event-content.active {
             display: block;
+            animation: fadeIn 0.8s ease;
         }
 
         .event-background {
@@ -305,24 +316,32 @@
             to { opacity: 1; }
         }
 
-        .event-content.active {
-            animation: fadeIn 0.8s ease;
+        /* Placeholder image styles */
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="khit-banner"></div>
+            <div class="khit-banner">KHIT SAMKALP 2025</div>
             <div class="header-content">
-                <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
-                <h1 class="main-heading">KHIT Samkalp 2025</h1>
+                <div class="khit-logo">KHIT</div>
+                <h1 class="main-heading">Explore CSE Events</h1>
             </div>
         </div>
     </header>
 
     <div class="container">
-        <h1 class="main-heading">Explore CSE Events</h1>
         <div class="events-nav">
             <div class="event-tab active" data-target="poster">Poster Presentation</div>
             <div class="event-tab" data-target="quiz">Technical Quiz</div>
@@ -333,7 +352,9 @@
         <div class="events-container">
             <!-- Poster Presentation -->
             <div class="event-content active" id="poster">
-                <div class="event-background" style="background-image: url('img11.jpg');"></div>
+                <div class="event-background">
+                    <div class="placeholder-image">Poster Presentation Image</div>
+                </div>
                 <div class="event-overlay">
                     <div class="event-details">
                         <h2 class="event-title">Poster Presentation</h2>
@@ -365,7 +386,9 @@
 
             <!-- Technical Quiz -->
             <div class="event-content" id="quiz">
-                <div class="event-background" style="background-image: url('img12.jpg');"></div>
+                <div class="event-background">
+                    <div class="placeholder-image">Technical Quiz Image</div>
+                </div>
                 <div class="event-overlay">
                     <div class="event-details">
                         <h2 class="event-title">Technical Quiz</h2>
@@ -396,7 +419,9 @@
 
             <!-- Project Expo -->
             <div class="event-content" id="expo">
-                <div class="event-background" style="background-image: url('img13.jpg');"></div>
+                <div class="event-background">
+                    <div class="placeholder-image">Project Expo Image</div>
+                </div>
                 <div class="event-overlay">
                     <div class="event-details">
                         <h2 class="event-title">Project Expo</h2>
@@ -428,7 +453,9 @@
 
             <!-- Paper Presentation -->
             <div class="event-content" id="paper">
-                <div class="event-background" style="background-image: url('img14.png');"></div>
+                <div class="event-background">
+                    <div class="placeholder-image">Paper Presentation Image</div>
+                </div>
                 <div class="event-overlay">
                     <div class="event-details">
                         <h2 class="event-title">Paper Presentation</h2>
