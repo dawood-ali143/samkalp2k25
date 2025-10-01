@@ -43,7 +43,7 @@
     
     .header-banner {
       width: 100%;
-      height: 120px; /* Reduced height for mobile */
+      height: 100px; /* Further reduced height for mobile */
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -61,7 +61,7 @@
     }
     
     .header-banner h1 {
-      font-size: 28px; /* Smaller font for mobile */
+      font-size: 24px; /* Smaller font for mobile */
       font-weight: bold;
       color: gold;
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
@@ -282,24 +282,44 @@
       text-align: center;
       color: white;
       z-index: 5;
-      margin-top: 180px; /* Adjusted for smaller header */
+      margin-top: 160px; /* Adjusted for smaller header */
       padding: 0 15px;
     }
     
-    .cursive-title {
+    /* RAINBOW COLOR HEADING */
+    .rainbow-title {
       font-family: 'Dancing Script', cursive;
       font-size: 4rem; /* Much smaller for mobile */
       font-weight: 700;
       font-style: italic;
       text-align: center;
-      color: #ff4500;
-      animation: flicker 2s infinite;
+      background: linear-gradient(
+        90deg,
+        #ff0000, /* Red */
+        #ff8000, /* Orange */
+        #ffff00, /* Yellow */
+        #00ff00, /* Green */
+        #00ffff, /* Cyan */
+        #0000ff, /* Blue */
+        #8000ff  /* Purple */
+      );
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
       line-height: 1.1;
       margin: 0;
       position: relative;
       width: 100%;
       z-index: 2;
       word-break: break-word;
+    }
+    
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     
     .cursive-subtitle {
@@ -312,11 +332,6 @@
       margin-top: 15px;
       z-index: 2;
       word-break: break-word;
-    }
-    
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
     }
     
     /* Original overlay styles */
@@ -385,7 +400,7 @@
         font-size: 36px;
       }
       
-      .cursive-title {
+      .rainbow-title {
         font-size: 6rem;
       }
       
@@ -425,7 +440,7 @@
         font-size: 42px;
       }
       
-      .cursive-title {
+      .rainbow-title {
         font-size: 8rem;
       }
       
@@ -841,8 +856,8 @@
 
   <!-- HERO - IMPROVED FOR MOBILE -->
   <div class="overlay">
-    <!-- Cursive text section -->
-    <h1 class="cursive-title">SANKALP 2025 KHIT</h1>
+    <!-- Rainbow color heading -->
+    <h1 class="rainbow-title">SANKALP 2025 KHIT</h1>
     <p class="cursive-subtitle">Golden Threads of Innovation</p>
     
     <!-- Original content -->
