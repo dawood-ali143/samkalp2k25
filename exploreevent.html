@@ -40,8 +40,8 @@
       width: 100%;
       height: 120px;
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                  url('khitbanner.webp') no-repeat center center;
-      background-size: cover;  /* ✅ Changed to cover */
+                  url('https://via.placeholder.com/1200x300/1a3a6d/ffffff?text=KHIT+BANNER') no-repeat center center;
+      background-size: cover;
       margin-bottom: 10px;
       border-radius: 8px;
     }
@@ -113,11 +113,11 @@
       display: none;
       position: relative;
       width: 100%;
-      min-height: 70vh;   /* ✅ Ensure visible area */
+      min-height: 70vh;
     }
 
     .event-content.active {
-      display: block;
+      display: flex;
       animation: fadeIn 0.8s ease;
     }
 
@@ -155,6 +155,32 @@
       padding: 40px;
       z-index: 3;
       position: relative;
+    }
+
+    .event-image {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40%;
+      max-width: 500px;
+      height: 70%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 3;
+      border: 3px solid #D4AF37;
+    }
+
+    .event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .event-image:hover img {
+      transform: scale(1.05);
     }
 
     .event-title {
@@ -235,6 +261,10 @@
       .event-title {
         font-size: 2.5rem;
       }
+      .event-image {
+        width: 35%;
+        right: 20px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -250,7 +280,7 @@
         font-size: 1.8rem;
       }
       .event-details {
-        max-width: 90%;
+        max-width: 100%;
         padding: 20px;
       }
       .event-title {
@@ -267,6 +297,15 @@
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
         align-items: flex-start;
         padding-top: 30px;
+      }
+      .event-image {
+        position: relative;
+        width: 80%;
+        height: 300px;
+        margin: 20px auto;
+        right: auto;
+        top: auto;
+        transform: none;
       }
     }
 
@@ -299,7 +338,7 @@
     <div class="container">
       <div class="khit-banner"></div>
       <div class="header-content">
-        <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
+        <img src="https://via.placeholder.com/80/1a3a6d/ffffff?text=KHIT" alt="KHIT Logo" class="khit-logo">
         <h1 class="main-heading">KHIT Samkalp 2025</h1>
       </div>
     </div>
@@ -317,7 +356,7 @@
     <div class="events-container">
       <!-- Poster Presentation -->
       <div class="event-content active" id="poster">
-        <div class="event-background" style="background-image: url('img11.jpg');"></div>
+        <div class="event-background" style="background-image: url('https://via.placeholder.com/1400x800/1a3a6d/ffffff?text=Poster+Presentation+Background');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Poster Presentation</h2>
@@ -333,12 +372,15 @@
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
           </div>
+          <div class="event-image">
+            <img src="https://via.placeholder.com/500x400/1a3a6d/ffffff?text=Poster+Presentation" alt="Poster Presentation">
+          </div>
         </div>
       </div>
 
       <!-- Technical Quiz -->
       <div class="event-content" id="quiz">
-        <div class="event-background" style="background-image: url('img12.jpg');"></div>
+        <div class="event-background" style="background-image: url('https://via.placeholder.com/1400x800/1a3a6d/ffffff?text=Technical+Quiz+Background');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Technical Quiz</h2>
@@ -350,15 +392,19 @@
             </div>
             <p class="event-description">
               Test your technical knowledge and problem-solving skills in this exciting quiz competition.
+              Compete with the brightest minds and win exciting prizes.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
+          </div>
+          <div class="event-image">
+            <img src="https://via.placeholder.com/500x400/1a3a6d/ffffff?text=Technical+Quiz" alt="Technical Quiz">
           </div>
         </div>
       </div>
 
       <!-- Project Expo -->
       <div class="event-content" id="expo">
-        <div class="event-background" style="background-image: url('img13.jpg');"></div>
+        <div class="event-background" style="background-image: url('https://via.placeholder.com/1400x800/1a3a6d/ffffff?text=Project+Expo+Background');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Project Expo</h2>
@@ -370,15 +416,19 @@
             </div>
             <p class="event-description">
               Display your innovative projects and prototypes at our grand Project Expo.
+              Get feedback from industry experts and showcase your technical prowess.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
+          </div>
+          <div class="event-image">
+            <img src="https://via.placeholder.com/500x400/1a3a6d/ffffff?text=Project+Expo" alt="Project Expo">
           </div>
         </div>
       </div>
 
       <!-- Paper Presentation -->
       <div class="event-content" id="paper">
-        <div class="event-background" style="background-image: url('img14.png');"></div>
+        <div class="event-background" style="background-image: url('https://via.placeholder.com/1400x800/1a3a6d/ffffff?text=Paper+Presentation+Background');"></div>
         <div class="event-overlay">
           <div class="event-details">
             <h2 class="event-title">Paper Presentation</h2>
@@ -390,8 +440,12 @@
             </div>
             <p class="event-description">
               Present your research papers and findings to an audience of peers and experts.
+              Share your knowledge and contribute to the advancement of computer science.
             </p>
             <a href="register.html" class="register-btn">Register Now</a>
+          </div>
+          <div class="event-image">
+            <img src="https://via.placeholder.com/500x400/1a3a6d/ffffff?text=Paper+Presentation" alt="Paper Presentation">
           </div>
         </div>
       </div>
