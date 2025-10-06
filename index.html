@@ -142,12 +142,26 @@
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
     
-    .gold-title {
+    /* RAINBOW GLOWING TITLE STYLES */
+    .rainbow-glow-title {
       font-size: 18px; /* Smaller title for mobile */
       font-weight: bold;
-      color: gold;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      background: linear-gradient(90deg, 
+        #ff0000, #ff8000, #ffff00, #00ff00, 
+        #00ffff, #0000ff, #8000ff, #ff00ff);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
       margin: 0;
+    }
+    
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     
     /* NAVIGATION STYLES - IMPROVED FOR MOBILE */
@@ -449,6 +463,10 @@
         font-size: 36px;
       }
       
+      .rainbow-glow-title {
+        font-size: 22px;
+      }
+      
       .cursive-subtitle {
         font-size: 2.5rem;
       }
@@ -485,7 +503,9 @@
         font-size: 42px;
       }
       
-      
+      .rainbow-glow-title {
+        font-size: 24px;
+      }
       
       .cursive-subtitle {
         font-size: 3.5rem;
@@ -880,9 +900,9 @@
       <div class="header-content">
         <div class="logo-title">
           <img src="khitlogo.jpg" alt="KHIT Logo">
-          <span class="gold-title">KHIT SAMKALP 2025</span>
+          <span class="rainbow-glow-title">KHIT SAMKALP 2025</span>
           <br>
-          <span class="gold-title"> website Presented by 3rd year cse KHIT</span>
+          <span class="rainbow-glow-title">website Presented by 3rd year cse KHIT</span>
         </div>
         
         <!-- Centered Navigation Area -->
