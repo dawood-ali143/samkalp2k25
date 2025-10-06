@@ -330,34 +330,33 @@
       margin-top: 160px; /* Adjusted for smaller header */
       padding: 0 15px;
     }
-    
-    /* RAINBOW COLOR HEADING */
-    .rainbow-title {
-      font-family: cursive;
-      font-size: 4rem; /* Much smaller for mobile */
-      font-weight: 700;
-      font-style: bold;
-      text-align: center;
-    
-      );
-      background-size: 400% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbow 5s linear infinite;
-      line-height: 1.1;
-      margin: 0;
-      position: relative;
-      width: 100%;
-      z-index: 2;
-      word-break: break-word;
-    }
-    
-    @keyframes rainbow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+       .rainbow-title {
+  font-family: cursive;
+  font-size: 5rem; /* Increased from 4rem for mobile */
+  font-weight: 700;
+  font-style: bold;
+  text-align: center;
+  background: linear-gradient(90deg, 
+    #ff0000, #ff8000, #ffff00, #00ff00, 
+    #00ffff, #0000ff, #8000ff, #ff00ff);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 5s linear infinite;
+  line-height: 1.1;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  word-break: break-word;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
     
     .cursive-subtitle {
       font-family: 'Dancing Script', cursive;
@@ -425,6 +424,19 @@
     .about-section, .events-section, .info-section {
       padding: 60px 20px;
     }
+       @media (min-width: 768px) {
+  /* Tablet styles */
+        .rainbow-title {
+        font-size: 7rem; /* Increased from 6rem */
+         }
+      }
+
+@media (min-width: 1024px) {
+  /* Desktop styles */
+  .rainbow-title {
+    font-size: 9rem; /* Increased from 8rem */
+  }
+}
     
     /* RESPONSIVE DESIGN IMPROVEMENTS */
     @media (min-width: 768px) {
@@ -435,10 +447,6 @@
       
       .header-banner h1 {
         font-size: 36px;
-      }
-      
-      .rainbow-title {
-        font-size: 6rem;
       }
       
       .cursive-subtitle {
@@ -477,9 +485,7 @@
         font-size: 42px;
       }
       
-      .rainbow-title {
-        font-size: 8rem;
-      }
+      
       
       .cursive-subtitle {
         font-size: 3.5rem;
