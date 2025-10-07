@@ -14,18 +14,16 @@
     }
     /* MAIN WEBSITE STYLES */
     .website-content {
-      display: none;
+      display: block;
     }
     
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      background: url('img26.jpg') no-repeat center center fixed;
-      background-size: cover;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
+   body {
+  background: url('img26.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
     canvas {
       position: fixed;
       top: 0;
@@ -152,17 +150,12 @@
       background: rgba(0, 0, 0, 0.85);
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     }
-    
     .header-banner {
-      width: 100%;
-      height: 120px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    
+  height: auto; /* Change from fixed height */
+  min-height: 80px; /* Add minimum height */
+  max-height: 150px; /* Add maximum height */
+}
+
     .banner-image {
       width: 100%;
       height: 100%;
@@ -968,18 +961,17 @@
   </style>
 </head>
 <body>
-<!-- FULL SCREEN IMAGE SECTION -->
+
 <section class="fullscreen-image-section">
-  <img src="your-image.jpg" alt="Event Background" class="fullscreen-image" />
+  <img src="img20.png" alt="Sankalp 2025" class="fullscreen-image">
   <div class="image-overlay">
-    <div class="overlay-content">
-      <h1 class="image-title">Samkalp 2K25</h1>
-      <p class="image-subtitle">Scroll Down</p>
-      <span class="scroll-down-arrow">↓</span>
-    </div>
+    <p class="image-subtitle">
+      <span style="display: block; text-align: center;">
+        Scroll Down<br>↓
+      </span>
+    </p>
   </div>
 </section>
-
   <div class="website-content">
     <canvas id="bg"></canvas>
 
