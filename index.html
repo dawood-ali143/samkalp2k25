@@ -36,14 +36,6 @@
     }
 
 /* FULL SCREEN IMAGE SECTION - FIXED */
-.fullscreen-image-section {
-  position: relative;
-  width: 100%;
-  min-height: 100vh; /* allows it to grow if needed */
-  margin: 0;
-  padding: 0;
-  overflow: visible; /* allow scrolling */
-}
 
 /* BACKGROUND IMAGE */
 .fullscreen-image {
@@ -958,6 +950,14 @@
     .footer-section a:hover {
       color: #ff00ff;
     }
+    .fullscreen-image-section {
+  min-height: 100svh;  /* fixes mobile safe area issue */
+  min-height: 100vh;   /* fallback */
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
 
     .copyright {
       margin-top: 40px;
