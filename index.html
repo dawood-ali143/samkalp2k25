@@ -36,21 +36,37 @@
     }
 
     
-    .image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
+   /* FULL SCREEN IMAGE SECTION - FIXED */
+.fullscreen-image-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
 
+.fullscreen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+    
     .image-title {
       font-size: 5rem;
       font-weight: bold;
@@ -886,14 +902,6 @@
       text-decoration: none;
       transition: color 0.3s;
     }
-    .fullscreen-image-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  z-index: 1; /* ADD THIS */
-   }
-
 .website-content {
   display: block;
   position: relative;
