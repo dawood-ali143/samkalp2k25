@@ -896,6 +896,76 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: #aaa;
     }
+    /* FULL SCREEN IMAGE SECTION */
+.fullscreen-image-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.fullscreen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.image-title {
+  font-size: 5rem;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  margin-bottom: 20px;
+  animation: glow 2s infinite alternate;
+}
+
+.image-subtitle {
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 0 0 10px magenta;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
+  to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
+}
+
+/* RESPONSIVE STYLES FOR FULLSCREEN IMAGE */
+@media (max-width: 768px) {
+  .image-title {
+    font-size: 3rem;
+  }
+  .image-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-title {
+    font-size: 2.5rem;
+  }
+  .image-subtitle {
+    font-size: 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -949,6 +1019,22 @@
         <div class="header-spacer"></div>
       </div>
     </header>
+    <!-- FULL SCREEN IMAGE SECTION -->
+<div class="fullscreen-image-section">
+  <img src="img20.png" alt="Sankalp 2025" class="fullscreen-image">
+  <div class="image-overlay">
+    <h1 class="image-title">SANKALP 2025</h1>
+    <p class="image-subtitle">Golden Threads of Innovation</p>
+  </div>
+</div>
+
+<!-- MAIN WEBSITE CONTENT - HIDDEN INITIALLY -->
+<div class="website-content">
+  <canvas id="bg"></canvas>
+
+  <!-- HEADER - IMPROVED FOR ALL DEVICES -->
+  <header>
+    <!-- Rest of your header code remains the same -->
 
     <!-- HERO - IMPROVED FOR ALL DEVICES -->
     <div class="hero-section">
@@ -965,10 +1051,6 @@
         </div>
       </div>
     </div>
-        <div style =" display:inline;">
-          <img src="img20.png">
-        </div>
-
     <!-- ABOUT SECTION -->
     <section class="about-section">
       <div class="about-container">
