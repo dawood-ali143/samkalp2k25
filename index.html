@@ -53,7 +53,7 @@
       transform: scale(1.05);
     }
     
-    /* MAIN WEBSITE STYLES - HIDDEN INITIALLY */
+    /* MAIN WEBSITE STYLES */
     .website-content {
       display: none;
     }
@@ -74,6 +74,77 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+    }
+
+    /* FULL SCREEN IMAGE SECTION */
+    .fullscreen-image-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .fullscreen-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .image-title {
+      font-size: 5rem;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      margin-bottom: 20px;
+      animation: glow 2s infinite alternate;
+    }
+
+    .image-subtitle {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 0 10px magenta;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
+      to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
+    }
+
+    /* RESPONSIVE STYLES FOR FULLSCREEN IMAGE */
+    @media (max-width: 768px) {
+      .image-title {
+        font-size: 3rem;
+      }
+      .image-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-title {
+        font-size: 2.5rem;
+      }
+      .image-subtitle {
+        font-size: 1rem;
+      }
     }
 
     /* HEADER STYLES - IMPROVED FOR ALL DEVICES */
@@ -340,11 +411,9 @@
       color: white;
       z-index: 5;
       padding: 0 15px;
-      background-size: cover;
     }
     
     .hero-overlay {
-      background: rgba(0, 0, 0, 0.5);
       width: 100%;
       height: 100%;
       display: flex;
@@ -376,12 +445,6 @@
       word-break: break-word;
     }
     
-    @keyframes rainbow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
     /* Original overlay styles */
     .hero-section h1 {
       font-size: 36px;
@@ -389,11 +452,6 @@
       color: gold;
       text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange;
       animation: glow 2s infinite alternate;
-    }
-    
-    @keyframes glow {
-      from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
-      to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
     }
     
     .hero-section p {
@@ -896,76 +954,6 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: #aaa;
     }
-    /* FULL SCREEN IMAGE SECTION */
-.fullscreen-image-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.fullscreen-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-}
-
-.image-title {
-  font-size: 5rem;
-  font-weight: bold;
-  color: gold;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-  margin-bottom: 20px;
-  animation: glow 2s infinite alternate;
-}
-
-.image-subtitle {
-  font-size: 1.5rem;
-  color: white;
-  text-shadow: 0 0 10px magenta;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
-  to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
-}
-
-/* RESPONSIVE STYLES FOR FULLSCREEN IMAGE */
-@media (max-width: 768px) {
-  .image-title {
-    font-size: 3rem;
-  }
-  .image-subtitle {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .image-title {
-    font-size: 2.5rem;
-  }
-  .image-subtitle {
-    font-size: 1rem;
-  }
-}
   </style>
 </head>
 <body>
@@ -978,7 +966,16 @@
     <button class="skip-button" id="skip-video">Skip Video</button>
   </div>
 
-  <!-- MAIN WEBSITE CONTENT - HIDDEN INITIALLY -->
+  <!-- FULL SCREEN IMAGE SECTION -->
+  <div class="fullscreen-image-section">
+    <img src="img20.png" alt="Sankalp 2025" class="fullscreen-image">
+    <div class="image-overlay">
+      <h1 class="image-title">SANKALP 2025</h1>
+      <p class="image-subtitle">Golden Threads of Innovation</p>
+    </div>
+  </div>
+
+  <!-- MAIN WEBSITE CONTENT -->
   <div class="website-content">
     <canvas id="bg"></canvas>
 
@@ -1019,22 +1016,6 @@
         <div class="header-spacer"></div>
       </div>
     </header>
-    <!-- FULL SCREEN IMAGE SECTION -->
-<div class="fullscreen-image-section">
-  <img src="img20.png" alt="Sankalp 2025" class="fullscreen-image">
-  <div class="image-overlay">
-    <h1 class="image-title">SANKALP 2025</h1>
-    <p class="image-subtitle">Golden Threads of Innovation</p>
-  </div>
-</div>
-
-<!-- MAIN WEBSITE CONTENT - HIDDEN INITIALLY -->
-<div class="website-content">
-  <canvas id="bg"></canvas>
-
-  <!-- HEADER - IMPROVED FOR ALL DEVICES -->
-  <header>
-    <!-- Rest of your header code remains the same -->
 
     <!-- HERO - IMPROVED FOR ALL DEVICES -->
     <div class="hero-section">
@@ -1051,6 +1032,7 @@
         </div>
       </div>
     </div>
+
     <!-- ABOUT SECTION -->
     <section class="about-section">
       <div class="about-container">
