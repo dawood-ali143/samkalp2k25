@@ -78,8 +78,6 @@
 
     /* HEADER STYLES - IMPROVED FOR ALL DEVICES */
     header {
-      position: fixed;
-      top: 0;
       width: 100%;
       z-index: 100;
       background: rgba(0, 0, 0, 0.85);
@@ -88,7 +86,7 @@
     
     .header-banner {
       width: 100%;
-      height: 60px;
+      height: 120px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -106,7 +104,7 @@
     }
     
     .header-banner h1 {
-      font-size: 20px;
+      font-size: 28px;
       font-weight: bold;
       color: gold;
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
@@ -122,7 +120,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 15px;
+      padding: 15px 20px;
       background: rgba(0, 0, 0, 0.9);
       flex-wrap: wrap;
     }
@@ -132,19 +130,19 @@
       align-items: center;
       width: auto;
       flex: 1;
-      min-width: 180px;
+      min-width: 200px;
     }
     
     .logo-title img {
-      height: 35px;
-      margin-right: 10px;
+      height: 50px;
+      margin-right: 15px;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
     
     /* RAINBOW GLOWING TITLE STYLES */
     .rainbow-glow-title {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       background: linear-gradient(90deg, 
         #ff0000, #ff8000, #ffff00, #00ff00, 
@@ -168,18 +166,18 @@
     .nav-center {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
       flex: 2;
       justify-content: center;
-      margin: 0 5px;
+      margin: 0 10px;
       flex-wrap: wrap;
     }
     
     .search-and-dropdown {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
+      gap: 15px;
+      padding: 10px 15px;
       border: none;
       border-radius: 20px;
       background: linear-gradient(90deg, #00ffe5, #ff00ff);
@@ -190,7 +188,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
       width: 100%;
-      max-width: 350px;
+      max-width: 500px;
       justify-content: space-between;
     }
     
@@ -199,12 +197,12 @@
       display: flex;
       align-items: center;
       width: 100%;
-      max-width: 200px;
+      max-width: 300px;
       border-radius: 2px;
     }
     
     .search-bar input {
-      padding: 8px 12px;
+      padding: 10px 15px;
       border: none;
       border-radius: 20px 0 0 20px;
       background: rgba(255, 255, 255, 0.9);
@@ -216,7 +214,7 @@
     }
     
     .search-bar button {
-      padding: 8px 15px;
+      padding: 10px 18px;
       border: none;
       border-radius: 0 20px 20px 0;
       background: linear-gradient(90deg, #00ffe5, #ff00ff);
@@ -235,7 +233,7 @@
     
     /* Make search icon bigger */
     .search-bar button i {
-      font-size: 14px;
+      font-size: 16px;
     }
     
     /* DROPDOWN STYLES - IMPROVED FOR ALL DEVICES */
@@ -247,7 +245,7 @@
     .dropbtn {
       background: linear-gradient(90deg, #00ffe5, #ff00ff);
       color: white;
-      padding: 8px 22px 8px 12px;
+      padding: 10px 25px 10px 15px;
       border: none;
       border-radius: 20px;
       cursor: pointer;
@@ -262,7 +260,7 @@
     .dropbtn::after {
       content: "▼";
       position: absolute;
-      right: 10px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 10px;
@@ -277,7 +275,7 @@
       display: none;
       position: absolute;
       background: rgba(0, 0, 0, 0.95);
-      min-width: 160px;
+      min-width: 180px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
       z-index: 1;
       border-radius: 10px;
@@ -290,7 +288,7 @@
     
     .dropdown-content a {
       color: white;
-      padding: 10px 12px;
+      padding: 12px 15px;
       text-decoration: none;
       display: block;
       transition: 0.3s;
@@ -306,7 +304,7 @@
     .dropdown-content a:hover {
       background: linear-gradient(90deg, #00ffe5, #ff00ff);
       color: black;
-      padding-left: 18px;
+      padding-left: 20px;
     }
     
     .dropdown.active .dropdown-content {
@@ -331,7 +329,7 @@
     }
     
     /* HERO SECTION - IMPROVED FOR ALL DEVICES */
-    .overlay {
+    .hero-section {
       position: relative;
       height: 100vh;
       display: flex;
@@ -341,22 +339,25 @@
       text-align: center;
       color: white;
       z-index: 5;
-      margin-top: 140px;
       padding: 0 15px;
+      background: url('img20.png') no-repeat center center;
+      background-size: cover;
     }
     
-    .overlay-image {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 20px;
-      border-radius: 50%;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
-      object-fit: cover;
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
     
     .rainbow-title {
       font-family: cursive;
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 700;
       font-style: bold;
       text-align: center;
@@ -383,8 +384,8 @@
     }
     
     /* Original overlay styles */
-    .overlay h1 {
-      font-size: 32px;
+    .hero-section h1 {
+      font-size: 36px;
       margin: 10px 0;
       color: gold;
       text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange;
@@ -396,8 +397,8 @@
       to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
     }
     
-    .overlay p {
-      font-size: 16px;
+    .hero-section p {
+      font-size: 18px;
       margin: 15px 0;
       text-shadow: 0 0 10px magenta;
       z-index: 2;
@@ -415,10 +416,10 @@
     
     .buttons button {
       margin: 10px;
-      padding: 12px 20px;
+      padding: 15px 25px;
       border: none;
       border-radius: 25px;
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
       color: white;
       background: linear-gradient(90deg, #00ffe5, #ff00ff);
@@ -441,87 +442,7 @@
     @media (min-width: 576px) {
       /* Small devices */
       .header-banner {
-        height: 80px;
-      }
-      
-      .header-banner h1 {
-        font-size: 24px;
-      }
-      
-      .rainbow-glow-title {
-        font-size: 18px;
-      }
-      
-      .rainbow-title {
-        font-size: 4.5rem;
-      }
-      
-      .overlay {
-        margin-top: 160px;
-      }
-      
-      .header-content {
-        padding: 12px 20px;
-      }
-      
-      .nav-center {
-        gap: 15px;
-        margin: 0 10px;
-      }
-      
-      .search-and-dropdown {
-        max-width: 400px;
-      }
-      
-      .search-bar {
-        max-width: 250px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      /* Tablet styles */
-      .header-banner {
-        height: 100px;
-      }
-      
-      .header-banner h1 {
-        font-size: 28px;
-      }
-      
-      .rainbow-glow-title {
-        font-size: 20px;
-      }
-      
-      .rainbow-title {
-        font-size: 5.5rem;
-      }
-      
-      .overlay {
-        margin-top: 180px;
-      }
-      
-      .header-content {
-        padding: 15px 30px;
-      }
-      
-      .nav-center {
-        gap: 20px;
-        margin: 0 20px;
-      }
-      
-      .search-and-dropdown {
-        max-width: 500px;
-      }
-      
-      .search-bar {
-        max-width: 300px;
-      }
-    }
-    
-    @media (min-width: 992px) {
-      /* Desktop styles */
-      .header-banner {
-        height: 120px;
+        height: 140px;
       }
       
       .header-banner h1 {
@@ -529,15 +450,83 @@
       }
       
       .rainbow-glow-title {
+        font-size: 20px;
+      }
+      
+      .rainbow-title {
+        font-size: 5rem;
+      }
+      
+      .header-content {
+        padding: 15px 25px;
+      }
+      
+      .nav-center {
+        gap: 20px;
+        margin: 0 15px;
+      }
+      
+      .search-and-dropdown {
+        max-width: 550px;
+      }
+      
+      .search-bar {
+        max-width: 350px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      /* Tablet styles */
+      .header-banner {
+        height: 160px;
+      }
+      
+      .header-banner h1 {
+        font-size: 36px;
+      }
+      
+      .rainbow-glow-title {
         font-size: 22px;
       }
       
       .rainbow-title {
-        font-size: 6.5rem;
+        font-size: 6rem;
       }
       
-      .overlay {
-        margin-top: 200px;
+      .header-content {
+        padding: 15px 30px;
+      }
+      
+      .nav-center {
+        gap: 25px;
+        margin: 0 20px;
+      }
+      
+      .search-and-dropdown {
+        max-width: 600px;
+      }
+      
+      .search-bar {
+        max-width: 400px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      /* Desktop styles */
+      .header-banner {
+        height: 180px;
+      }
+      
+      .header-banner h1 {
+        font-size: 42px;
+      }
+      
+      .rainbow-glow-title {
+        font-size: 24px;
+      }
+      
+      .rainbow-title {
+        font-size: 7rem;
       }
       
       .header-content {
@@ -545,7 +534,7 @@
       }
       
       .nav-center {
-        gap: 25px;
+        gap: 30px;
         margin: 0 40px;
       }
       
@@ -563,7 +552,7 @@
     @media (min-width: 1200px) {
       /* Large desktop styles */
       .rainbow-title {
-        font-size: 7.5rem;
+        font-size: 8rem;
       }
     }
     
@@ -963,19 +952,18 @@
     </header>
 
     <!-- HERO - IMPROVED FOR ALL DEVICES -->
-    <div class="overlay">
-      <!-- Added image before the heading -->
-      <img src="img20.png" alt="Sankalp 2025" class="overlay-image">
-      
-      <!-- Rainbow color heading -->
-      <h1 class="rainbow-title">SANKALP 2025 KHIT</h1>
-      <p class="rainbow-glow-title">Golden Threads of Innovation</p>
-      
-      <!-- Original content -->
-      <p style="font-size:24px">Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
-      <div class="buttons">
-        <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
-        <button id="registerBtn" onclick="window.location.href='registernow.html'">REGISTER NOW</button>
+    <div class="hero-section">
+      <div class="hero-overlay">
+        <!-- Rainbow color heading -->
+        <h1 class="rainbow-title">SANKALP 2025 KHIT</h1>
+        <p class="rainbow-glow-title">Golden Threads of Innovation</p>
+        
+        <!-- Original content -->
+        <p style="font-size:28px">Nov 15-18, 2025<br>Innovation, Culture & Technology Confluence</p>
+        <div class="buttons">
+          <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
+          <button id="registerBtn" onclick="window.location.href='registernow.html'">REGISTER NOW</button>
+        </div>
       </div>
     </div>
 
