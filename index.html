@@ -12,47 +12,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
-    /* VIDEO INTRO STYLES */
-    #video-intro {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    #intro-video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    
-    .skip-button {
-      position: absolute;
-      bottom: 30px;
-      right: 30px;
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      border: 2px solid gold;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 1001;
-      transition: all 0.3s ease;
-    }
-    
-    .skip-button:hover {
-      background: rgba(255, 215, 0, 0.3);
-      transform: scale(1.05);
-    }
-    
     /* MAIN WEBSITE STYLES */
     .website-content {
       display: none;
@@ -957,14 +916,6 @@
   </style>
 </head>
 <body>
-  <!-- VIDEO INTRO SECTION -->
-  <div id="video-intro">
-    <video id="intro-video" autoplay muted>
-      <source src="video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <button class="skip-button" id="skip-video">Skip Video</button>
-  </div>
 <div class="fullscreen-image-section">
     <img src="img20.png" alt="Sankalp 2025" class="fullscreen-image">
     <div class="image-overlay">
