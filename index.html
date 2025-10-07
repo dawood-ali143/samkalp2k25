@@ -35,23 +35,7 @@
       z-index: -1;
     }
 
-    /* FULL SCREEN IMAGE SECTION */
-    .fullscreen-image-section {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .fullscreen-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
+    
     .image-overlay {
       position: absolute;
       top: 0;
@@ -902,6 +886,19 @@
       text-decoration: none;
       transition: color 0.3s;
     }
+    .fullscreen-image-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1; /* ADD THIS */
+   }
+
+.website-content {
+  display: block;
+  position: relative;
+  z-index: 2; /* ADD THIS */
+   }
 
     .footer-section a:hover {
       color: #ff00ff;
@@ -1123,26 +1120,9 @@
   </div>
 
   <script>
-    // Video intro functionality
-    const videoIntro = document.getElementById('video-intro');
-    const introVideo = document.getElementById('intro-video');
-    const skipButton = document.getElementById('skip-video');
-    const websiteContent = document.querySelector('.website-content');
-
-    // Function to show website and hide video
-    function showWebsite() {
-      videoIntro.style.display = 'none';
-      websiteContent.style.display = 'block';
-      // Start the particle animation
-      initParticleAnimation();
-    }
-
-    // When video ends, show website
-    introVideo.addEventListener('ended', showWebsite);
-
-    // Skip button functionality
-    skipButton.addEventListener('click', showWebsite);
-
+document.addEventListener('DOMContentLoaded', function() {
+  initParticleAnimation();
+});
     // Particle Animation
     function initParticleAnimation() {
       const canvas = document.getElementById('bg');
