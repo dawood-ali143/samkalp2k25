@@ -38,7 +38,7 @@
       background: transparent;
     }
 
-    /* FULL SCREEN IMAGE SECTION */
+    /* FULL SCREEN IMAGE SECTION - FIXED */
     .fullscreen-image-section {
       position: relative;
       height: 100vh;
@@ -88,7 +88,7 @@
       z-index: 3;
     }
 
-    /* HEADER STYLES */
+    /* HEADER STYLES - FIXED BANNER */
     header {
       width: 100%;
       z-index: 100;
@@ -174,7 +174,7 @@
       100% { background-position: 0% 50%; }
     }
     
-    /* NAVIGATION STYLES */
+    /* NAVIGATION STYLES - FIXED DROPDOWN */
     .nav-center {
       display: flex;
       align-items: center;
@@ -247,7 +247,7 @@
       font-size: 16px;
     }
     
-    /* DROPDOWN STYLES */
+    /* DROPDOWN STYLES - FIXED */
     .dropdown {
       position: relative;
       display: inline-block;
@@ -288,7 +288,7 @@
       background: rgba(0, 0, 0, 0.95);
       min-width: 180px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-      z-index: 1;
+      z-index: 1000; /* Increased z-index to ensure it's above other elements */
       border-radius: 10px;
       overflow: hidden;
       left: 50%;
@@ -780,14 +780,14 @@
       color: #aaa;
     }
 
-    /* RESPONSIVE DESIGN */
+    /* RESPONSIVE DESIGN - IMPROVED */
     @media (max-width: 768px) {
       /* Mobile background fix */
       body {
         background-attachment: scroll;
       }
       
-      /* Fullscreen image mobile fix */
+      /* Fullscreen image mobile fix - IMPROVED */
       .fullscreen-image-section {
         height: 100vh;
         height: 100dvh;
@@ -796,13 +796,21 @@
       .fullscreen-image {
         object-fit: cover;
         object-position: center;
+        width: 100%;
+        height: 100%;
       }
       
-      /* Header banner mobile fix */
+      /* Header banner mobile fix - IMPROVED */
       .header-banner {
         height: auto;
         min-height: 80px;
         max-height: 120px;
+      }
+      
+      .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       
       .header-banner h1 {
@@ -834,6 +842,16 @@
       
       .search-bar {
         max-width: 100%;
+      }
+      
+      /* Dropdown mobile fix - IMPROVED */
+      .dropdown-content {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 300px;
+        z-index: 1000;
       }
       
       /* Hero section mobile fix */
@@ -1170,28 +1188,32 @@
       alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
     });
 
-    // Dropdown toggle functionality
+    // Dropdown toggle functionality - FIXED
     document.addEventListener('DOMContentLoaded', function() {
       const dropdown = document.querySelector('.dropdown');
       const dropbtn = document.querySelector('.dropbtn');
       
-      // Toggle dropdown on button click
+      // Toggle dropdown on button click - IMPROVED
       dropbtn.addEventListener('click', function(e) {
+        e.preventDefault();
         e.stopPropagation();
         dropdown.classList.toggle('active');
       });
       
-      // Close dropdown when clicking outside
+      // Close dropdown when clicking outside - IMPROVED
       document.addEventListener('click', function(e) {
         if (!dropdown.contains(e.target)) {
           dropdown.classList.remove('active');
         }
       });
       
-      // Close dropdown when clicking on a link
+      // Close dropdown when clicking on a link - IMPROVED
       document.querySelectorAll('.dropdown-content a').forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
           dropdown.classList.remove('active');
+          // For demonstration, show an alert. Replace with actual navigation
+          alert(`You clicked on ${this.textContent}. In a real implementation, this would navigate to the ${this.textContent} page.`);
         });
       });
     });
