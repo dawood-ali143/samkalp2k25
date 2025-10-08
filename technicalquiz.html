@@ -5,20 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SAMKALP 2025 - Technical Quiz</title>
   <style>
-       body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  background: url('img15.png') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+    /* Base Setup */
     * {
       margin: 0;
       padding: 0;
@@ -27,23 +14,26 @@
     }
 
     body {
-      background-color: #f5f7fa;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background: url('img15.png') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
       line-height: 1.6;
     }
 
     header {
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.9);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(8px);
     }
 
     /* Banner Section */
     .banner {
       width: 100%;
-      height: auto;
       background-color: #003366;
       display: flex;
       align-items: center;
@@ -58,7 +48,7 @@
       object-fit: contain;
     }
 
-    /* Navigation & Title */
+    /* Navigation */
     .nav-container {
       display: flex;
       flex-wrap: wrap;
@@ -85,7 +75,6 @@
       font-size: 1.8rem;
       color: #003366;
       font-weight: bold;
-      text-align: center;
     }
 
     .nav-links {
@@ -106,20 +95,26 @@
       color: #003366;
     }
 
-    /* Hero Section */
+    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 20px;
     }
 
+    /* HERO SECTION (White Card) */
     .hero {
+      background-color: white;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      margin: 40px 0;
       align-items: center;
       justify-content: center;
+      gap: 30px;
     }
 
     .hero-content {
@@ -128,14 +123,15 @@
     }
 
     .hero-content h2 {
-      font-size: 2.2rem;
       color: #003366;
+      font-size: 2.2rem;
       margin-bottom: 20px;
     }
 
     .hero-content p {
       margin-bottom: 20px;
       font-size: 1.1rem;
+      color: #333;
     }
 
     .btn {
@@ -169,8 +165,12 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* Features */
+    /* FEATURES SECTION */
     .features {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
       margin: 60px 0;
     }
 
@@ -188,10 +188,10 @@
     }
 
     .feature-card {
-      background-color: white;
+      background-color: #f8f9fb;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s;
     }
 
@@ -205,13 +205,14 @@
       font-size: 1.3rem;
     }
 
-    /* Rules Section */
+    /* RULES SECTION */
     .rules {
       background-color: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
       margin: 60px 0;
+      color: #333;
     }
 
     .rules h2 {
@@ -229,14 +230,15 @@
       margin-bottom: 10px;
     }
 
-    /* CTA Section */
+    /* CTA SECTION */
     .cta-section {
       text-align: center;
       padding: 60px 20px;
       background-color: #003366;
       color: white;
-      border-radius: 10px;
+      border-radius: 15px;
       margin: 60px 0;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
     }
 
     .cta-section h2 {
@@ -326,6 +328,7 @@
   </header>
 
   <main class="container">
+    <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-content">
         <h2>Technical Quiz Competition</h2>
@@ -338,6 +341,7 @@
       </div>
     </section>
 
+    <!-- FEATURES -->
     <section class="features" id="about">
       <h2 class="section-title">Why Participate?</h2>
       <div class="features-grid">
@@ -356,6 +360,7 @@
       </div>
     </section>
 
+    <!-- RULES -->
     <section class="rules" id="rules">
       <h2>Quiz Rules & Guidelines</h2>
       <ul>
@@ -369,6 +374,7 @@
       <p>For any queries regarding the rules or registration process, please contact the event coordinators.</p>
     </section>
 
+    <!-- CTA -->
     <section class="cta-section">
       <h2>Ready to Test Your Technical Skills?</h2>
       <p>Join our Technical Quiz Competition and showcase your knowledge. Limited seats available, so register now to secure your spot!</p>
@@ -376,6 +382,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="container">
       <div class="footer-content">
