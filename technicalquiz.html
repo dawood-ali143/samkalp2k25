@@ -1,56 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technical Quiz - Sankalp 2025</title>
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Quiz Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 120px;
+            background-color: #003366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .banner img {
+            max-height: 100%;
+            width: auto;
+        }
+        
+        .banner-placeholder {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #003366;
+        }
+        
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+            align-items: center;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #003366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #002244;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #003366;
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #003366;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .rules {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 60px 0;
+        }
+        
+        .rules h2 {
+            color: #003366;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .rules ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .rules li {
+            margin-bottom: 10px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #003366;
+            color: white;
+            border-radius: 10px;
+            margin: 60px 0;
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .cta-section p {
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            background-color: white;
+            color: #003366;
+        }
+        
+        .cta-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        footer {
+            background-color: #002244;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner-placeholder {
+                font-size: 18px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .rules {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  
-  <header>
-    <div class="header-banner">
-      <img src="../images/khitbanner.png" alt="KHIT Sankalp 2025 Banner" class="banner-image">
-      <h1>TECHNICAL QUIZ</h1>
-    </div>
-    <div class="header-content">
-      <div class="logo-title">
-        <img src="../images/khitlogo.jpg" alt="KHIT Logo">
-        <span class="gold-title">KHIT SANKALP 2025</span>
-      </div>
-      <div class="nav-center">
-        <button onclick="location.href='../index.html'" class="dropbtn">Back to Home</button>
-      </div>
-      <div class="header-spacer"></div>
-    </div>
-  </header>
-
-  <div class="overlay" style="margin-top: 230px; height: 50vh;">
-    <h1>TECHNICAL QUIZ</h1>
-    <p>Test Your Technical Knowledge</p>
-  </div>
-
-  <section class="about-section">
-    <div class="about-container">
-      <div class="about-text">
-        <h2>Technical Quiz Competition</h2>
-        <h3>Rules & Guidelines</h3>
-        <p>
-          <strong>Team Size:</strong> 2-3 members<br>
-          <strong>Duration:</strong> 90 minutes<br>
-          <strong>Rounds:</strong> 3 rounds (MCQ, Rapid Fire, Visual Round)<br>
-          <strong>Topics:</strong> Programming, Algorithms, Data Structures, Computer Fundamentals
-        </p>
-        <button onclick="showRegistration()">Register Now</button>
-      </div>
-      <div class="about-images">
-        <img src="../images/placeholder.jpg" alt="Quiz Competition">
-      </div>
-    </div>
-  </section>
-
-  <script src="../script.js"></script>
+    <header>
+        <div class="banner">
+            <!-- Replace with actual KHIT banner image -->
+            <div class="banner-placeholder">KHIT BANNER</div>
+        </div>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">TECH QUIZ</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#rules">Rules</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Technical Quiz Competition</h1>
+                <p>Test your technical knowledge and compete with the brightest minds in our annual Technical Quiz Competition. Showcase your expertise in programming, algorithms, data structures, and emerging technologies.</p>
+                <p>Open to all students and tech enthusiasts. Don't miss this opportunity to challenge yourself and win exciting prizes!</p>
+                <a href="register.html" class="btn">Register Now</a>
+            </div>
+            <div class="hero-image">
+                <!-- Replace with actual technical quiz poster -->
+                <div style="background-color: #e0e0e0; height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
+                    Technical Quiz Poster
+                </div>
+            </div>
+        </section>
+        
+        <section class="features" id="about">
+            <h2 class="section-title">Why Participate?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Enhance Your Knowledge</h3>
+                    <p>Challenge yourself with questions covering a wide range of technical topics from fundamental concepts to advanced technologies.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Compete with Peers</h3>
+                    <p>Test your skills against other tech enthusiasts and see where you stand in the competitive tech landscape.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Win Exciting Prizes</h3>
+                    <p>Top performers will receive certificates, trophies, and other exciting rewards for their technical prowess.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="rules" id="rules">
+            <h2>Quiz Rules & Guidelines</h2>
+            <ul>
+                <li>The quiz will consist of multiple rounds including multiple-choice questions, coding problems, and technical puzzles.</li>
+                <li>Participants must register before the deadline to be eligible for the competition.</li>
+                <li>All participants must bring their own laptops for the coding rounds.</li>
+                <li>Use of any external resources or communication during the quiz is strictly prohibited.</li>
+                <li>The decision of the quiz masters will be final and binding.</li>
+                <li>Participants should arrive at least 30 minutes before the scheduled start time.</li>
+            </ul>
+            <p>For any queries regarding the rules or registration process, please contact the event coordinators.</p>
+        </section>
+        
+        <section class="cta-section">
+            <h2>Ready to Test Your Technical Skills?</h2>
+            <p>Join our Technical Quiz Competition and showcase your knowledge. Limited seats available, so register now to secure your spot!</p>
+            <a href="register.html" class="btn cta-btn">Register Now</a>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: techquiz@khit.edu</p>
+                    <p>Phone: +1 234 567 8900</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Venue</h3>
+                    <p>KHIT Auditorium</p>
+                    <p>Tech Street, Knowledge City</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Important Dates</h3>
+                    <p>Registration Deadline: October 30, 2023</p>
+                    <p>Quiz Date: November 15, 2023</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 KHIT Technical Quiz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
