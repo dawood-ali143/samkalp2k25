@@ -1,11 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Presentation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAMKALP 2025 - Paper Presentation</title>
+  <style>
+    /* Base Setup */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background: url('img15.png') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Banner Section */
+    .banner {
+      width: 100%;
+      background-color: #003366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      max-height: 140px;
+      object-fit: contain;
+    }
+
+    /* Navigation */
+    .nav-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      gap: 15px;
+      background-color: #fff;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-title img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-title h1 {
+      font-size: 1.8rem;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #003366;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* HERO SECTION (White Card) */
+    .hero {
+      background-color: white;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-content h2 {
+      color: #003366;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #003366;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* FEATURES SECTION */
+    .features {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #003366;
+      font-size: 2rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background-color: #f8f9fb;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      color: #003366;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* TRACKS SECTION */
+    .tracks {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
+    }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .track-card {
+      background-color: #f8f9fb;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .track-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .track-card h3 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    .track-card p {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* GUIDELINES SECTION */
+    .guidelines {
+      background-color: white;
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      margin: 60px 0;
+      color: #333;
+    }
+
+    .guidelines h2 {
+      color: #003366;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .guidelines ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .guidelines li {
+      margin-bottom: 10px;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #003366;
+      color: white;
+      border-radius: 15px;
+      margin: 60px 0;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-section h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .cta-section p {
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      background-color: white;
+      color: #003366;
+    }
+
+    .cta-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    footer {
+      background-color: #002244;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      .logo-title h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Paper Presentation</h1>
+  <header>
+    <div class="banner">
+      <img src="khitbanner.webp" alt="KHIT Banner">
+    </div>
+
+    <div class="nav-container">
+      <div class="logo-title">
+        <img src="khitlogo.jpg" alt="KHIT Logo">
+        <h1>SAMKALP 2025</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#guidelines">Guidelines</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h2>Paper Presentation Competition</h2>
+        <p>Present your innovative research and groundbreaking ideas at our prestigious Paper Presentation Competition. This platform brings together the brightest minds to share cutting-edge research across various domains of engineering and technology.</p>
+        <p>Whether you're an undergraduate researcher, postgraduate scholar, or faculty member, this is your opportunity to showcase your work, receive expert feedback, and contribute to the advancement of knowledge in your field.</p>
+        <a href="registernow.html" class="btn">Register Now</a>
+      </div>
+      <div class="hero-image">
+        <img src="img14.png" alt="Paper Presentation">
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="about">
+      <h2 class="section-title">Why Present Your Paper?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Academic Recognition</h3>
+          <p>Gain visibility for your research and establish yourself as an emerging scholar in your field through peer recognition.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Expert Feedback</h3>
+          <p>Receive valuable insights and constructive criticism from experienced academicians and industry professionals.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Publication Opportunities</h3>
+          <p>Outstanding papers may be considered for publication in conference proceedings or recommended for journal publication.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACKS -->
+    <section class="tracks" id="tracks">
+      <h2 class="section-title">Presentation Tracks</h2>
+      <div class="tracks-grid">
+        <div class="track-card">
+          <h3>Computer Science & IT</h3>
+          <p>AI/ML, Data Science, Cybersecurity, Software Engineering, Networks, and Emerging Technologies</p>
+        </div>
+        <div class="track-card">
+          <h3>Electronics & Communication</h3>
+          <p>VLSI, Embedded Systems, Signal Processing, IoT, Wireless Communication, and Semiconductor Technology</p>
+        </div>
+        <div class="track-card">
+          <h3>Mechanical & Civil Engineering</h3>
+          <p>Thermal Engineering, Manufacturing, Structural Design, Sustainable Infrastructure, and Materials Science</p>
+        </div>
+        <div class="track-card">
+          <h3>Interdisciplinary Research</h3>
+          <p>Cross-disciplinary projects, Technology Management, Innovation Studies, and Applied Research</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIDELINES -->
+    <section class="guidelines" id="guidelines">
+      <h2>Paper Guidelines & Submission</h2>
+      <ul>
+        <li>Papers should be original, unpublished work and follow IEEE format (maximum 6 pages)</li>
+        <li>Include abstract (250 words), introduction, methodology, results, discussion, and references</li>
+        <li>Presentation time: 10 minutes for presentation + 5 minutes for Q&A</li>
+        <li>Submit both PDF and DOC versions of your paper through the online portal</li>
+        <li>Plagiarism should be less than 15% (will be checked through plagiarism detection software)</li>
+        <li>All authors must be present during their scheduled presentation slot</li>
+        <li>Use PowerPoint or PDF format for presentation slides with minimum 24pt font size</li>
+      </ul>
+      <p>For template downloads and submission portal access, please visit our event website or contact the coordinators.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Ready to Present Your Research?</h2>
+      <p>Join our Paper Presentation Competition and share your innovative work with the academic community. Limited presentation slots available, so submit your paper early to secure your participation!</p>
+      <a href="registernow.html" class="btn cta-btn">Submit Your Paper</a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: paperpresentation@khit.edu</p>
+          <p>Phone: +1 234 567 8901</p>
+        </div>
+        <div class="footer-section">
+          <h3>Venue</h3>
+          <p>KHIT Main Auditorium</p>
+          <p>Research Wing, Academic Block</p>
+        </div>
+        <div class="footer-section">
+          <h3>Important Dates</h3>
+          <p>Abstract Submission: October 15, 2025</p>
+          <p>Full Paper Deadline: October 30, 2025</p>
+          <p>Event Date: November 20, 2025</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 KHIT Samkalp. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
