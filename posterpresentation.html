@@ -1,11 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poster Presentation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAMKALP 2025 - Poster Presentation</title>
+  <style>
+    /* Base Setup */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background: url('img15.png') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Banner Section */
+    .banner {
+      width: 100%;
+      background-color: #003366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      max-height: 140px;
+      object-fit: contain;
+    }
+
+    /* Navigation */
+    .nav-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      gap: 15px;
+      background-color: #fff;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-title img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-title h1 {
+      font-size: 1.8rem;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #003366;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* HERO SECTION (White Card) */
+    .hero {
+      background-color: white;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-content h2 {
+      color: #003366;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #003366;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* FEATURES SECTION */
+    .features {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #003366;
+      font-size: 2rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background-color: #f8f9fb;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      color: #003366;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* CATEGORIES SECTION */
+    .categories {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      padding: 50px 30px;
+      margin: 60px 0;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .category-card {
+      background-color: #f8f9fb;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-card h3 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    .category-card p {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* GUIDELINES SECTION */
+    .guidelines {
+      background-color: white;
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      margin: 60px 0;
+      color: #333;
+    }
+
+    .guidelines h2 {
+      color: #003366;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .guidelines ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .guidelines li {
+      margin-bottom: 10px;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #003366;
+      color: white;
+      border-radius: 15px;
+      margin: 60px 0;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-section h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .cta-section p {
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      background-color: white;
+      color: #003366;
+    }
+
+    .cta-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    footer {
+      background-color: #002244;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      .logo-title h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Poster Presentation</h1>
+  <header>
+    <div class="banner">
+      <img src="khitbanner.webp" alt="KHIT Banner">
+    </div>
+
+    <div class="nav-container">
+      <div class="logo-title">
+        <img src="khitlogo.jpg" alt="KHIT Logo">
+        <h1>SAMKALP 2025</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#categories">Categories</a>
+        <a href="#guidelines">Guidelines</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h2>Poster Presentation Competition</h2>
+        <p>Showcase your research, innovative ideas, and creative projects at our Annual Poster Presentation Competition. This is your platform to present your work to a diverse audience of academics, industry professionals, and peers.</p>
+        <p>Whether you're working on scientific research, engineering projects, social sciences, or creative arts, this event provides the perfect opportunity to gain valuable feedback and recognition for your work.</p>
+        <a href="registernow.html" class="btn">Register Now</a>
+      </div>
+      <div class="hero-image">
+        <img src="img11.png" alt="Poster Presentation">
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="about">
+      <h2 class="section-title">Why Present Your Poster?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Showcase Your Research</h3>
+          <p>Present your findings and innovations to a knowledgeable audience and receive valuable feedback from experts in your field.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Networking Opportunities</h3>
+          <p>Connect with fellow researchers, potential collaborators, and professionals who share your interests.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Recognition & Awards</h3>
+          <p>Outstanding presentations will be recognized with awards, certificates, and potential publication opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+      <h2 class="section-title">Presentation Categories</h2>
+      <div class="categories-grid">
+        <div class="category-card">
+          <h3>Science & Technology</h3>
+          <p>Research in physical sciences, engineering, computer science, and emerging technologies.</p>
+        </div>
+        <div class="category-card">
+          <h3>Life Sciences</h3>
+          <p>Studies in biology, medicine, biochemistry, genetics, and related health sciences.</p>
+        </div>
+        <div class="category-card">
+          <h3>Social Sciences</h3>
+          <p>Research in psychology, sociology, economics, political science, and education.</p>
+        </div>
+        <div class="category-card">
+          <h3>Arts & Humanities</h3>
+          <p>Creative works, historical research, philosophical inquiries, and cultural studies.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIDELINES -->
+    <section class="guidelines" id="guidelines">
+      <h2>Poster Guidelines</h2>
+      <ul>
+        <li>Posters should be 36" x 48" (width x height) in portrait orientation.</li>
+        <li>Include title, authors, affiliation, introduction, methods, results, conclusion, and references.</li>
+        <li>Use clear, legible fonts (minimum 24pt for body text, 36pt for headings).</li>
+        <li>Incorporate visuals like graphs, charts, and images to enhance understanding.</li>
+        <li>Maintain a balance between text and visuals for optimal readability.</li>
+        <li>Presenters must be available at their posters during the assigned session.</li>
+        <li>Electronic copies of posters must be submitted one week before the event.</li>
+      </ul>
+      <p>For any queries regarding poster specifications or content, please contact the event coordinators.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Ready to Showcase Your Work?</h2>
+      <p>Join our Poster Presentation Competition and share your research with the academic community. Limited presentation slots available, so register early to secure your spot!</p>
+      <a href="registernow.html" class="btn cta-btn">Register Now</a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: posterpresentation@khit.edu</p>
+          <p>Phone: +1 234 567 8900</p>
+        </div>
+        <div class="footer-section">
+          <h3>Venue</h3>
+          <p>KHIT Convention Center</p>
+          <p>Academic Avenue, Knowledge City</p>
+        </div>
+        <div class="footer-section">
+          <h3>Important Dates</h3>
+          <p>Registration Deadline: November 10, 2025</p>
+          <p>Poster Submission: November 17, 2025</p>
+          <p>Event Date: November 25, 2025</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 KHIT Samkalp. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
