@@ -871,14 +871,27 @@
         padding: 12px 20px;
         font-size: 14px;
       }
-      .event-icon img.event-img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 15px;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+          .event-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px; /* keeps it balanced */
+  margin-bottom: 10px;
 }
 
+.event-icon img.event-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.event-icon img.event-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+}
       
       /* About section mobile fix */
       .about-container {
