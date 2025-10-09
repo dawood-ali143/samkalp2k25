@@ -1,9 +1,0 @@
-CREATE TABLE payments (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  rollno VARCHAR(50),
-  name VARCHAR(100),
-  branch VARCHAR(50),
-  event VARCHAR(50),
-  payment_id VARCHAR(100),
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
