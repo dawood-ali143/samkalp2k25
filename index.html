@@ -603,13 +603,62 @@
       box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
     }
 
-    .event-icon {
-      font-size: 40px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #00ffe5, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    #events .events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 36px;
+  align-items: start;
+}
+
+/* card baseline */
+#events .event-card {
+  padding: 36px 28px 40px;
+  border-radius: 14px;
+  text-align: center;
+  position: relative;
+}
+
+/* icon container (keeps image centered and prevents overflow) */
+#events .event-card .event-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;         /* fixed box for the icon */
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* ----- THE IMPORTANT PART: force icon size and contain it ----- */
+#events .event-card .event-icon img.event-img {
+  width: 110px !important;      /* explicit size to prevent full-width stretch */
+  height: 110px !important;
+  max-width: 110px !important;
+  max-height: 110px !important;
+  object-fit: contain;          /* keep aspect ratio, don't crop */
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 6px 20px rgba(0,255,255,0.12);
+}
+
+/* subtle hover */
+#events .event-card .event-icon img.event-img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 30px rgba(0,255,255,0.18);
+}
+
+/* responsive smaller icons on mobile */
+@media (max-width: 768px) {
+  #events .event-card .event-icon { height: 96px; }
+  #events .event-card .event-icon img.event-img {
+    width: 84px !important;
+    height: 84px !important;
+    max-width: 84px !important;
+    max-height: 84px !important;
+  }
+}
 
     .event-card h3 {
       font-size: 22px;
@@ -879,20 +928,7 @@
   margin-bottom: 10px;
 }
 
-.event-icon img.event-img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-}
 
-.event-icon img.event-img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
-}
-      
       /* About section mobile fix */
       .about-container {
         flex-direction: column;
@@ -1055,48 +1091,37 @@
         </div>
       </div>
     </section>
-
-    <!-- EVENTS SECTION -->
-   <section class="events-section" id="events">
+<section class="events-section" id="events">
   <h2 class="section-title">CSE EVENTS</h2>
+
   <div class="events-grid">
-    
     <div class="event-card">
-      <div class="event-icon">
-        <img src="img11.png" alt="Technical Quiz" class="event-img">
-      </div>
+      <div class="event-icon"><img src="img11.png" alt="Technical Quiz" class="event-img"></div>
       <h3>Technical Quiz</h3>
-      <p>Test your technical knowledge in this exciting quiz competition with amazing prizes for winners.</p>
-      <button onclick="window.location.href='technicalquiz.html'">Learn More</button>
+      <p>Test your technical knowledge in this exciting quiz competition...</p>
+      <button onclick="location.href='technicalquiz.html'">Learn More</button>
     </div>
 
     <div class="event-card">
-      <div class="event-icon">
-        <img src="img12.png" alt="Paper Presentation" class="event-img">
-      </div>
+      <div class="event-icon"><img src="img12.png" alt="Paper Presentation" class="event-img"></div>
       <h3>Paper Presentation</h3>
-      <p>Showcase your research and innovative ideas in front of esteemed judges and audience.</p>
-      <button onclick="window.location.href='paperpresentation.html'">Learn More</button>
+      <p>Showcase your research and innovative ideas...</p>
+      <button onclick="location.href='paperpresentation.html'">Learn More</button>
     </div>
 
     <div class="event-card">
-      <div class="event-icon">
-        <img src="img13.png" alt="Poster Presentation" class="event-img">
-      </div>
+      <div class="event-icon"><img src="img13.png" alt="Poster Presentation" class="event-img"></div>
       <h3>Poster Presentation</h3>
-      <p>Display your creative and technical skills through visually appealing poster designs.</p>
-      <button onclick="window.location.href='posterpresentation.html'">Learn More</button>
+      <p>Display your creative and technical skills...</p>
+      <button onclick="location.href='posterpresentation.html'">Learn More</button>
     </div>
 
     <div class="event-card">
-      <div class="event-icon">
-        <img src="img14.png" alt="Project Expo" class="event-img">
-      </div>
+      <div class="event-icon"><img src="img14.png" alt="Project Expo" class="event-img"></div>
       <h3>Project Expo</h3>
-      <p>Exhibit your innovative projects and prototypes to industry experts and fellow students.</p>
-      <button onclick="window.location.href='projectexpo.html'">Learn More</button>
+      <p>Exhibit your innovative projects and prototypes...</p>
+      <button onclick="location.href='projectexpo.html'">Learn More</button>
     </div>
-
   </div>
 </section>
 
