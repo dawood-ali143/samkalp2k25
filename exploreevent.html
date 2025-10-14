@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KHIT Samkalp 2025 - Explore Events</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -41,10 +42,10 @@
       height: 120px;
       background: url('khitbanner.webp') no-repeat center center;
       background-size: cover;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       border-radius: 8px;
     }
-            .khit-banner h1 {
+    s.khit-banner h1 {
         font-size: 36px;
       }
     .header-content {
@@ -68,7 +69,28 @@
       text-align: center;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-
+    .autonomous-size{
+      font-size: 10px;
+    }
+    .img-fluid1{
+      height: 70px;
+      margin:auto;
+    }
+    .img-fluid2{
+      height: 90px;
+    }
+    .img-fluid3{
+      height: 100px;
+    }
+    .img-logo-1{
+      height:100px;
+    }
+     .img-logo-2{
+      height:80px;
+    }
+     .img-logo-3{
+      height:68px;
+    }
     /* Navigation */
     .events-nav {
       display: flex;
@@ -78,11 +100,12 @@
       margin: 20px 0;
       border-radius: 10px;
       flex-wrap: wrap;
+      text-align: center;
     }
 
     .event-tab {
-      padding: 12px 25px;
-      margin: 0 10px;
+      padding: 10px 25px;
+      margin: 0 8px;
       background-color: rgba(212, 175, 55, 0.2);
       border: 1px solid #D4AF37;
       border-radius: 5px;
@@ -90,6 +113,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-weight: bold;
+      text-align: center;
     }
 
     .event-tab:hover, .event-tab.active {
@@ -198,6 +222,7 @@
       }
       .event-image {
         margin-top: 20px;
+        
       }
     }
 
@@ -207,24 +232,103 @@
     }
   </style>
 </head>
-<body>
+<body>  
   <header>
-    <div class="container">
-      <div class="khit-banner"></div>
-      <div class="header-content">
-        <img src="khitlogo.jpg" alt="KHIT Logo" class="khit-logo">
-        <h1 class="main-heading">KHIT Samkalp 2025</h1>
+<!-- Container and Banner Section -->
+<div class="container-fluid bg-primary text-white py-1 " style="background: #293e7c;">
+  <div class="row align-items-center ">
+    <!-- Logo Block -->
+     
+     <div class="col-2  text-center d-md-none mb-2 mb-md-0">
+      <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-3">
+    </div>
+         <div class="col-2 col-md-2 d-lg-none d-none d-md-block text-center mb-2 mb-md-0">
+      <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-2">
+    </div>
+         <div class="col-lg-2 d-none d-lg-block text-center mb-2 mb-md-0">
+      <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-1">
+    </div>
+    <!-- Main Title Block -- -->
+    <div class="col-5 col-md-6 text-center   mb-2  d-none d-md-block d-lg-none">
+        <h2 class="mb-1 fw-bold" style="font-size: 20px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
+      <div style="font-size: 1em;">
+        Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
       </div>
     </div>
+     <div class="col-5 col-md-6 col-lg-7 text-center  mb-2  d-none d-lg-block">
+        <h2 class="mb-1 fw-bold" style="font-size: 30px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
+      <div style="font-size: 1.2em; " class="mt-2">
+        Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
+      </div>
+    </div>
+    <div class ="col-6 text-center d-md-none">
+      <h2 class="mb-1 fw-bold fs-5">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="autonomous-size">(Autonomous)</span></h2>
+      <div class="autonomous-size">
+        Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
+      </div>
+    </div>
+    <!-- Accreditation Block -->
+    <div class="col-4 col-md-2 align-items-center d-md-none">
+      <div class="row">
+          <div class="col-6">
+              <div>
+                  <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid1">
+              </div>
+          </div>
+          <div class="col-5">
+              <div>
+                  <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid1">
+              </div>
+          </div>
+      </div>
+    </div>
+     <div class="col-4 col-md-4 align-items-center d-none d-md-block d-lg-none">
+      <div class="row">
+          <div class="col-6">
+              <div>
+                  <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid2">
+              </div>
+          </div>
+          <div class="col-6">
+              <div>
+                  <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid2">
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-3 d-none d-lg-block align-items-between ">
+      <div class="row">
+          <div class="col-6">
+              <div>
+                  <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid3" >
+              </div>
+          </div>
+          <div class="col-6">
+              <div>
+                  <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid3">
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   </header>
 
   <div class="container">
     <h1 class="main-heading">Explore CSE Events</h1>
-    <div class="events-nav">
-      <div class="event-tab active" data-target="poster">Poster Presentation</div>
-      <div class="event-tab" data-target="quiz">Technical Quiz</div>
-      <div class="event-tab" data-target="expo">Project Expo</div>
-      <div class="event-tab" data-target="paper">Paper Presentation</div>
+    <div class="row">
+    <div class="events-nav py-4 d-none d-md-inline ">
+      <div class="event-tab active d-md-inline" data-target="poster">Poster Presentation</div>
+      <div class="event-tab d-md-inline" data-target="quiz">Technical Quiz</div>
+      <div class="event-tab d-md-inline" data-target="expo">Project Expo</div>
+      <div class="event-tab d-md-inline" data-target="paper">Paper Presentation</div>
+    </div>
+    <div class="events-nav  d-md-none">
+      <div class="event-tab active m-2" data-target="poster">Poster Presentation</div>
+      <div class="event-tab m-2" data-target="quiz">Technical Quiz</div>
+      <div class="event-tab m-2" data-target="expo">Project Expo</div>
+      <div class="event-tab m-2" data-target="paper">Paper Presentation</div>
     </div>
 
     <div class="events-container">
@@ -242,7 +346,7 @@
           <a href="registernow.html" class="register-btn">Register</a>
          
         </div>
-        <img src="img11.png" alt="Poster Presentation" class="event-image">
+        <img src="img11.jpg" alt="Poster Presentation" class="event-image">
       </div>
 
       <!-- Technical Quiz -->
@@ -259,7 +363,7 @@
           <a href="registernow.html" class="register-btn">Register</a>
          
         </div>
-        <img src="img12.png" alt="Technical Quiz" class="event-image">
+        <img src="img12.jpg" alt="Technical Quiz" class="event-image">
       </div>
 
       <!-- Project Expo -->
@@ -275,7 +379,7 @@
           <p class="event-description">Display your innovative projects and prototypes at our grand Project Expo.</p>
           <a href="registernow.html" class="register-btn">Register</a>
         </div>
-        <img src="img13.png" alt="Project Expo" class="event-image">
+        <img src="img13.jpg" alt="Project Expo" class="event-image">
       </div>
 
       <!-- Paper Presentation -->
@@ -292,7 +396,7 @@
           <a href="registernow.html" class="register-btn">Register</a>
          
         </div>
-        <img src="img14.png" alt="Paper Presentation" class="event-image">
+        <img src="img14.jpg" alt="Paper Presentation" class="event-image">
       </div>
     </div>
   </div>
