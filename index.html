@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* Your existing CSS remains unchanged */
     * {
       margin: 0;
       padding: 0;
@@ -30,15 +29,1070 @@
       line-height: 1.6;
     }
 
-    /* ... rest of your CSS remains exactly the same ... */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+    }
+
+    /* FULL SCREEN IMAGE SECTION - IMPROVED */
+    .fullscreen-image-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .fullscreen-image {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      z-index: 2;
+    }
+
+    .image-subtitle {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 0 10px magenta;
+      margin-bottom: 10px;
+    }
+
+    /* WEBSITE CONTENT */
+    .website-content {
+      display: block;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* HEADER STYLES - IMPROVED BANNER */
+    header {
+      width: 100%;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .header-banner {
+      width: 100%;
+      height: 120px; /* Increased height for better visibility */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Changed to contain to show full banner */
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Added background for better contrast */
+    }
+    
+    .header-banner h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      margin: 0;
+      z-index: 1;
+      position: relative;
+      text-align: center;
+      padding: 0 10px;
+    }
+    
+    .header-content {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.9);
+      flex-wrap: wrap;
+    }
+    
+    .logo-title {
+      display: flex;
+      align-items: center;
+      width: auto;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .logo-title img {
+      height: 50px;
+      margin-right: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+        .autonomous-size{
+      font-size: 10px;
+    }
+    .img-fluid1{
+      height: 70px;
+      margin:auto;
+    }
+    .img-fluid2{
+      height: 90px;
+    }
+    .img-fluid3{
+      height: 100px;
+    }
+    .img-logo-1{
+      height:100px;
+    }
+     .img-logo-2{
+      height:80px;
+    }
+     .img-logo-3{
+      height:68px;
+    }
+    /* RAINBOW GLOWING TITLE STYLES */
+    .rainbow-glow-title {
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(90deg, 
+        #ff0000, #ff8000, #ffff00, #00ff00, 
+        #00ffff, #0000ff, #8000ff, #ff00ff);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+    
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* NAVIGATION STYLES - FIXED DROPDOWN */
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex: 2;
+      justify-content: center;
+      margin: 0 10px;
+      flex-wrap: wrap;
+    }
+    
+    .search-and-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+      width: 100%;
+      max-width: 500px;
+      justify-content: space-between;
+    }
+    
+    /* SEARCH BAR STYLES */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 300px;
+      border-radius: 2px;
+    }
+    
+    .search-bar input {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px 0 0 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
+    }
+    
+    .search-bar button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 229, 0.5);
+    }
+    
+    .search-bar button:hover {
+      background: linear-gradient(90deg, #ff00ff, #00ffe5);
+      transform: scale(1.05);
+    }
+    
+    .search-bar button i {
+      font-size: 16px;
+    }
+    
+    /* DROPDOWN STYLES - FIXED */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropbtn {
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: white;
+      padding: 10px 25px 10px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+    
+    .dropbtn::after {
+      content: "▼";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+    }
+    
+    .dropbtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.95);
+      min-width: 180px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+      z-index: 1000; /* Increased z-index to ensure it's above other elements */
+      border-radius: 10px;
+      overflow: hidden;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 10px;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+    
+    .dropdown-content a {
+      color: white;
+      padding: 12px 15px;
+      text-decoration: none;
+      display: block;
+      transition: 0.3s;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+    
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+    
+    .dropdown-content a:hover {
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      color: black;
+      padding-left: 20px;
+    }
+    
+    .dropdown.active .dropdown-content {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .dropdown.active .dropbtn::after {
+      content: "✕";
+      font-size: 12px;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    
+    /* HEADER SPACER */
+    .header-spacer {
+      width: 0;
+      display: none;
+    }
+    
+    /* HERO SECTION */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      z-index: 5;
+      padding: 0 15px;
+    }
+    
+    .hero-overlay {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .rainbow-title {
+      font-family: cursive;
+      font-size: 4rem;
+      font-weight: 700;
+      font-style: bold;
+      text-align: center;
+      background: linear-gradient(90deg, 
+        #ff0000, #ff8000, #ffff00, #00ff00, 
+        #00ffff, #0000ff, #8000ff, #ff00ff);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+      line-height: 1.1;
+      margin: 0;
+      position: relative;
+      width: 100%;
+      z-index: 2;
+      word-break: break-word;
+    }
+    
+    .hero-section h1 {
+      font-size: 36px;
+      margin: 10px 0;
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange;
+      animation: glow 2s infinite alternate;
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px orange; }
+      to { text-shadow: 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px orange; }
+    }
+    
+    .hero-section p {
+      font-size: 18px;
+      margin: 15px 0;
+      text-shadow: 0 0 10px magenta;
+      z-index: 2;
+      position: relative;
+    }
+    
+    .buttons {
+      margin-top: 25px;
+      z-index: 2;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .buttons button {
+      margin: 10px;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      box-shadow: 0 0 25px rgba(0, 255, 229, 0.8);
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-weight: bold;
+    }
+    
+    .buttons button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px rgba(0, 255, 229, 1);
+    }
+    
+    /* SECTIONS */
+    .about-section, .events-section, .info-section {
+      padding: 60px 20px;
+    }
+    
+    /* ABOUT SECTION */
+    .about-section {
+      position: relative;
+      z-index: 2;
+      background: rgba(10, 10, 20, 0.85);
+      margin-top: 40px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    .about-text h2 {
+      color: #fff;
+      text-shadow: 0 0 12px #00eaff, 0 0 25px #ff00ff;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .about-text h3 {
+      color: #00ffe5;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .about-text p {
+      color: #ddd;
+      text-shadow: 0 0 8px #ff00ff;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .about-text button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ff0066, #ffcc00);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff3399, 0 0 25px #ffcc00;
+      transition: transform 0.3s;
+    }
+
+    .about-text button:hover {
+      transform: scale(1.05);
+    }
+
+    .about-images {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .about-images img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      transition: transform 0.3s;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .about-images img:hover {
+      transform: scale(1.03);
+    }
+
+    .stats {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      flex: 1;
+      min-width: 200px;
+      padding: 30px 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+      border: 1px solid rgba(255, 0, 255, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .stat-box h3 {
+      font-size: 42px;
+      text-shadow: 0 0 15px #00ffe5, 0 0 25px #ff00ff;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    /* EVENTS SECTION */
+    .events-section {
+      position: relative;
+      z-index: 2;
+      background: rgba(15, 15, 30, 0.85);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      text-shadow: 0 0 15px cyan, 0 0 30px magenta;
+      background: linear-gradient(90deg, #00ffe5, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .event-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #00ffe5, #ff00ff, #00ffe5);
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .event-card:hover::before {
+      opacity: 0.7;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(255, 0, 255, 0.5);
+    }
+
+    #events .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px;
+      align-items: start;
+    }
+
+    /* card baseline */
+    #events .event-card {
+      padding: 36px 28px 40px;
+      border-radius: 14px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* icon container (keeps image centered and prevents overflow) */
+    #events .event-card .event-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px;         /* fixed box for the icon */
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    /* ----- THE IMPORTANT PART: force icon size and contain it ----- */
+    #events .event-card .event-icon img.event-img {
+      width: 110px !important;      /* explicit size to prevent full-width stretch */
+      height: 110px !important;
+      max-width: 110px !important;
+      max-height: 110px !important;
+      object-fit: contain;          /* keep aspect ratio, don't crop */
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 6px 20px rgba(0,255,255,0.12);
+    }
+
+    /* subtle hover */
+    #events .event-card .event-icon img.event-img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 30px rgba(0,255,255,0.18);
+    }
+
+    .event-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #00ffe5;
+      text-shadow: 0 0 10px rgba(0, 255, 229, 0.7);
+    }
+
+    .event-card p {
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+    }
+
+    .event-card button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #ff0066, #ffcc00);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .event-card button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, #ffcc00, #ff0066);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .event-card button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 102, 0.8);
+    }
+
+    .event-card button:hover::before {
+      opacity: 1;
+    }
+
+    /* INFO SECTION */
+    .info-section {
+      position: relative;
+      z-index: 2;
+      background: rgba(5, 5, 15, 0.9);
+      margin-top: 40px;
+    }
+
+    .info-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .info-box {
+      flex: 1;
+      min-width: 280px;
+      padding: 30px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-box::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #00ffe5, #ff00ff, #00ffe5);
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .info-box:hover::before {
+      opacity: 0.5;
+    }
+
+    .info-box h3 {
+      color: #fff;
+      text-shadow: 0 0 10px cyan, 0 0 20px magenta;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .info-box p, .info-box a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin: 12px 0;
+      text-shadow: 0 0 8px #ff00ff;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-box li {
+      margin: 15px 0;
+      color: #ddd;
+      text-shadow: 0 0 8px #ff00ff;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .info-box li::before {
+      content: "•";
+      color: #00ffe5;
+      position: absolute;
+      left: 0;
+      font-size: 20px;
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffe5, #ff00ff);
+      color: white;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 229, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-icons a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #ff00ff, #00ffe5);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2) rotate(10deg);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+    }
+
+    .social-icons a:hover::before {
+      opacity: 1;
+    }
+
+    /* MAP */
+    iframe {
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+
+    .footer-section h3 {
+      color: #00ffe5;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .footer-section p, .footer-section a {
+      color: #ddd;
+      margin-bottom: 10px;
+      display: block;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: #ff00ff;
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+    }
+
+    /* RESPONSIVE DESIGN - IMPROVED */
+    @media (max-width: 768px) {
+      /* Mobile background fix */
+      body {
+        background-attachment: scroll;
+        background-position: center;
+        background-size: cover;
+      }
+      
+      /* Fullscreen image mobile fix - IMPROVED */
+      .fullscreen-image-section {
+        height: 100vh;
+        height: 100dvh;
+      }
+      
+      .fullscreen-image {
+        max-width: 90%;
+        max-height: 70%;
+      }
+      
+      /* Header banner mobile fix - IMPROVED */
+      .header-banner {
+        height: auto;
+        min-height: 100px;
+        max-height: 150px;
+      }
+      
+      .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Show full banner on mobile too */
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      .header-banner h1 {
+        font-size: 22px;
+      }
+      
+      /* Header content mobile fix */
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .logo-title {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      
+      .nav-center {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .search-and-dropdown {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+      
+      .search-bar {
+        max-width: 100%;
+      }
+      
+      /* Dropdown mobile fix - IMPROVED */
+      .dropdown-content {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 300px;
+        z-index: 1000;
+      }
+      
+      /* Hero section mobile fix */
+      .rainbow-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-section p {
+        font-size: 16px;
+      }
+      
+      .buttons button {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+          .event-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px; /* keeps it balanced */
+      margin-bottom: 10px;
+    }
+
+      /* About section mobile fix */
+      .about-container {
+        flex-direction: column;
+      }
+      
+      .about-images {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .stats {
+        flex-direction: column;
+      }
+      
+      /* Events section mobile fix */
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Info section mobile fix */
+      .info-container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rainbow-title {
+        font-size: 2rem;
+      }
+      
+      .image-subtitle {
+        font-size: 1rem;
+      }
+      
+      .header-banner h1 {
+        font-size: 18px;
+      }
+      
+      .rainbow-glow-title {
+        font-size: 14px;
+      }
+      
+      /* Further improvements for very small screens */
+      .header-banner {
+        min-height: 80px;
+        max-height: 120px;
+      }
+      
+      .fullscreen-image {
+        max-width: 95%;
+        max-height: 60%;
+      }
+    }
+
+    /* Additional improvements for laptop screens */
+    @media (min-width: 1024px) {
+      .header-banner {
+        height: 180px; /* Increased height for laptop screens */
+      }
+      
+      .banner-image {
+        object-fit: contain; /* Ensure full banner is visible */
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Your HTML structure remains exactly the same -->
-  
   <!-- FULL SCREEN IMAGE SECTION -->
   <div class="fullscreen-image-section">
-    <img src="img21.png" alt="Sankalp 2025" class="fullscreen-image">
+    <img src="https://via.placeholder.com/800x600/1a1a4a/ffffff?text=SAMKALP+2025" alt="Sankalp 2025" class="fullscreen-image">
     <div class="image-overlay">
       <p class="image-subtitle">
         <span style="display: block; text-align: center; margin-top: 50vh;">
@@ -60,13 +1114,13 @@
           <!-- Logo Block -->
           
           <div class="col-2  text-center d-md-none mb-2 mb-md-0">
-            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-3">
+            <img src="https://via.placeholder.com/68x68/293e7c/ffffff?text=KHIT" alt="KHIT Logo" class="img-logo-3">
           </div>
               <div class="col-2 col-md-2 d-lg-none d-none d-md-block text-center mb-2 mb-md-0">
-            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-2">
+            <img src="https://via.placeholder.com/80x80/293e7c/ffffff?text=KHIT" alt="KHIT Logo" class="img-logo-2">
           </div>
               <div class="col-lg-2 d-none d-lg-block text-center mb-2 mb-md-0">
-            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-1">
+            <img src="https://via.placeholder.com/100x100/293e7c/ffffff?text=KHIT" alt="KHIT Logo" class="img-logo-1">
           </div>
           <!-- Main Title Block -- -->
           <div class="col-5 col-md-6 text-center   mb-2  d-none d-md-block d-lg-none">
@@ -92,12 +1146,12 @@
             <div class="row">
                 <div class="col-6">
                     <div>
-                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid1">
+                        <img src="https://via.placeholder.com/70x70/293e7c/ffffff?text=NACC" alt="KHIT Logo" class="img-fluid1">
                     </div>
                 </div>
                 <div class="col-5">
                     <div>
-                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid1">
+                        <img src="https://via.placeholder.com/70x70/293e7c/ffffff?text=NBA" alt="KHIT Logo" class="img-fluid1">
                     </div>
                 </div>
             </div>
@@ -106,12 +1160,12 @@
             <div class="row">
                 <div class="col-6">
                     <div>
-                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid2">
+                        <img src="https://via.placeholder.com/90x90/293e7c/ffffff?text=NACC" alt="KHIT Logo" class="img-fluid2">
                     </div>
                 </div>
                 <div class="col-6">
                     <div>
-                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid2">
+                        <img src="https://via.placeholder.com/90x90/293e7c/ffffff?text=NBA" alt="KHIT Logo" class="img-fluid2">
                     </div>
                 </div>
             </div>
@@ -120,23 +1174,22 @@
             <div class="row">
                 <div class="col-6">
                     <div>
-                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid3" >
+                        <img src="https://via.placeholder.com/100x100/293e7c/ffffff?text=NACC" alt="KHIT Logo" class="img-fluid3" >
                     </div>
                 </div>
                 <div class="col-6">
                     <div>
-                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid3">
+                        <img src="https://via.placeholder.com/100x100/293e7c/ffffff?text=NBA" alt="KHIT Logo" class="img-fluid3">
                     </div>
                 </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   
     <div class="header-content">
       <div class="logo-title">
-        <img src="khitlogo.png" alt="KHIT Logo">
+        <img src="https://via.placeholder.com/50x50/293e7c/ffffff?text=KHIT" alt="KHIT Logo">
         <div>
           <span class="rainbow-glow-title">KHIT SAMKALP 2025</span>
           <br>
@@ -174,8 +1227,8 @@
         <p class="rainbow-glow-title">Golden Threads of Innovation</p>
         <p style="font-size:28px">DEC 19,2025<br>Innovation, Culture & Technology Confluence</p>
         <div class="buttons">
-          <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
-          <button id="registerBtn" onclick="window.location.href='registernow.html'">REGISTER NOW</button>
+          <button id="exploreBtn">EXPLORE EVENTS</button>
+          <button id="registerBtn">REGISTER NOW</button>
         </div>
       </div>
     </div>
@@ -195,8 +1248,8 @@
           <button id="aboutBtn">READ MORE</button>
         </div>
         <div class="about-images">
-          <img src="img1.webp" alt="KHIT Campus">
-          <img src="img2.webp" alt="College Event">
+          <img src="https://via.placeholder.com/320x200/1a1a4a/ffffff?text=KHIT+Campus" alt="KHIT Campus">
+          <img src="https://via.placeholder.com/320x200/1a1a4a/ffffff?text=College+Event" alt="College Event">
         </div>
       </div>
       <div class="stats">
@@ -220,31 +1273,31 @@
 
       <div class="events-grid">
         <div class="event-card">
-          <div class="event-icon"><img src="img11.jpg" alt="Technical Quiz" class="event-img"></div>
+          <div class="event-icon"><img src="https://via.placeholder.com/110x110/1a1a4a/ffffff?text=Quiz" alt="Technical Quiz" class="event-img"></div>
           <h3>Technical Quiz</h3>
           <p>Test your technical knowledge in this exciting quiz competition...</p>
-          <button onclick="location.href='technicalquiz.html'">Learn More</button>
+          <button>Learn More</button>
         </div>
 
         <div class="event-card">
-          <div class="event-icon"><img src="img12.jpg" alt="Paper Presentation" class="event-img"></div>
+          <div class="event-icon"><img src="https://via.placeholder.com/110x110/1a1a4a/ffffff?text=Paper" alt="Paper Presentation" class="event-img"></div>
           <h3>Paper Presentation</h3>
           <p>Showcase your research and innovative ideas...</p>
-          <button onclick="location.href='paperpresentation.html'">Learn More</button>
+          <button>Learn More</button>
         </div>
 
         <div class="event-card">
-          <div class="event-icon"><img src="img13.jpg" alt="Poster Presentation" class="event-img"></div>
+          <div class="event-icon"><img src="https://via.placeholder.com/110x110/1a1a4a/ffffff?text=Poster" alt="Poster Presentation" class="event-img"></div>
           <h3>Poster Presentation</h3>
           <p>Display your creative and technical skills...</p>
-          <button onclick="location.href='posterpresentation.html'">Learn More</button>
+          <button>Learn More</button>
         </div>
 
         <div class="event-card">
-          <div class="event-icon"><img src="img14.jpg" alt="Project Expo" class="event-img"></div>
+          <div class="event-icon"><img src="https://via.placeholder.com/110x110/1a1a4a/ffffff?text=Project" alt="Project Expo" class="event-img"></div>
           <h3>Project Expo</h3>
           <p>Exhibit your innovative projects and prototypes...</p>
-          <button onclick="location.href='projectexpo.html'">Learn More</button>
+          <button>Learn More</button>
         </div>
       </div>
     </section>
@@ -313,16 +1366,13 @@
   </div>
 
   <script>
-    // Initialize all functionality when DOM is loaded
+    // Initialize particle animation
     document.addEventListener('DOMContentLoaded', function() {
       initParticleAnimation();
       initDropdown();
-      initSearchFunctionality();
-      initButtonInteractions();
-      initNavigationFunctions();
     });
 
-    // Particle Animation - unchanged
+    // Particle Animation
     function initParticleAnimation() {
       const canvas = document.getElementById('bg');
       const ctx = canvas.getContext('2d');
@@ -389,10 +1439,34 @@
       });
     }
 
-    // Search functionality - FIXED
-    function initSearchFunctionality() {
-      const searchBtn = document.getElementById('searchBtn');
-      const searchInput = document.getElementById('searchInput');
+    // Button hover effects
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+
+    // Navigation Functions
+    document.getElementById('exploreBtn').addEventListener('click', function() {
+      document.getElementById('events').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    });
+
+    document.getElementById('registerBtn').addEventListener('click', function() {
+      alert('Registration will open on January 20, 2025. Please check back later!');
+    });
+
+    document.getElementById('aboutBtn').addEventListener('click', function() {
+      alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
+    });
+
+    // Search Functionality - FIXED
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
       
       // Define search mappings
       const searchMappings = {
@@ -404,68 +1478,25 @@
         'expo': 'projectexpo.html'
       };
       
-      // Search button click handler
-      searchBtn.addEventListener('click', function() {
-        performSearch();
-      });
+      // Check if search term matches any event
+      const matchingKey = Object.keys(searchMappings).find(key => 
+        searchTerm.includes(key)
+      );
       
-      // Enter key handler for search input
-      searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          performSearch();
-        }
-      });
-      
-      // Perform search function
-      function performSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        
-        // Check if search term matches any event
-        const matchingKey = Object.keys(searchMappings).find(key => 
-          searchTerm.includes(key)
-        );
-        
-        if (matchingKey) {
-          // Navigate to the matching event page
-          window.location.href = searchMappings[matchingKey];
-        } else if (searchTerm) {
-          alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
-        }
+      if (matchingKey) {
+        // FIXED: Actually navigate to the page instead of showing alert
+        window.location.href = searchMappings[matchingKey];
+      } else if (searchTerm) {
+        alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
       }
-    }
+    });
 
-    // Button interactions
-    function initButtonInteractions() {
-      // Button hover effects
-      document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('mouseenter', function() {
-          this.style.transform = 'scale(1.05)';
-        });
-        button.addEventListener('mouseleave', function() {
-          this.style.transform = 'scale(1)';
-        });
-      });
-    }
-
-    // Navigation functions
-    function initNavigationFunctions() {
-      // Explore Events button
-      document.getElementById('exploreBtn').addEventListener('click', function() {
-        document.getElementById('events').scrollIntoView({ 
-          behavior: 'smooth' 
-        });
-      });
-
-      // Register Now button
-      document.getElementById('registerBtn').addEventListener('click', function() {
-        alert('Registration will open on January 20, 2025. Please check back later!');
-      });
-
-      // About button
-      document.getElementById('aboutBtn').addEventListener('click', function() {
-        alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
-      });
-    }
+    // Allow pressing Enter to search
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('searchBtn').click();
+      }
+    });
   </script>
 </body>
 </html>
