@@ -621,95 +621,128 @@
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
       border: 1px solid rgba(0, 255, 255, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #00ffe5, #ff00ff, #00ffe5);
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .event-card:hover::before {
+      opacity: 0.7;
     }
 
     .event-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(255, 0, 255, 0.5);
     }
 
     #events .events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 36px;
-  align-items: start;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px;
+      align-items: start;
+    }
 
-/* card baseline */
-#events .event-card {
-  padding: 36px 28px 40px;
-  border-radius: 14px;
-  text-align: center;
-  position: relative;
-}
+    /* card baseline */
+    #events .event-card {
+      padding: 36px 28px 40px;
+      border-radius: 14px;
+      text-align: center;
+      position: relative;
+    }
 
-/* icon container (keeps image centered and prevents overflow) */
-#events .event-card .event-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;         /* fixed box for the icon */
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 12px;
-}
+    /* icon container (keeps image centered and prevents overflow) */
+    #events .event-card .event-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px;         /* fixed box for the icon */
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
 
-/* ----- THE IMPORTANT PART: force icon size and contain it ----- */
-#events .event-card .event-icon img.event-img {
-  width: 110px !important;      /* explicit size to prevent full-width stretch */
-  height: 110px !important;
-  max-width: 110px !important;
-  max-height: 110px !important;
-  object-fit: contain;          /* keep aspect ratio, don't crop */
-  display: block;
-  margin: 0 auto;
-  border-radius: 12px;
-  transition: transform .25s ease, box-shadow .25s ease;
-  box-shadow: 0 6px 20px rgba(0,255,255,0.12);
-}
+    /* ----- THE IMPORTANT PART: force icon size and contain it ----- */
+    #events .event-card .event-icon img.event-img {
+      width: 110px !important;      /* explicit size to prevent full-width stretch */
+      height: 110px !important;
+      max-width: 110px !important;
+      max-height: 110px !important;
+      object-fit: contain;          /* keep aspect ratio, don't crop */
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 6px 20px rgba(0,255,255,0.12);
+    }
 
-/* subtle hover */
-#events .event-card .event-icon img.event-img:hover {
-  transform: scale(1.06);
-  box-shadow: 0 8px 30px rgba(0,255,255,0.18);
-}
-
-/* responsive smaller icons on mobile */
-@media (max-width: 768px) {
-  #events .event-card .event-icon { height: 96px; }
-  #events .event-card .event-icon img.event-img {
-    width: 84px !important;
-    height: 84px !important;
-    max-width: 84px !important;
-    max-height: 84px !important;
-  }
-}
+    /* subtle hover */
+    #events .event-card .event-icon img.event-img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 30px rgba(0,255,255,0.18);
+    }
 
     .event-card h3 {
       font-size: 22px;
       margin-bottom: 15px;
       color: #00ffe5;
+      text-shadow: 0 0 10px rgba(0, 255, 229, 0.7);
     }
 
     .event-card p {
       color: #ddd;
       line-height: 1.6;
       margin-bottom: 20px;
+      text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
     }
 
     .event-card button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
       border-radius: 25px;
       background: linear-gradient(90deg, #ff0066, #ffcc00);
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .event-card button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, #ffcc00, #ff0066);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
     .event-card button:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 102, 0.8);
+    }
+
+    .event-card button:hover::before {
+      opacity: 1;
     }
 
     /* INFO SECTION */
@@ -737,6 +770,26 @@
       background: rgba(0, 0, 0, 0.5);
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
       border: 1px solid rgba(0, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-box::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #00ffe5, #ff00ff, #00ffe5);
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .info-box:hover::before {
+      opacity: 0.5;
     }
 
     .info-box h3 {
@@ -793,11 +846,30 @@
       font-size: 24px;
       transition: all 0.3s ease;
       box-shadow: 0 0 15px rgba(0, 255, 229, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-icons a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #ff00ff, #00ffe5);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
     .social-icons a:hover {
       transform: scale(1.2) rotate(10deg);
       box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+    }
+
+    .social-icons a:hover::before {
+      opacity: 1;
     }
 
     /* MAP */
@@ -944,13 +1016,12 @@
         font-size: 14px;
       }
           .event-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px; /* keeps it balanced */
-  margin-bottom: 10px;
-}
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px; /* keeps it balanced */
+      margin-bottom: 10px;
+    }
 
       /* About section mobile fix */
       .about-container {
@@ -1036,119 +1107,119 @@
     <canvas id="bg"></canvas>
 
     <!-- HEADER -->
-<header>
-            <!-- Container and Banner Section -->
-            <div class="container-fluid bg-primary text-white py-1 " style="background: #293e7c;">
-              <div class="row align-items-center ">
-                <!-- Logo Block -->
-                
-                <div class="col-2  text-center d-md-none mb-2 mb-md-0">
-                  <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-3">
-                </div>
-                    <div class="col-2 col-md-2 d-lg-none d-none d-md-block text-center mb-2 mb-md-0">
-                  <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-2">
-                </div>
-                    <div class="col-lg-2 d-none d-lg-block text-center mb-2 mb-md-0">
-                  <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-1">
-                </div>
-                <!-- Main Title Block -- -->
-                <div class="col-5 col-md-6 text-center   mb-2  d-none d-md-block d-lg-none">
-                    <h2 class="mb-1 fw-bold" style="font-size: 20px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
-                  <div style="font-size: 1em;">
-                    Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
-                  </div>
-                </div>
-                <div class="col-5 col-md-6 col-lg-7 text-center  mb-2  d-none d-lg-block">
-                    <h2 class="mb-1 fw-bold" style="font-size: 30px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
-                  <div style="font-size: 1.2em; " class="mt-2">
-                    Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
-                  </div>
-                </div>
-                <div class ="col-6 text-center d-md-none">
-                  <h2 class="mb-1 fw-bold fs-5">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="autonomous-size">(Autonomous)</span></h2>
-                  <div class="autonomous-size">
-                    Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
-                  </div>
-                </div>
-                <!-- Accreditation Block -->
-                <div class="col-4 col-md-2 align-items-center d-md-none">
-                  <div class="row">
-                      <div class="col-6">
-                          <div>
-                              <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid1">
-                          </div>
-                      </div>
-                      <div class="col-5">
-                          <div>
-                              <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid1">
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-4 col-md-4 align-items-center d-none d-md-block d-lg-none">
-                  <div class="row">
-                      <div class="col-6">
-                          <div>
-                              <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid2">
-                          </div>
-                      </div>
-                      <div class="col-6">
-                          <div>
-                              <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid2">
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 d-none d-lg-block align-items-between ">
-                  <div class="row">
-                      <div class="col-6">
-                          <div>
-                              <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid3" >
-                          </div>
-                      </div>
-                      <div class="col-6">
-                          <div>
-                              <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid3">
-                          </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-      </div>
-    
-      <div class="header-content">
-        <div class="logo-title">
-          <img src="khitlogo.png" alt="KHIT Logo">
-          <div>
-            <span class="rainbow-glow-title">KHIT SAMKALP 2025</span>
-            <br>
-            <span class="rainbow-glow-title">Website by 3rd Year CSE</span>
-                        <br>
-            <span class="rainbow-glow-title">~Shaik.Dawood Ali</span>
+    <header>
+      <!-- Container and Banner Section -->
+      <div class="container-fluid bg-primary text-white py-1 " style="background: #293e7c;">
+        <div class="row align-items-center ">
+          <!-- Logo Block -->
+          
+          <div class="col-2  text-center d-md-none mb-2 mb-md-0">
+            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-3">
           </div>
-        </div>
-        
-        <!-- Centered Navigation Area -->
-        <div class="nav-center">
-          <div class="search-and-dropdown">
-            <div class="search-bar">
-              <input type="text" id="searchInput" placeholder="Search events...">
-              <button id="searchBtn"><i class="fas fa-search"></i></button>
+              <div class="col-2 col-md-2 d-lg-none d-none d-md-block text-center mb-2 mb-md-0">
+            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-2">
+          </div>
+              <div class="col-lg-2 d-none d-lg-block text-center mb-2 mb-md-0">
+            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-1">
+          </div>
+          <!-- Main Title Block -- -->
+          <div class="col-5 col-md-6 text-center   mb-2  d-none d-md-block d-lg-none">
+              <h2 class="mb-1 fw-bold" style="font-size: 20px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
+            <div style="font-size: 1em;">
+              Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
             </div>
-            <div class="dropdown">
-              <button class="dropbtn">CSE Events</button>
-              <div class="dropdown-content">
-                <a href="technicalquiz.html">Technical Quiz</a>
-                <a href="paperpresentation.html">Paper Presentation</a>
-                <a href="posterpresentation.html">Poster Presentation</a>
-                <a href="projectexpo.html">Project Expo</a>
-              </div>
+          </div>
+          <div class="col-5 col-md-6 col-lg-7 text-center  mb-2  d-none d-lg-block">
+              <h2 class="mb-1 fw-bold" style="font-size: 30px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
+            <div style="font-size: 1.2em; " class="mt-2">
+              Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
+            </div>
+          </div>
+          <div class ="col-6 text-center d-md-none">
+            <h2 class="mb-1 fw-bold fs-5">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="autonomous-size">(Autonomous)</span></h2>
+            <div class="autonomous-size">
+              Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
+            </div>
+          </div>
+          <!-- Accreditation Block -->
+          <div class="col-4 col-md-2 align-items-center d-md-none">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid1">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div>
+                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid1">
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4 align-items-center d-none d-md-block d-lg-none">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid2">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid2">
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-3 d-none d-lg-block align-items-between ">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid3" >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid3">
+                    </div>
+                </div>
             </div>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  
+    <div class="header-content">
+      <div class="logo-title">
+        <img src="khitlogo.png" alt="KHIT Logo">
+        <div>
+          <span class="rainbow-glow-title">KHIT SAMKALP 2025</span>
+          <br>
+          <span class="rainbow-glow-title">Website by 3rd Year CSE</span>
+                      <br>
+          <span class="rainbow-glow-title">~Shaik.Dawood Ali</span>
+        </div>
+      </div>
+      
+      <!-- Centered Navigation Area -->
+      <div class="nav-center">
+        <div class="search-and-dropdown">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search events...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">CSE Events</button>
+            <div class="dropdown-content">
+              <a href="technicalquiz.html">Technical Quiz</a>
+              <a href="paperpresentation.html">Paper Presentation</a>
+              <a href="posterpresentation.html">Poster Presentation</a>
+              <a href="projectexpo.html">Project Expo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
     <!-- HERO SECTION -->
     <div class="hero-section">
@@ -1197,39 +1268,40 @@
         </div>
       </div>
     </section>
-<section class="events-section" id="events">
-  <h2 class="section-title">CSE EVENTS</h2>
+    
+    <section class="events-section" id="events">
+      <h2 class="section-title">CSE EVENTS</h2>
 
-  <div class="events-grid">
-    <div class="event-card">
-      <div class="event-icon"><img src="img11.jpg" alt="Technical Quiz" class="event-img"></div>
-      <h3>Technical Quiz</h3>
-      <p>Test your technical knowledge in this exciting quiz competition...</p>
-      <button onclick="location.href='technicalquiz.html'">Learn More</button>
-    </div>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-icon"><img src="img11.jpg" alt="Technical Quiz" class="event-img"></div>
+          <h3>Technical Quiz</h3>
+          <p>Test your technical knowledge in this exciting quiz competition...</p>
+          <button onclick="location.href='technicalquiz.html'">Learn More</button>
+        </div>
 
-    <div class="event-card">
-      <div class="event-icon"><img src="img12.jpg" alt="Paper Presentation" class="event-img"></div>
-      <h3>Paper Presentation</h3>
-      <p>Showcase your research and innovative ideas...</p>
-      <button onclick="location.href='paperpresentation.html'">Learn More</button>
-    </div>
+        <div class="event-card">
+          <div class="event-icon"><img src="img12.jpg" alt="Paper Presentation" class="event-img"></div>
+          <h3>Paper Presentation</h3>
+          <p>Showcase your research and innovative ideas...</p>
+          <button onclick="location.href='paperpresentation.html'">Learn More</button>
+        </div>
 
-    <div class="event-card">
-      <div class="event-icon"><img src="img13.jpg" alt="Poster Presentation" class="event-img"></div>
-      <h3>Poster Presentation</h3>
-      <p>Display your creative and technical skills...</p>
-      <button onclick="location.href='posterpresentation.html'">Learn More</button>
-    </div>
+        <div class="event-card">
+          <div class="event-icon"><img src="img13.jpg" alt="Poster Presentation" class="event-img"></div>
+          <h3>Poster Presentation</h3>
+          <p>Display your creative and technical skills...</p>
+          <button onclick="location.href='posterpresentation.html'">Learn More</button>
+        </div>
 
-    <div class="event-card">
-      <div class="event-icon"><img src="img14.jpg" alt="Project Expo" class="event-img"></div>
-      <h3>Project Expo</h3>
-      <p>Exhibit your innovative projects and prototypes...</p>
-      <button onclick="location.href='projectexpo.html'">Learn More</button>
-    </div>
-  </div>
-</section>
+        <div class="event-card">
+          <div class="event-icon"><img src="img14.jpg" alt="Project Expo" class="event-img"></div>
+          <h3>Project Expo</h3>
+          <p>Exhibit your innovative projects and prototypes...</p>
+          <button onclick="location.href='projectexpo.html'">Learn More</button>
+        </div>
+      </div>
+    </section>
 
     <!-- INFO SECTION -->
     <section class="info-section">
@@ -1402,6 +1474,7 @@
         'technical quiz': 'technicalquiz.html',
         'paper presentation': 'paperpresentation.html', 
         'poster presentation': 'posterpresentation.html',
+        'project expo': 'projectexpo.html',
         'project': 'projectexpo.html',
         'expo': 'projectexpo.html'
       };
