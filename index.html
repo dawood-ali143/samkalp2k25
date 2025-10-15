@@ -1360,34 +1360,7 @@
       alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
     });
 
-    // Dropdown toggle functionality - FIXED
-    document.addEventListener('DOMContentLoaded', function() {
-      const dropdown = document.querySelector('.dropdown');
-      const dropbtn = document.querySelector('.dropbtn');
-      
-      // Toggle dropdown on button click - IMPROVED
-      dropbtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        dropdown.classList.toggle('active');
-      });
-      
-      // Close dropdown when clicking outside - IMPROVED
-      document.addEventListener('click', function(e) {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('active');
-        }
-      });
-      
-      // FIXED: Allow dropdown links to navigate properly
-      document.querySelectorAll('.dropdown-content a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          // Allow default navigation to happen
-          dropdown.classList.remove('active');
-          // The browser will now follow the href normally
-        });
-      });
-    });
+ 
 
     // Search Functionality - FIXED
     document.getElementById('searchBtn').addEventListener('click', function() {
@@ -1401,7 +1374,31 @@
         'project': 'projectexpo.html',
         'expo': 'projectexpo.html'
       };
-      
+      // Dropdown toggle functionality - FIXED
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.querySelector('.dropdown');
+  const dropbtn = document.querySelector('.dropbtn');
+  
+  // Toggle dropdown on button click - FIXED
+  dropbtn.addEventListener('click', function(e) {
+    e.stopPropagation(); // Only stop propagation, don't prevent default
+    dropdown.classList.toggle('active');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+  
+  // Close dropdown when a link is clicked
+  document.querySelectorAll('.dropdown-content a').forEach(link => {
+    link.addEventListener('click', function() {
+      dropdown.classList.remove('active');
+    });
+  });
+});
       // Check if search term matches any event
       const matchingKey = Object.keys(searchMappings).find(key => 
         searchTerm.includes(key)
