@@ -45,17 +45,20 @@
       height: 100vh;
       width: 100%;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .fullscreen-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
       display: block;
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 1;
     }
 
@@ -868,10 +871,8 @@
       }
       
       .fullscreen-image {
-        object-fit: cover;
-        object-position: center;
-        width: 100%;
-        height: 100%;
+        max-width: 90%;
+        max-height: 70%;
       }
       
       /* Header banner mobile fix - IMPROVED */
@@ -997,6 +998,11 @@
       .header-banner {
         min-height: 80px;
         max-height: 120px;
+      }
+      
+      .fullscreen-image {
+        max-width: 95%;
+        max-height: 60%;
       }
     }
 
@@ -1292,6 +1298,7 @@
     // Initialize particle animation
     document.addEventListener('DOMContentLoaded', function() {
       initParticleAnimation();
+      initDropdown();
     });
 
     // Particle Animation
@@ -1335,6 +1342,32 @@
       animate();
     }
 
+    // Dropdown functionality - FIXED
+    function initDropdown() {
+      const dropdown = document.querySelector('.dropdown');
+      const dropbtn = document.querySelector('.dropbtn');
+      
+      // Toggle dropdown on button click - FIXED
+      dropbtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Only stop propagation, don't prevent default
+        dropdown.classList.toggle('active');
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('active');
+        }
+      });
+      
+      // Close dropdown when a link is clicked
+      document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', function() {
+          dropdown.classList.remove('active');
+        });
+      });
+    }
+
     // Button hover effects
     document.querySelectorAll('button').forEach(button => {
       button.addEventListener('mouseenter', function() {
@@ -1360,8 +1393,6 @@
       alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
     });
 
- 
-
     // Search Functionality - FIXED
     document.getElementById('searchBtn').addEventListener('click', function() {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -1374,31 +1405,7 @@
         'project': 'projectexpo.html',
         'expo': 'projectexpo.html'
       };
-      // Dropdown toggle functionality - FIXED
-document.addEventListener('DOMContentLoaded', function() {
-  const dropdown = document.querySelector('.dropdown');
-  const dropbtn = document.querySelector('.dropbtn');
-  
-  // Toggle dropdown on button click - FIXED
-  dropbtn.addEventListener('click', function(e) {
-    e.stopPropagation(); // Only stop propagation, don't prevent default
-    dropdown.classList.toggle('active');
-  });
-  
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('active');
-    }
-  });
-  
-  // Close dropdown when a link is clicked
-  document.querySelectorAll('.dropdown-content a').forEach(link => {
-    link.addEventListener('click', function() {
-      dropdown.classList.remove('active');
-    });
-  });
-});
+      
       // Check if search term matches any event
       const matchingKey = Object.keys(searchMappings).find(key => 
         searchTerm.includes(key)
