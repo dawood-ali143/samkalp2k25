@@ -17,7 +17,14 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background: url('img26.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
       overflow-x: hidden;
       line-height: 1.6;
     }
@@ -53,8 +60,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
-      border-radius: 15px;
-      box-shadow: 0 0 50px rgba(0, 255, 229, 0.7);
     }
 
     .image-overlay {
@@ -97,13 +102,22 @@
     
     .header-banner {
       width: 100%;
-      height: 120px;
+      height: 120px; /* Increased height for better visibility */
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      background: linear-gradient(90deg, #0f0c29, #302b63, #24243e);
+    }
+    
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Changed to contain to show full banner */
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Added background for better contrast */
     }
     
     .header-banner h1 {
@@ -142,8 +156,7 @@
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
-    
-    .autonomous-size{
+        .autonomous-size{
       font-size: 10px;
     }
     .img-fluid1{
@@ -165,7 +178,6 @@
      .img-logo-3{
       height:68px;
     }
-    
     /* RAINBOW GLOWING TITLE STYLES */
     .rainbow-glow-title {
       font-size: 18px;
@@ -302,7 +314,7 @@
       background: rgba(0, 0, 0, 0.95);
       min-width: 180px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-      z-index: 1000;
+      z-index: 1000; /* Increased z-index to ensure it's above other elements */
       border-radius: 10px;
       overflow: hidden;
       left: 50%;
@@ -441,31 +453,11 @@
       box-shadow: 0 0 25px rgba(0, 255, 229, 0.8);
       transition: transform 0.3s, box-shadow 0.3s;
       font-weight: bold;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    
-    .buttons button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #ff00ff, #00ffe5);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s;
     }
     
     .buttons button:hover {
       transform: scale(1.1);
       box-shadow: 0 0 35px rgba(0, 255, 229, 1);
-    }
-    
-    .buttons button:hover::before {
-      opacity: 1;
     }
     
     /* SECTIONS */
@@ -499,26 +491,6 @@
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
       border: 1px solid rgba(0, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-text::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: linear-gradient(45deg, #00ffe5, #ff00ff, #00ffe5);
-      z-index: -1;
-      filter: blur(20px);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .about-text:hover::before {
-      opacity: 0.3;
     }
 
     .about-text h2 {
@@ -552,30 +524,10 @@
       cursor: pointer;
       box-shadow: 0 0 15px #ff3399, 0 0 25px #ffcc00;
       transition: transform 0.3s;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .about-text button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #ffcc00, #ff0066);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s;
     }
 
     .about-text button:hover {
       transform: scale(1.05);
-    }
-
-    .about-text button:hover::before {
-      opacity: 1;
     }
 
     .about-images {
@@ -619,30 +571,10 @@
       box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
       border: 1px solid rgba(255, 0, 255, 0.2);
       transition: transform 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-box::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: linear-gradient(45deg, #ff00ff, #00ffe5, #ff00ff);
-      z-index: -1;
-      filter: blur(20px);
-      opacity: 0;
-      transition: opacity 0.3s;
     }
 
     .stat-box:hover {
       transform: translateY(-10px);
-    }
-
-    .stat-box:hover::before {
-      opacity: 0.4;
     }
 
     .stat-box h3 {
@@ -736,7 +668,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 120px;
+      height: 120px;         /* fixed box for the icon */
       width: 100%;
       overflow: hidden;
       margin-bottom: 12px;
@@ -744,11 +676,11 @@
 
     /* ----- THE IMPORTANT PART: force icon size and contain it ----- */
     #events .event-card .event-icon img.event-img {
-      width: 110px !important;
+      width: 110px !important;      /* explicit size to prevent full-width stretch */
       height: 110px !important;
       max-width: 110px !important;
       max-height: 110px !important;
-      object-fit: contain;
+      object-fit: contain;          /* keep aspect ratio, don't crop */
       display: block;
       margin: 0 auto;
       border-radius: 12px;
@@ -1000,6 +932,8 @@
       /* Mobile background fix */
       body {
         background-attachment: scroll;
+        background-position: center;
+        background-size: cover;
       }
       
       /* Fullscreen image mobile fix - IMPROVED */
@@ -1018,6 +952,13 @@
         height: auto;
         min-height: 100px;
         max-height: 150px;
+      }
+      
+      .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Show full banner on mobile too */
+        background-color: rgba(0, 0, 0, 0.8);
       }
       
       .header-banner h1 {
@@ -1074,14 +1015,13 @@
         padding: 12px 20px;
         font-size: 14px;
       }
-      
-      .event-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 120px;
-        margin-bottom: 10px;
-      }
+          .event-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px; /* keeps it balanced */
+      margin-bottom: 10px;
+    }
 
       /* About section mobile fix */
       .about-container {
@@ -1140,7 +1080,11 @@
     /* Additional improvements for laptop screens */
     @media (min-width: 1024px) {
       .header-banner {
-        height: 180px;
+        height: 180px; /* Increased height for laptop screens */
+      }
+      
+      .banner-image {
+        object-fit: contain; /* Ensure full banner is visible */
       }
     }
   </style>
@@ -1148,10 +1092,8 @@
 <body>
   <!-- FULL SCREEN IMAGE SECTION -->
   <div class="fullscreen-image-section">
+    <img src="img21.png" alt="Sankalp 2025" class="fullscreen-image">
     <div class="image-overlay">
-      <h1 class="rainbow-title">SAMKALP 2025 KHIT</h1>
-      <p class="rainbow-glow-title">Golden Threads of Innovation</p>
-      <p style="font-size:28px">DEC 19,2025<br>Innovation, Culture & Technology Confluence</p>
       <p class="image-subtitle">
         <span style="display: block; text-align: center; margin-top: 50vh;">
           Scroll Down<br>↓
@@ -1166,42 +1108,118 @@
 
     <!-- HEADER -->
     <header>
-      <div class="header-banner">
-        <h1>KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY (Autonomous)</h1>
-      </div>
-    
-      <div class="header-content">
-        <div class="logo-title">
-          <img src="https://via.placeholder.com/50x50/00ffe5/000000?text=KHIT" alt="KHIT Logo">
-          <div>
-            <span class="rainbow-glow-title">KHIT SAMKALP 2025</span>
-            <br>
-            <span class="rainbow-glow-title">Website by 3rd Year CSE</span>
-            <br>
-            <span class="rainbow-glow-title">~Shaik.Dawood Ali</span>
+      <!-- Container and Banner Section -->
+      <div class="container-fluid bg-primary text-white py-1 " style="background: #293e7c;">
+        <div class="row align-items-center ">
+          <!-- Logo Block -->
+          
+          <div class="col-2  text-center d-md-none mb-2 mb-md-0">
+            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-3">
           </div>
-        </div>
-        
-        <!-- Centered Navigation Area -->
-        <div class="nav-center">
-          <div class="search-and-dropdown">
-            <div class="search-bar">
-              <input type="text" id="searchInput" placeholder="Search events...">
-              <button id="searchBtn"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">CSE Events</button>
-              <div class="dropdown-content">
-                <a href="#" data-page="technicalquiz">Technical Quiz</a>
-                <a href="#" data-page="paperpresentation">Paper Presentation</a>
-                <a href="#" data-page="posterpresentation">Poster Presentation</a>
-                <a href="#" data-page="projectexpo">Project Expo</a>
-              </div>
+              <div class="col-2 col-md-2 d-lg-none d-none d-md-block text-center mb-2 mb-md-0">
+            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-2">
+          </div>
+              <div class="col-lg-2 d-none d-lg-block text-center mb-2 mb-md-0">
+            <img src="khitlogo2.png" alt="KHIT Logo" class="img-logo-1">
+          </div>
+          <!-- Main Title Block -- -->
+          <div class="col-5 col-md-6 text-center   mb-2  d-none d-md-block d-lg-none">
+              <h2 class="mb-1 fw-bold" style="font-size: 20px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
+            <div style="font-size: 1em;">
+              Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
             </div>
           </div>
+          <div class="col-5 col-md-6 col-lg-7 text-center  mb-2  d-none d-lg-block">
+              <h2 class="mb-1 fw-bold" style="font-size: 30px;">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="fs-6">(Autonomous)</span></h2>
+            <div style="font-size: 1.2em; " class="mt-2">
+              Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
+            </div>
+          </div>
+          <div class ="col-6 text-center d-md-none">
+            <h2 class="mb-1 fw-bold fs-5">KALLAM HARANADHAREDDY INSTITUTE OF TECHNOLOGY <span class="autonomous-size">(Autonomous)</span></h2>
+            <div class="autonomous-size">
+              Approved by AICTE– New Delhi, Permanently affiliated to JNTUK– Kakinada
+            </div>
+          </div>
+          <!-- Accreditation Block -->
+          <div class="col-4 col-md-2 align-items-center d-md-none">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid1">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div>
+                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid1">
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-4 col-md-4 align-items-center d-none d-md-block d-lg-none">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid2">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid2">
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-3 d-none d-lg-block align-items-between ">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <img src="Nacclogo.png" alt="KHIT Logo" class="img-fluid3" >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <img src="nbalogo.png" alt="KHIT Logo" class="img-fluid3">
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
+    </div>
+  
+    <div class="header-content">
+      <div class="logo-title">
+        <img src="khitlogo.png" alt="KHIT Logo">
+        <div>
+          <span class="rainbow-glow-title">KHIT SAMKALP 2025</span>
+          <br>
+          <span class="rainbow-glow-title">Website by 3rd Year CSE</span>
+                      <br>
+          <span class="rainbow-glow-title">~Shaik.Dawood Ali</span>
+        </div>
+      </div>
+      
+      <!-- Centered Navigation Area -->
+      <div class="nav-center">
+        <div class="search-and-dropdown">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search events...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">CSE Events</button>
+            <div class="dropdown-content">
+              <a href="technicalquiz.html">Technical Quiz</a>
+              <a href="paperpresentation.html">Paper Presentation</a>
+              <a href="posterpresentation.html">Poster Presentation</a>
+              <a href="projectexpo.html">Project Expo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
     <!-- HERO SECTION -->
     <div class="hero-section">
@@ -1210,8 +1228,8 @@
         <p class="rainbow-glow-title">Golden Threads of Innovation</p>
         <p style="font-size:28px">DEC 19,2025<br>Innovation, Culture & Technology Confluence</p>
         <div class="buttons">
-          <button id="exploreBtn">EXPLORE EVENTS</button>
-          <button id="registerBtn">REGISTER NOW</button>
+          <button id="exploreBtn" onclick="window.location.href='exploreevent.html'">EXPLORE EVENTS</button>
+          <button id="registerBtn" onclick="window.location.href='registernow.html'">REGISTER NOW</button>
         </div>
       </div>
     </div>
@@ -1231,8 +1249,8 @@
           <button id="aboutBtn">READ MORE</button>
         </div>
         <div class="about-images">
-          <img src="https://via.placeholder.com/320x200/00ffe5/000000?text=Campus" alt="KHIT Campus">
-          <img src="https://via.placeholder.com/320x200/ff00ff/000000?text=Event" alt="College Event">
+          <img src="img1.webp" alt="KHIT Campus">
+          <img src="img2.webp" alt="College Event">
         </div>
       </div>
       <div class="stats">
@@ -1256,31 +1274,31 @@
 
       <div class="events-grid">
         <div class="event-card">
-          <div class="event-icon"><img src="https://via.placeholder.com/110x110/00ffe5/000000?text=Quiz" alt="Technical Quiz" class="event-img"></div>
+          <div class="event-icon"><img src="img11.jpg" alt="Technical Quiz" class="event-img"></div>
           <h3>Technical Quiz</h3>
           <p>Test your technical knowledge in this exciting quiz competition...</p>
-          <button data-page="technicalquiz">Learn More</button>
+          <button onclick="location.href='technicalquiz.html'">Learn More</button>
         </div>
 
         <div class="event-card">
-          <div class="event-icon"><img src="https://via.placeholder.com/110x110/ff00ff/000000?text=Paper" alt="Paper Presentation" class="event-img"></div>
+          <div class="event-icon"><img src="img12.jpg" alt="Paper Presentation" class="event-img"></div>
           <h3>Paper Presentation</h3>
           <p>Showcase your research and innovative ideas...</p>
-          <button data-page="paperpresentation">Learn More</button>
+          <button onclick="location.href='paperpresentation.html'">Learn More</button>
         </div>
 
         <div class="event-card">
-          <div class="event-icon"><img src="https://via.placeholder.com/110x110/00ffe5/000000?text=Poster" alt="Poster Presentation" class="event-img"></div>
+          <div class="event-icon"><img src="img13.jpg" alt="Poster Presentation" class="event-img"></div>
           <h3>Poster Presentation</h3>
           <p>Display your creative and technical skills...</p>
-          <button data-page="posterpresentation">Learn More</button>
+          <button onclick="location.href='posterpresentation.html'">Learn More</button>
         </div>
 
         <div class="event-card">
-          <div class="event-icon"><img src="https://via.placeholder.com/110x110/ff00ff/000000?text=Project" alt="Project Expo" class="event-img"></div>
+          <div class="event-icon"><img src="img14.jpg" alt="Project Expo" class="event-img"></div>
           <h3>Project Expo</h3>
           <p>Exhibit your innovative projects and prototypes...</p>
-          <button data-page="projectexpo">Learn More</button>
+          <button onclick="location.href='projectexpo.html'">Learn More</button>
         </div>
       </div>
     </section>
@@ -1292,7 +1310,7 @@
           <h3>Follow Us</h3>
           <div class="social-icons">
             <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+           <a href="#https://www.linkedin.com/company/kallam-haranadhareddy-institute-of-technology/about/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
           </div>
@@ -1325,9 +1343,9 @@
         <div class="footer-section">
           <h3>Quick Links</h3>
           <a href="index.html">Home</a>
-          <a href="#events">Events</a>
+          <a href="exploreevents.html">Events</a>
           <a href="#">Schedule</a>
-          <a href="#">Registration</a>
+          <a href="registernow.html">Registration</a>
           <a href="#">Contact</a>
         </div>
         <div class="footer-section">
@@ -1353,8 +1371,6 @@
     document.addEventListener('DOMContentLoaded', function() {
       initParticleAnimation();
       initDropdown();
-      initEventNavigation();
-      initSearch();
     });
 
     // Particle Animation
@@ -1403,9 +1419,9 @@
       const dropdown = document.querySelector('.dropdown');
       const dropbtn = document.querySelector('.dropbtn');
       
-      // Toggle dropdown on button click
+      // Toggle dropdown on button click - FIXED
       dropbtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+        e.stopPropagation(); // Only stop propagation, don't prevent default
         dropdown.classList.toggle('active');
       });
       
@@ -1415,69 +1431,12 @@
           dropdown.classList.remove('active');
         }
       });
-    }
-
-    // Event navigation functionality
-    function initEventNavigation() {
-      // Add click handlers to all Learn More buttons and dropdown links
-      document.querySelectorAll('[data-page]').forEach(element => {
-        element.addEventListener('click', function() {
-          const page = this.getAttribute('data-page');
-          navigateToPage(page);
+      
+      // Close dropdown when a link is clicked
+      document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', function() {
+          dropdown.classList.remove('active');
         });
-      });
-    }
-
-    // Search functionality
-    function initSearch() {
-      document.getElementById('searchBtn').addEventListener('click', performSearch);
-      
-      document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          performSearch();
-        }
-      });
-    }
-
-    // Perform search
-    function performSearch() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-      
-      const searchMappings = {
-        'technical quiz': 'technicalquiz',
-        'quiz': 'technicalquiz',
-        'paper presentation': 'paperpresentation',
-        'paper': 'paperpresentation',
-        'poster presentation': 'posterpresentation',
-        'poster': 'posterpresentation',
-        'project expo': 'projectexpo',
-        'project': 'projectexpo',
-        'expo': 'projectexpo'
-      };
-      
-      const matchingKey = Object.keys(searchMappings).find(key => 
-        searchTerm.includes(key)
-      );
-      
-      if (matchingKey) {
-        navigateToPage(searchMappings[matchingKey]);
-      } else if (searchTerm) {
-        alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
-      }
-    }
-
-    // Navigate to page
-    function navigateToPage(page) {
-      // Close dropdown if open
-      document.querySelector('.dropdown').classList.remove('active');
-      
-      // In a real implementation, this would navigate to the actual page
-      // For this demo, we'll show an alert and scroll to events section
-      alert(`Navigating to ${page} page. In a real implementation, this would load the ${page}.html file.`);
-      
-      // Scroll to events section
-      document.getElementById('events').scrollIntoView({ 
-        behavior: 'smooth' 
       });
     }
 
@@ -1504,6 +1463,40 @@
 
     document.getElementById('aboutBtn').addEventListener('click', function() {
       alert('KHIT Engineering College was established in 2008 and has since grown to become one of the premier engineering institutions in the region. With state-of-the-art facilities, experienced faculty, and a strong industry-academia interface, KHIT provides an excellent environment for holistic development of future engineers.');
+    });
+
+    // Search Functionality - FIXED
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      
+      // Define search mappings
+      const searchMappings = {
+        'technical quiz': 'technicalquiz.html',
+        'paper presentation': 'paperpresentation.html', 
+        'poster presentation': 'posterpresentation.html',
+        'project expo': 'projectexpo.html',
+        'project': 'projectexpo.html',
+        'expo': 'projectexpo.html'
+      };
+      
+      // Check if search term matches any event
+      const matchingKey = Object.keys(searchMappings).find(key => 
+        searchTerm.includes(key)
+      );
+      
+      if (matchingKey) {
+        // FIXED: Actually navigate to the page instead of showing alert
+        window.location.href = searchMappings[matchingKey];
+      } else if (searchTerm) {
+        alert('Event not found. Please try "Technical Quiz", "Paper Presentation", "Poster Presentation", or "Project Expo".');
+      }
+    });
+
+    // Allow pressing Enter to search
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('searchBtn').click();
+      }
     });
   </script>
 </body>
